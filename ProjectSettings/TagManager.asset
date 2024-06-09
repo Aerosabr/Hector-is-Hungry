@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
+  - Environment
+  - UI
+  - Wolf
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -12,9 +17,9 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
+  - Item
+  - Environment
+  - Character
   - 
   - 
   - 
@@ -40,4 +45,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1157661059
+    locked: 0
+  - name: Environment
+    uniqueID: 369280421
+    locked: 0
+  - name: Item
+    uniqueID: 3072628983
+    locked: 0
+  - name: Character
+    uniqueID: 454197171
     locked: 0
