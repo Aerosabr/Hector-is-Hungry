@@ -45,24 +45,29 @@ public class CameraController : MonoBehaviour
 		}
 
 		targetPoint.x = player.transform.position.x + lookOffset;
-		if(first)
+		if (targetViewportPoint.x < -0.1 || targetViewportPoint.x > 1.1)
 		{
-			transform.position = Vector3.Lerp(transform.position, targetPoint, moveSpeed * Time.deltaTime);
+			transform.position = Vector3.Lerp(transform.position, targetPoint + new Vector3(5, 0 , 0), moveSpeed * Time.deltaTime);
 		}
 
-		else
-		{
-			// Check if targetPoint is outside of the camera's view
-			Debug.Log("ViewPort" + targetViewportPoint.x);
-			if (targetViewportPoint.x < -0.1 || targetViewportPoint.x > 1.1)
-			{
-				if (coroutine != null)
-				{
-					StopCoroutine(coroutine);
-				}
-				coroutine = StartCoroutine(GetToPoint(transform, targetPoint));
-			}
-		}
+		//if(first)
+		//{
+		//	transform.position = Vector3.Lerp(transform.position, targetPoint, moveSpeed * Time.deltaTime);
+		//}
+
+		//else
+		//{
+		//	// Check if targetPoint is outside of the camera's view
+		//	Debug.Log("ViewPort" + targetViewportPoint.x);
+		//	if (targetViewportPoint.x < -0.1 || targetViewportPoint.x > 1.5)
+		//	{
+		//		if (coroutine != null)
+		//		{
+		//			StopCoroutine(coroutine);
+		//		}
+		//		coroutine = StartCoroutine(GetToPoint(transform, targetPoint));
+		//	}
+		//}
 
 
 	}
