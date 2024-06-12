@@ -1917,6 +1917,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5740368290660091766, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6469529494592383562, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
       propertyPath: m_Color.b
       value: 0.58082247
@@ -4461,9 +4465,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1570310551}
   rb: {fileID: 0}
-  moveSpeed: 3
-  lookAheadDistance: 5
-  lookAheadSpeed: 3
+  moveSpeed: 0.75
+  lookAheadDistance: 7
+  lookAheadSpeed: 5
   lookOffset: 0
   reCalculationTimer: 3
   first: 0
