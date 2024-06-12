@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Image image;
+    public Transform parentAfterDrag;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void OnBeginDrag(PointerEventData eventData);
+    public abstract void OnDrag(PointerEventData eventData);
+    public abstract void OnEndDrag(PointerEventData eventData);
+
+    public abstract void CheckSlot(string Pos);
 }
