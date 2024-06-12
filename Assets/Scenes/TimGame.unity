@@ -4465,6 +4465,8 @@ MonoBehaviour:
   lookAheadDistance: 5
   lookAheadSpeed: 3
   lookOffset: 0
+  reCalculationTimer: 3
+  first: 0
 --- !u!1 &1734923599
 GameObject:
   m_ObjectHideFlags: 0
