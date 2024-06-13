@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Image image;
+    public SpriteRenderer sprite;
+    public BoxCollider2D box;
+    public Transform parentAfterDrag;
 
-    // Update is called once per frame
-    void Update()
+    public abstract void CheckSlot(string Pos);
+    public abstract bool PickupItem();
+
+    public void ItemDropped()
     {
-        
+        sprite.enabled = true;
+        image.enabled = false;
+        box.enabled = true;
     }
 }
