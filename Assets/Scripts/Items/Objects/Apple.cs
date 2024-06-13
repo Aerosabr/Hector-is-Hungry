@@ -24,6 +24,7 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+        parentAfterDrag.GetComponent<InventorySlot>().Taken = true;
     }
 
     public override void CheckSlot(string Pos)
@@ -31,7 +32,6 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             parentAfterDrag = Inventory.instance.Grid[Pos].gameObject.transform;
-            Inventory.instance.Grid[Pos].Taken = true;
         }
     }
 
@@ -45,6 +45,7 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                 {
                     InventorySlot openSlot = Inventory.instance.Grid[i.ToString() + j.ToString()];
                     transform.SetParent(openSlot.transform);
+                    openSlot.Taken = true;
                     sprite.enabled = false;
                     image.enabled = true;
                     box.enabled = false;

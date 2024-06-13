@@ -13,6 +13,7 @@ public abstract class Item : MonoBehaviour
 
     public abstract void CheckSlot(string Pos);
     public abstract bool PickupItem();
+
     public void ItemDropped()
     {
         sprite.enabled = true;
