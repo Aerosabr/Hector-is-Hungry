@@ -6,37 +6,53 @@ using UnityEngine.UI;
 
 public class Rock : Item
 {
-    public Vector2 TopLeft;
-    public Vector2 TopRight;
-    public Vector2 BottomLeft;
-    public Vector2 BottomRight;
-
-    public override void OnBeginDrag(PointerEventData eventData)
-    {
-        parentAfterDrag = transform.parent;
-        transform.SetParent(transform.root);
-        transform.SetAsLastSibling();
-        image.raycastTarget = false;
-        parentAfterDrag.gameObject.GetComponent<InventorySlot>().Taken = false;
-    }
-
-    public override void OnDrag(PointerEventData eventData)
-    {
-        transform.position = Input.mousePosition;
-    }
-
-    public override void OnEndDrag(PointerEventData eventData)
-    {
-        transform.SetParent(parentAfterDrag);
-        image.raycastTarget = true;
-    }
+    [SerializeField] private GameObject BaseRock;
+    public List<GameObject> Rocks = new List<GameObject>();
 
     public override void CheckSlot(string Pos)
     {
-        if (!Inventory.instance.Grid[Pos].Taken)
+        
+    }
+
+    public void CheckSlot(string Location, int Pos)
+    {
+
+    }
+
+    public override bool PickupItem()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void BeginDrag()
+    {
+        foreach (GameObject rock in Rocks)
         {
-            parentAfterDrag = Inventory.instance.Grid[Pos].gameObject.transform;
-            Inventory.instance.Grid[Pos].Taken = true;
+            Rock temp = rock.GetComponent<Rock>();
+            temp.parentAfterDrag = temp.gameObject.transform.parent;
+            temp.transform.SetParent(temp.transform.root);
+            temp.transform.SetAsLastSibling();
+            temp.image.raycastTarget = false;
+            temp.parentAfterDrag.gameObject.GetComponent<InventorySlot>().Taken = false;
+        }
+    }
+
+    public void Dragging(int Pos)
+    {
+        switch (Pos)
+        {
+            case 1:
+                transform.position = Input.mousePosition - new Vector3(-34, 34);
+                break;
+            case 2:
+                transform.position = Input.mousePosition - new Vector3(34, 34);
+                break;
+            case 3:
+                transform.position = Input.mousePosition - new Vector3(-34, -34);
+                break;
+            case 4:
+                transform.position = Input.mousePosition - new Vector3(34, -34);
+                break;
         }
     }
 }

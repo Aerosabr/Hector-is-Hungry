@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 817872133812251059}
   - component: {fileID: 7328636998899089156}
   - component: {fileID: 5289328143157674754}
-  - component: {fileID: 5832923545826390538}
-  m_Layer: 5
-  m_Name: Rock
-  m_TagString: Untagged
+  - component: {fileID: -6185182165426418843}
+  m_Layer: 7
+  m_Name: BaseRock
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168348682371939180}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
-  m_RaycastTarget: 0
+  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0}
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5832923545826390538
+--- !u!114 &-6185182165426418843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,12 +85,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 168348682371939180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bd56d1f847b5e24893a45641116dc52, type: 3}
+  m_Script: {fileID: 11500000, guid: 60149d1c9a98a8047b084bb0daf08c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 5289328143157674754}
   parentAfterDrag: {fileID: 0}
-  TopLeft: {x: -34, y: 34}
-  TopRight: {x: 34, y: 34}
-  BottomLeft: {x: -34, y: -34}
-  BottomRight: {x: 34, y: -34}
+  Controller: {fileID: 0}
+  Pos: 0
