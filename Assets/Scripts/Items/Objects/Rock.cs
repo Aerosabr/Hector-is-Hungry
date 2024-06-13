@@ -53,15 +53,18 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.position = new Vector3(((TopLeft.transform.position.x + BottomRight.transform.position.x) / 2), ((TopLeft.transform.position.y + BottomRight.transform.position.y) / 2));
-        image.raycastTarget = true;
-        TopLeft.GetComponent<InventorySlot>().Taken = true;
-        TopRight.GetComponent<InventorySlot>().Taken = true;
-        BottomLeft.GetComponent<InventorySlot>().Taken = true;
-        BottomRight.GetComponent<InventorySlot>().Taken = true;
+        if (!isDropped)
+        {
+            transform.position = new Vector3(((TopLeft.transform.position.x + BottomRight.transform.position.x) / 2), ((TopLeft.transform.position.y + BottomRight.transform.position.y) / 2));
+            image.raycastTarget = true;
+            TopLeft.GetComponent<InventorySlot>().Taken = true;
+            TopRight.GetComponent<InventorySlot>().Taken = true;
+            BottomLeft.GetComponent<InventorySlot>().Taken = true;
+            BottomRight.GetComponent<InventorySlot>().Taken = true;
+        }
     }
 
-    public override void CheckSlot(string Pos)
+    public override bool CheckSlot(string Pos)
     {
         if (!Inventory.instance.Grid[Pos].Taken)
         {
@@ -85,23 +88,53 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 
             if (x == 0 || x == 4 || y == 0 || y == 4)
                 Debug.Log("Invalid");
-            else if (!Inventory.instance.Grid[x.ToString() + y.ToString()].Taken && !Inventory.instance.Grid[x.ToString() + (y+1).ToString()].Taken 
-                && !Inventory.instance.Grid[(x+1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x+1).ToString() + (y+1).ToString()].Taken)
+            else if (!Inventory.instance.Grid[x.ToString() + y.ToString()].Taken && !Inventory.instance.Grid[x.ToString() + (y + 1).ToString()].Taken
+                && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken)
             {
                 TopLeft = Inventory.instance.Grid[x.ToString() + y.ToString()].gameObject;
-                TopRight = Inventory.instance.Grid[x.ToString() + (y+1).ToString()].gameObject;
-                BottomLeft = Inventory.instance.Grid[(x+1).ToString() + y.ToString()].gameObject;
-                BottomRight = Inventory.instance.Grid[(x+1).ToString() + (y+1).ToString()].gameObject;
+                TopRight = Inventory.instance.Grid[x.ToString() + (y + 1).ToString()].gameObject;
+                BottomLeft = Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].gameObject;
+                BottomRight = Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].gameObject;
+                return true;
             }
-            
         }
+
+        return false;
     }
 
     public override bool PickupItem()
     {
-        throw new System.NotImplementedException();
+        for (int i = 1; i <= 3; i++)
+        {
+            for (int j = 1; j <= 3; j++)
+            {
+                if (CheckSlot(i.ToString() + j.ToString()))
+                {
+                    isDropped = false;
+                    transform.SetParent(GameObject.Find("InventoryImages").transform);
+                    OnEndDrag(null);
+                    
+                    sprite.enabled = false;
+                    image.enabled = true;
+                    box.enabled = false;
+                    transform.localScale = new Vector3(1, 1, 1);
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
-
+    public override void ItemDropped()
+    {
+        sprite.enabled = true;
+        image.raycastTarget = true;
+        image.enabled = false;
+        box.enabled = true;
+        isDropped = true;
+        parentAfterDrag = RegionManager.instance.transform;
+        transform.position = GameObject.Find("Player").transform.position;
+    }
 }
 
