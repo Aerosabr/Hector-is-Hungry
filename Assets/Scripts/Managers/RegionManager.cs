@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class RegionManager : MonoBehaviour
 {
+    public static RegionManager instance;
     //Regions that have been generated in game
     [SerializeField] private List<GameObject> Regions = new List<GameObject>();
 
     private void Awake()
     {
-        
+        instance = this;
     }
 
     private void Start()
