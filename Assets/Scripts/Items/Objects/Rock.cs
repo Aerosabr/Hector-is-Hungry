@@ -136,5 +136,10 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         parentAfterDrag = RegionManager.instance.transform;
         transform.position = GameObject.Find("Player").transform.position;
     }
+
+    public override void Consume()
+    {
+        Destroy(gameObject);
+    }
 }
 
