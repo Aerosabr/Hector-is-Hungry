@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WolfStateMachine : MonoBehaviour
+public class WolfStateMachine : StateManager<WolfStateMachine.EWolfState>
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum EWolfState
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Idle,
+        Eat,
+        Destroy,
     }
 }

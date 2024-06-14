@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public abstract class BaseState<EState> where EState : enum
+public abstract class BaseState<EState> where EState : Enum
 {
 	public BaseState(EState key)
 	{
