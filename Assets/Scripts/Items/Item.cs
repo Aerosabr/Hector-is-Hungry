@@ -10,14 +10,10 @@ public abstract class Item : MonoBehaviour
     public SpriteRenderer sprite;
     public BoxCollider2D box;
     public Transform parentAfterDrag;
+    public bool isDropped;
 
-    public abstract void CheckSlot(string Pos);
+    public abstract bool CheckSlot(string Pos);
     public abstract bool PickupItem();
-
-    public void ItemDropped()
-    {
-        sprite.enabled = true;
-        image.enabled = false;
-        box.enabled = true;
-    }
+    public abstract void ItemDropped();
+    public abstract void Consume();
 }

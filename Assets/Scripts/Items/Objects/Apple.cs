@@ -22,17 +22,23 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(parentAfterDrag);
-        image.raycastTarget = true;
-        parentAfterDrag.GetComponent<InventorySlot>().Taken = true;
+        if (!isDropped)
+        {
+            transform.SetParent(parentAfterDrag);
+            image.raycastTarget = true;
+            parentAfterDrag.GetComponent<InventorySlot>().Taken = true;
+        }
     }
 
-    public override void CheckSlot(string Pos)
+    public override bool CheckSlot(string Pos)
     {
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             parentAfterDrag = Inventory.instance.Grid[Pos].gameObject.transform;
+            return true;
         }
+
+        return false;
     }
 
     public override bool PickupItem()
@@ -43,16 +49,34 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
             {
                 if (!Inventory.instance.Grid[i.ToString() + j.ToString()].Taken)
                 {
+                    isDropped = false;
                     InventorySlot openSlot = Inventory.instance.Grid[i.ToString() + j.ToString()];
                     transform.SetParent(openSlot.transform);
                     openSlot.Taken = true;
                     sprite.enabled = false;
                     image.enabled = true;
                     box.enabled = false;
+                    transform.localScale = new Vector3(1, 1, 1);
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    public override void ItemDropped()
+    {
+        sprite.enabled = true;
+        image.raycastTarget = true;
+        image.enabled = false;
+        box.enabled = true;
+        isDropped = true;
+        parentAfterDrag = RegionManager.instance.transform;
+        transform.position = GameObject.Find("Player").transform.position;
+    }
+
+    public override void Consume()
+    {
+        Destroy(gameObject);
     }
 }

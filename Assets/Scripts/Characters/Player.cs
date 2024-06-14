@@ -22,9 +22,22 @@ public class Player : Entity
 
     public void OnPickup()
     {
-        if (nearbyObjects.Count > 0)
+        if (nearbyObjects.Count > 1)
         {
-            nearbyObjects[0].GetComponent<Item>().PickupItem();
+            float distance = Mathf.Infinity;
+            int index = 0;
+            for (int i = 0; i < nearbyObjects.Count; i++)
+            {
+                if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+                {
+                    
+                    distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
+                    index = i;
+                }
+            }
+            nearbyObjects[index].GetComponent<Item>().PickupItem();
         }
+        else if (nearbyObjects.Count == 1)
+            nearbyObjects[0].GetComponent<Item>().PickupItem();
     }
 }
