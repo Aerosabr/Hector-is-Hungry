@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    public GameObject TopLeft;
-    public GameObject TopRight;
-    public GameObject BottomLeft;
-    public GameObject BottomRight;
-
-    public int current;
+    [SerializeField] private GameObject TopLeft;
+    [SerializeField] private GameObject TopRight;
+    [SerializeField] private GameObject BottomLeft;
+    [SerializeField] private GameObject BottomRight;
+    [SerializeField] private GameObject InventoryImage;
+    [SerializeField] private int current;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -113,8 +113,7 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                     isDropped = false;
                     transform.SetParent(GameObject.Find("InventoryImages").transform);
                     OnEndDrag(null);
-                    
-                    sprite.enabled = false;
+                    InventoryImage.SetActive(false);
                     image.enabled = true;
                     box.enabled = false;
                     transform.localScale = new Vector3(1, 1, 1);
@@ -128,12 +127,17 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public override void ItemDropped()
     {
-        sprite.enabled = true;
+        InventoryImage.SetActive(true);
         image.raycastTarget = true;
         image.enabled = false;
         box.enabled = true;
         isDropped = true;
-        parentAfterDrag = RegionManager.instance.transform;
+        TopLeft = null;
+        TopRight = null;
+        BottomLeft = null;
+        BottomRight = null;
+        current = 0;
+        transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.position = GameObject.Find("Player").transform.position;
     }
 

@@ -1,79 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class TimerItem : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
     [SerializeField] private GameObject InventoryImage;
+    [SerializeField] private GameObject Icon;
+    [SerializeField] private GameObject Text;
     [SerializeField] private int current;
-    public Text timerText;
-    public float timerElapse = 0f;
-
-    private void Awake()
-    {
-        RectTransform temp = GetComponent<RectTransform>();
-        temp.anchorMin = new Vector2(0.5f, 0.5f);
-        temp.anchorMax = new Vector2(0.5f, 0.5f);
-        temp.pivot = new Vector2(0.5f, 0.5f);
-        temp.anchoredPosition = Vector2.zero;
-    }
-
-    private void Start()
-    {
-        StartCoroutine(startTimer());
-    }
-
-    private IEnumerator startTimer()
-    {
-        timerElapse = 0f;
-        yield return null;
-    }
-
-    private void FixedUpdate()
-    {
-        timerElapse += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(timerElapse / 60);
-        int seconds = Mathf.FloorToInt(timerElapse % 60);
-        string secondsString = seconds < 10 ? "0" + seconds.ToString() : seconds.ToString();
-        timerText.text = minutes.ToString() + ":" + secondsString;
-    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         Vector2 temp = Input.mousePosition - transform.position;
-        Debug.Log("Timer");
-        Debug.Log(Input.mousePosition - transform.position);
-        /*
+        if (temp.x <= 0 && temp.y > 0) //Top left
+            current = 1;
+        else if (temp.x > 0 && temp.y > 0) //Top right
+            current = 2;
+        else if (temp.x <= 0 && temp.y <= 0) //Bottom left
+            current = 3;
+        else //Bottom right
+            current = 4;
+
         image.raycastTarget = false;
         foreach (GameObject slot in Slots)
             slot.GetComponent<InventorySlot>().Taken = false;
-        */
+
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-
+        switch (current)
+        {
+            case 1:
+                transform.position = Input.mousePosition - new Vector3(-35, 35);
+                break;
+            case 2:
+                transform.position = Input.mousePosition - new Vector3(35, 35);
+                break;
+            case 3:
+                transform.position = Input.mousePosition - new Vector3(-35, -35);
+                break;
+            case 4:
+                transform.position = Input.mousePosition - new Vector3(35, -35);
+                break;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!isDropped)
         {
-            /*
             transform.position = new Vector3(((Slots[0].transform.position.x + Slots[7].transform.position.x) / 2), ((Slots[0].transform.position.y + Slots[7].transform.position.y) / 2));
             image.raycastTarget = true;
             foreach (GameObject slot in Slots)
                 slot.GetComponent<InventorySlot>().Taken = true;
-            */
         }
     }
 
     public override bool CheckSlot(string Pos)
     {
-        /*
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             int x = int.Parse(Pos.Substring(0, 1));
@@ -102,7 +90,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                 && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken)
             {
                 int index = 0;
-                for (int i = x; i <= x + 1; i++)
+                for (int i = x; i <= x+1; i++)
                 {
                     for (int j = 1; j <= 4; j++)
                     {
@@ -113,7 +101,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                 return true;
             }
         }
-        */
+
         return false;
     }
 
@@ -158,5 +146,4 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         Destroy(gameObject);
     }
-    
 }

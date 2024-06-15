@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 8945902445593177537}
-  sprite: {fileID: 2757137489621327220}
   box: {fileID: 836182758184331198}
   parentAfterDrag: {fileID: 0}
   isDropped: 1
@@ -188,6 +187,7 @@ MonoBehaviour:
   TopRight: {fileID: 0}
   BottomLeft: {fileID: 0}
   BottomRight: {fileID: 0}
+  InventoryImage: {fileID: 2587653431233724130}
   current: 0
 --- !u!50 &620422956121281133
 Rigidbody2D:
