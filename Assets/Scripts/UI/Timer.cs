@@ -44,30 +44,80 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
         Vector2 temp = Input.mousePosition - transform.position;
-        Debug.Log("Timer");
-        Debug.Log(Input.mousePosition - transform.position);
-        /*
+        if (temp.x <= 0 && temp.y > 0) //Top left quadrant
+        {
+            if (temp.x <= -47.5)
+                current = 1;
+            else
+                current = 2;
+        }
+        else if (temp.x > 0 && temp.y > 0) //Top right quadrant
+        {
+            if (temp.x <= 47.5)
+                current = 3;
+            else
+                current = 4;
+        }
+        else if (temp.x <= 0 && temp.y <= 0) //Bottom left quadrant
+        {
+            if (temp.x <= -47.5)
+                current = 5;
+            else
+                current = 6;
+        }
+        else //Bottom right quadrant
+        {
+            if (temp.x <= 47.5)
+                current = 7;
+            else
+                current = 8;
+        }
+
         image.raycastTarget = false;
         foreach (GameObject slot in Slots)
             slot.GetComponent<InventorySlot>().Taken = false;
-        */
+        
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-
+        switch (current)
+        {
+            case 1:
+                transform.position = Input.mousePosition - new Vector3(-75, 25);
+                break;
+            case 2:
+                transform.position = Input.mousePosition - new Vector3(-25, 25);
+                break;
+            case 3:
+                transform.position = Input.mousePosition - new Vector3(25, 25);
+                break;
+            case 4:
+                transform.position = Input.mousePosition - new Vector3(75, 25);
+                break;
+            case 5:
+                transform.position = Input.mousePosition - new Vector3(-75, -25);
+                break;
+            case 6:
+                transform.position = Input.mousePosition - new Vector3(-25, -25);
+                break;
+            case 7:
+                transform.position = Input.mousePosition - new Vector3(25, -25);
+                break;
+            case 8:
+                transform.position = Input.mousePosition - new Vector3(75, -25);
+                break;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!isDropped)
-        {
-            /*
+        {       
             transform.position = new Vector3(((Slots[0].transform.position.x + Slots[7].transform.position.x) / 2), ((Slots[0].transform.position.y + Slots[7].transform.position.y) / 2));
             image.raycastTarget = true;
             foreach (GameObject slot in Slots)
-                slot.GetComponent<InventorySlot>().Taken = true;
-            */
+                slot.GetComponent<InventorySlot>().Taken = true;    
         }
     }
 
