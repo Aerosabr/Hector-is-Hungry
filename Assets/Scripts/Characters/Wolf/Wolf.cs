@@ -6,21 +6,29 @@ using System;
 public class Wolf : MonoBehaviour
 {
 
-    [SerializeField] private float maxHunger = 100;
-    [SerializeField] private float currentHunger = 100;
-    [SerializeField] private float hungerDrainSpeed = 1;
-    [SerializeField] private float eatingSpeed = 1;
-    [SerializeField] private float stunTimer = 0;
+    public float bodySize = 1;
+    public float maxHunger = 100;
+    public float currentHunger = 100;
+    public float hungerDrainSpeed = 1;
+    public float eatingSpeed = 1;
+    public float stunTimer = 0;
+	public float visionRadius = 10f;
 
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
+	public float eatTime, foodValue, effectValue;
+	public string effect;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public Collider visionCollider;
+	public List<IConsumable> foodInRange = new List<IConsumable>();
+
+	public void AddHunger(float foodValue)
+	{
+		currentHunger += foodValue;
+	}
+
+	public void UpdateSpeed(float speed)
+	{
+		hungerDrainSpeed = speed;
+	}
+
+
 }

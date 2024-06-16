@@ -18,7 +18,6 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
     void Update() 
     {
         EState nextStateKey = CurrentState.GetState();
-
         if(!IsTransitioningState && nextStateKey.Equals(CurrentState.StateKey))
         {
             CurrentState.UpdateState();
@@ -30,23 +29,24 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
     }
     public void TransitionToState(EState statekey)
     {
+        Debug.Log(statekey.ToString());
         IsTransitioningState = true;
         CurrentState.ExitState();
         CurrentState = States[statekey];
         CurrentState.EnterState();
         IsTransitioningState = false;
     }
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerEnter2D(Collider2D other) 
     {
-        CurrentState.OnTriggerEnter(other);
+        CurrentState.OnTriggerEnter2D(other);
     }
-    void OnTriggerStay(Collider other)
+    void OnTriggerStay2D(Collider2D other)
 	{
-		CurrentState.OnTriggerStay(other);
+		CurrentState.OnTriggerStay2D(other);
 	}
-	void OnTriggerExit(Collider other)
+	void OnTriggerExit2D(Collider2D other)
 	{
-		CurrentState.OnTriggerExit(other);
+		CurrentState.OnTriggerExit2D(other);
 	}
 
 }

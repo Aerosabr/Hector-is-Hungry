@@ -6,28 +6,13 @@ using UnityEngine.UI;
 public class WolfHungerUI : MonoBehaviour
 {
     public static WolfHungerUI instance;
+    public Wolf wolf;
     public Slider hungerBar;
     public Transform Icon;
-
-
-    public float hungerCapacity = 100;
-    public float currentHunger = 100;
-    public float hungerSpeed = 1f;
 
     void Start()
     {
         instance = this;
-        currentHunger = 100;
-    }
-
-    public void AddHunger(float foodValue)
-    {
-        currentHunger += foodValue;
-    }
-
-    public void UpdateSpeed(float speed)
-    {
-        this.hungerSpeed = speed;
     }
 
     public void SwitchIcon(Sprite icon)
@@ -37,17 +22,16 @@ public class WolfHungerUI : MonoBehaviour
 
 	void Update()
 	{
-		currentHunger -= (hungerSpeed / 1000) + Time.deltaTime;
-		hungerBar.value = currentHunger / hungerCapacity;
+		hungerBar.value = wolf.currentHunger / wolf.maxHunger;
 
-        if((currentHunger/hungerCapacity) < 0.4f)
+        if((wolf.currentHunger / wolf.maxHunger) < 0.4f)
         {
-			float rotationSpeedFactor = Mathf.Clamp01((currentHunger / hungerCapacity));
-            if (currentHunger != 0)
+			float rotationSpeedFactor = Mathf.Clamp01((wolf.currentHunger / wolf.maxHunger));
+            if (wolf.currentHunger != 0)
             {
-                float rotationSpeed = 10 * ((hungerCapacity - currentHunger) / hungerCapacity);
+                float rotationSpeed = 10 * ((wolf.maxHunger - wolf.currentHunger) / wolf.maxHunger);
 
-                float rotationAngle = Mathf.Sin(Time.time * rotationSpeed) * (1 - currentHunger / hungerCapacity) * 10f;
+                float rotationAngle = Mathf.Sin(Time.time * rotationSpeed) * (1 - wolf.currentHunger / wolf.maxHunger) * 10f;
 
                 Icon.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
             }
