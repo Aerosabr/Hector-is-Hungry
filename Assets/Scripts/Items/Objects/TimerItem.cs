@@ -142,8 +142,4 @@ public class TimerItem : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         transform.position = GameObject.Find("Player").transform.position;
     }
 
-    public override void Consume()
-    {
-        Destroy(gameObject);
-    }
 }

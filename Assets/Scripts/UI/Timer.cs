@@ -11,7 +11,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     [SerializeField] private int current;
     public Text timerText;
     public float timerElapse = 0f;
-
+    /*
     private void Awake()
     {
         RectTransform temp = GetComponent<RectTransform>();
@@ -20,7 +20,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         temp.pivot = new Vector2(0.5f, 0.5f);
         temp.anchoredPosition = Vector2.zero;
     }
-
+    */
     private void Start()
     {
         StartCoroutine(startTimer());
@@ -122,8 +122,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     }
 
     public override bool CheckSlot(string Pos)
-    {
-        /*
+    { 
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             int x = int.Parse(Pos.Substring(0, 1));
@@ -136,20 +135,34 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                     y -= 1;
                     break;
                 case 3:
-                    x -= 1;
+                    y -= 2;
                     break;
                 case 4:
+                    y -= 3;
+                    break;
+                case 5:
+                    x -= 1;
+                    break;
+                case 6:
                     x -= 1;
                     y -= 1;
+                    break;
+                case 7:
+                    x -= 1;
+                    y -= 2;
+                    break;
+                case 8:
+                    x -= 1;
+                    y -= 3;
                     break;
             }
 
             if (x <= 0 || x == 4 || y != 1)
                 Debug.Log("Invalid");
             else if (!Inventory.instance.Grid[x.ToString() + y.ToString()].Taken && !Inventory.instance.Grid[x.ToString() + (y + 1).ToString()].Taken
+                && !Inventory.instance.Grid[x.ToString() + (y + 2).ToString()].Taken && !Inventory.instance.Grid[x.ToString() + (y + 3).ToString()].Taken
                 && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken
-                && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken
-                && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken)
+                && !Inventory.instance.Grid[(x + 1).ToString() + (y + 2).ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 3).ToString()].Taken)
             {
                 int index = 0;
                 for (int i = x; i <= x + 1; i++)
@@ -163,7 +176,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                 return true;
             }
         }
-        */
+        
         return false;
     }
 
@@ -171,19 +184,16 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         for (int i = 1; i <= 3; i++)
         {
-            for (int j = 1; j <= 3; j++)
+            if (CheckSlot(i.ToString() + "1"))
             {
-                if (CheckSlot(i.ToString() + j.ToString()))
-                {
-                    isDropped = false;
-                    transform.SetParent(GameObject.Find("InventoryImages").transform);
-                    OnEndDrag(null);
-                    InventoryImage.SetActive(false);
-                    image.enabled = true;
-                    box.enabled = false;
-                    transform.localScale = new Vector3(1, 1, 1);
-                    return true;
-                }
+                isDropped = false;
+                transform.SetParent(GameObject.Find("InventoryImages").transform);
+                OnEndDrag(null);
+                InventoryImage.SetActive(false);
+                image.enabled = true;
+                box.enabled = false;
+                transform.localScale = new Vector3(1, 1, 1);
+                return true;
             }
         }
 
@@ -202,11 +212,6 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.position = GameObject.Find("Player").transform.position;
-    }
-
-    public override void Consume()
-    {
-        Destroy(gameObject);
     }
     
 }
