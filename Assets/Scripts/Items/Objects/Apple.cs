@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Transform parentAfterDrag;
@@ -78,8 +78,13 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         transform.position = GameObject.Find("Player").transform.position;
     }
 
-    public override void Consume()
+    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
+        eatTime = 50;
+        foodValue = 15;
+        effect = "None";
+        effectValue = 0;
         Destroy(gameObject);
+        Debug.Log("Consume Apple");
     }
 }

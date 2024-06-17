@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private GameObject TopLeft;
     [SerializeField] private GameObject TopRight;
@@ -141,9 +141,14 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         transform.position = GameObject.Find("Player").transform.position;
     }
 
-    public override void Consume()
-    {
-        Destroy(gameObject);
-    }
+	public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
+	{
+		eatTime = 75;
+		foodValue = 10;
+		effect = "Poison";
+		effectValue = 5;
+		Destroy(gameObject);
+		Debug.Log("Consume Rock");
+	}
 }
 
