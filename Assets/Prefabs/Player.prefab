@@ -262,7 +262,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 823
+    m_Bits: 1847
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -331,8 +331,6 @@ MonoBehaviour:
   walkSpeed: 0
   isMoving: 0
   Movable: 1
-  isSprinting: 0
-  Sprintable: 1
 --- !u!114 &3179231790878341580
 MonoBehaviour:
   m_ObjectHideFlags: 0

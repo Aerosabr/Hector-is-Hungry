@@ -8,6 +8,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
     [SerializeField] private GameObject InventoryImage;
+    [SerializeField] private GameObject Icon;
     [SerializeField] private int current;
     public Text timerText;
     public float timerElapse = 0f;
@@ -73,7 +74,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                 current = 8;
         }
 
-        image.raycastTarget = false;
+        InventoryImage.GetComponent<Image>().raycastTarget = false;
         foreach (GameObject slot in Slots)
             slot.GetComponent<InventorySlot>().Taken = false;
         
@@ -115,14 +116,15 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         if (!isDropped)
         {       
             transform.position = new Vector3(((Slots[0].transform.position.x + Slots[7].transform.position.x) / 2), ((Slots[0].transform.position.y + Slots[7].transform.position.y) / 2));
-            image.raycastTarget = true;
+            InventoryImage.GetComponent<Image>().raycastTarget = true;
             foreach (GameObject slot in Slots)
                 slot.GetComponent<InventorySlot>().Taken = true;    
         }
     }
 
     public override bool CheckSlot(string Pos)
-    { 
+    {
+        Debug.Log("Checking");
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             int x = int.Parse(Pos.Substring(0, 1));
@@ -164,6 +166,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                 && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken
                 && !Inventory.instance.Grid[(x + 1).ToString() + (y + 2).ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 3).ToString()].Taken)
             {
+                Debug.Log("Valid");
                 int index = 0;
                 for (int i = x; i <= x + 1; i++)
                 {
@@ -186,13 +189,19 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         {
             if (CheckSlot(i.ToString() + "1"))
             {
+                RectTransform temp = GetComponent<RectTransform>();
+                temp.anchorMin = new Vector2(0.5f, 0.5f);
+                temp.anchorMax = new Vector2(0.5f, 0.5f);
+                temp.pivot = new Vector2(0.5f, 0.5f);
+                temp.anchoredPosition = Vector2.zero;
                 isDropped = false;
                 transform.SetParent(GameObject.Find("InventoryImages").transform);
                 OnEndDrag(null);
-                InventoryImage.SetActive(false);
-                image.enabled = true;
+                InventoryImage.SetActive(true);
+                Icon.SetActive(false);
+                image.enabled = false;
                 box.enabled = false;
-                transform.localScale = new Vector3(1, 1, 1);
+
                 return true;
             }
         }
@@ -202,7 +211,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public override void ItemDropped()
     {
-        InventoryImage.SetActive(true);
+        InventoryImage.SetActive(false);
         image.raycastTarget = true;
         image.enabled = false;
         box.enabled = true;
@@ -210,7 +219,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         for (int i = 0; i <= 7; i++)
             Slots[i] = null;
         current = 0;
-        transform.SetParent(GameObject.Find("RegionManager").transform);
+        transform.SetParent(GameObject.Find("HUD").transform);
         transform.position = GameObject.Find("Player").transform.position;
     }
     

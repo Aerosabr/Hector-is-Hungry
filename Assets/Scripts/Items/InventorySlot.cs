@@ -16,6 +16,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        Debug.Log("Dropped: " + Pos);
         eventData.pointerDrag.GetComponent<Item>().CheckSlot(Pos);
     }
 }
