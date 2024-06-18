@@ -287,7 +287,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 8945902445593177537}
   box: {fileID: 836182758184331198}
-  parentAfterDrag: {fileID: 0}
   isDropped: 1
   TopLeft: {fileID: 0}
   TopRight: {fileID: 0}
