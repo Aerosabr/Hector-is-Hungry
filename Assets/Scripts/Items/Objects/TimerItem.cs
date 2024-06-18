@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
+public class TimerItem : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField] private GameObject TopLeft;
-    [SerializeField] private GameObject TopRight;
-    [SerializeField] private GameObject BottomLeft;
-    [SerializeField] private GameObject BottomRight;
+    [SerializeField] private List<GameObject> Slots = new List<GameObject>();
     [SerializeField] private GameObject InventoryImage;
+    [SerializeField] private GameObject Icon;
+    [SerializeField] private GameObject Text;
     [SerializeField] private int current;
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -26,10 +25,9 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
             current = 4;
 
         image.raycastTarget = false;
-        TopLeft.GetComponent<InventorySlot>().Taken = false;
-        TopRight.GetComponent<InventorySlot>().Taken = false;
-        BottomLeft.GetComponent<InventorySlot>().Taken = false;
-        BottomRight.GetComponent<InventorySlot>().Taken = false;
+        foreach (GameObject slot in Slots)
+            slot.GetComponent<InventorySlot>().Taken = false;
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -55,12 +53,10 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
     {
         if (!isDropped)
         {
-            transform.position = new Vector3(((TopLeft.transform.position.x + BottomRight.transform.position.x) / 2), ((TopLeft.transform.position.y + BottomRight.transform.position.y) / 2));
+            transform.position = new Vector3(((Slots[0].transform.position.x + Slots[7].transform.position.x) / 2), ((Slots[0].transform.position.y + Slots[7].transform.position.y) / 2));
             image.raycastTarget = true;
-            TopLeft.GetComponent<InventorySlot>().Taken = true;
-            TopRight.GetComponent<InventorySlot>().Taken = true;
-            BottomLeft.GetComponent<InventorySlot>().Taken = true;
-            BottomRight.GetComponent<InventorySlot>().Taken = true;
+            foreach (GameObject slot in Slots)
+                slot.GetComponent<InventorySlot>().Taken = true;
         }
     }
 
@@ -86,15 +82,22 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
                     break;
             }
 
-            if (x == 0 || x == 4 || y == 0 || y == 4)
+            if (x <= 0 || x == 4 || y != 1)
                 Debug.Log("Invalid");
             else if (!Inventory.instance.Grid[x.ToString() + y.ToString()].Taken && !Inventory.instance.Grid[x.ToString() + (y + 1).ToString()].Taken
+                && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken
+                && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken
                 && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken)
             {
-                TopLeft = Inventory.instance.Grid[x.ToString() + y.ToString()].gameObject;
-                TopRight = Inventory.instance.Grid[x.ToString() + (y + 1).ToString()].gameObject;
-                BottomLeft = Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].gameObject;
-                BottomRight = Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].gameObject;
+                int index = 0;
+                for (int i = x; i <= x+1; i++)
+                {
+                    for (int j = 1; j <= 4; j++)
+                    {
+                        Slots[index] = Inventory.instance.Grid[i.ToString() + j.ToString()].gameObject;
+                        index++;
+                    }
+                }
                 return true;
             }
         }
@@ -132,23 +135,11 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         image.enabled = false;
         box.enabled = true;
         isDropped = true;
-        TopLeft = null;
-        TopRight = null;
-        BottomLeft = null;
-        BottomRight = null;
+        for (int i = 0; i <= 7; i++)
+            Slots[i] = null;
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.position = GameObject.Find("Player").transform.position;
     }
 
-	public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
-	{
-		eatTime = 75;
-		foodValue = 10;
-		effect = "Poison";
-		effectValue = 5;
-		Destroy(gameObject);
-		Debug.Log("Consume Rock");
-	}
 }
-

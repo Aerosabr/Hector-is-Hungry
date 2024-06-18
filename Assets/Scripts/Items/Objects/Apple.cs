@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
+    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private Transform parentAfterDrag;
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentAfterDrag = transform.parent;

@@ -15,24 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SprintStart",
-                    "type": "Button",
-                    "id": "5bc9b08d-f8df-4c47-8d3b-11b3ae765e49",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SprintFinish",
-                    "type": "Button",
-                    "id": "41f328fb-bf6e-473d-bda6-8b689180317b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pickup",
                     "type": "Button",
                     "id": "95d81b72-2beb-4867-b071-59b41d932dbe",
@@ -141,28 +123,6 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "aaf8384b-a3ca-4a5c-90ea-f1b848568cd4",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SprintStart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5f18f930-9542-441b-8ad3-211fc13060e0",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SprintFinish",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
