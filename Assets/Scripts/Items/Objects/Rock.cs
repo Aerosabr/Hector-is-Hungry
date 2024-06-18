@@ -11,6 +11,7 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
     [SerializeField] private GameObject BottomLeft;
     [SerializeField] private GameObject BottomRight;
     [SerializeField] private GameObject InventoryImage;
+    [SerializeField] private GameObject HighlightObject;
     [SerializeField] private int current;
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -139,9 +140,18 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.position = GameObject.Find("Player").transform.position;
+        transform.localScale = Vector3.one;
     }
 
-	public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
+    public override void Highlight(bool toggle)
+    {
+        if (toggle)
+            HighlightObject.SetActive(true);
+        else
+            HighlightObject.SetActive(false);
+    }
+
+    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
 	{
 		eatTime = 75;
 		foodValue = 10;

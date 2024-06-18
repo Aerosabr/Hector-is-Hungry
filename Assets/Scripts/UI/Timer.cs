@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+using TMPro;
 public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
     [SerializeField] private GameObject InventoryImage;
+    [SerializeField] private GameObject UI;
     [SerializeField] private GameObject Icon;
+    [SerializeField] private GameObject HighlightObject;
+    [SerializeField] private GameObject HighlightUI;
     [SerializeField] private int current;
-    public Text timerText;
+    [SerializeField] private Text textUI;
+    [SerializeField] private Text textInventory;
+    [SerializeField] private TextMeshPro textItem;
+    [SerializeField] private bool uiActive = true;
     public float timerElapse = 0f;
     /*
     private void Awake()
@@ -39,7 +45,9 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         int minutes = Mathf.FloorToInt(timerElapse / 60);
         int seconds = Mathf.FloorToInt(timerElapse % 60);
         string secondsString = seconds < 10 ? "0" + seconds.ToString() : seconds.ToString();
-        timerText.text = minutes.ToString() + ":" + secondsString;
+        textInventory.text = minutes.ToString() + ":" + secondsString;
+        textItem.text = minutes.ToString() + ":" + secondsString;
+        textUI.text = minutes.ToString() + ":" + secondsString;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -189,19 +197,14 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         {
             if (CheckSlot(i.ToString() + "1"))
             {
-                RectTransform temp = GetComponent<RectTransform>();
-                temp.anchorMin = new Vector2(0.5f, 0.5f);
-                temp.anchorMax = new Vector2(0.5f, 0.5f);
-                temp.pivot = new Vector2(0.5f, 0.5f);
-                temp.anchoredPosition = Vector2.zero;
                 isDropped = false;
                 transform.SetParent(GameObject.Find("InventoryImages").transform);
                 OnEndDrag(null);
                 InventoryImage.SetActive(true);
                 Icon.SetActive(false);
-                image.enabled = false;
+                UI.SetActive(false);
                 box.enabled = false;
-
+                transform.localScale = Vector3.one;
                 return true;
             }
         }
@@ -211,16 +214,36 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public override void ItemDropped()
     {
-        InventoryImage.SetActive(false);
-        image.raycastTarget = true;
-        image.enabled = false;
-        box.enabled = true;
         isDropped = true;
+        transform.SetParent(GameObject.Find("RegionManager").transform);
+        OnEndDrag(null);
+        InventoryImage.SetActive(false);
+        Icon.SetActive(true);
+        box.enabled = true;
+        InventoryImage.GetComponent<Image>().raycastTarget = true;
         for (int i = 0; i <= 7; i++)
             Slots[i] = null;
         current = 0;
-        transform.SetParent(GameObject.Find("HUD").transform);
-        transform.position = GameObject.Find("Player").transform.position;
+        transform.position = GameObject.Find("Player").transform.position - new Vector3(0, 0.5f);
+        transform.localScale = Vector3.one;
     }
-    
+
+    public override void Highlight(bool toggle)
+    {
+        if (toggle)
+        {
+            if (uiActive)
+                HighlightUI.SetActive(true);
+            else
+                HighlightObject.SetActive(true);
+        }
+        else
+        {
+            if (uiActive)
+                HighlightUI.SetActive(false);
+            else
+                HighlightObject.SetActive(false);
+        }
+    }
+
 }

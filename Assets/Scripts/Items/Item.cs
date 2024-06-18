@@ -13,4 +13,5 @@ public abstract class Item : MonoBehaviour
     public abstract bool CheckSlot(string Pos);
     public abstract bool PickupItem();
     public abstract void ItemDropped();
+    public abstract void Highlight(bool toggle);
 }

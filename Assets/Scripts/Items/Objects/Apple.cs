@@ -8,6 +8,7 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 {
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Transform parentAfterDrag;
+    [SerializeField] private GameObject HighlightObject;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -74,8 +75,17 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         image.enabled = false;
         box.enabled = true;
         isDropped = true;
-        parentAfterDrag = RegionManager.instance.transform;
+        transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.position = GameObject.Find("Player").transform.position;
+        transform.localScale = new Vector3(.15f, .15f, .15f);
+    }
+
+    public override void Highlight(bool toggle)
+    {
+        if (toggle)
+            HighlightObject.SetActive(true);
+        else
+            HighlightObject.SetActive(false);
     }
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
