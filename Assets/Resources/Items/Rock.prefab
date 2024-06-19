@@ -293,6 +293,7 @@ MonoBehaviour:
   BottomLeft: {fileID: 0}
   BottomRight: {fileID: 0}
   InventoryImage: {fileID: 2587653431233724130}
+  HighlightObject: {fileID: 8639028992183381030}
   current: 0
 --- !u!50 &620422956121281133
 Rigidbody2D:

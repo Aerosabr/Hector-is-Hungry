@@ -98,6 +98,7 @@ MonoBehaviour:
   isDropped: 1
   sprite: {fileID: 6933361079500250605}
   parentAfterDrag: {fileID: 0}
+  HighlightObject: {fileID: 7216063772031465094}
 --- !u!212 &6933361079500250605
 SpriteRenderer:
   m_ObjectHideFlags: 0
