@@ -3972,13 +3972,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1513259416}
-  rb: {fileID: 0}
   moveSpeed: 0.75
   lookAheadDistance: 7
   lookAheadSpeed: 5
-  lookOffset: 0
-  reCalculationTimer: 3
-  first: 0
 --- !u!20 &813411908
 Camera:
   m_ObjectHideFlags: 0
@@ -6802,6 +6798,10 @@ PrefabInstance:
     - target: {fileID: 2366165843529601112, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740368290660091766, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6455379816222987955, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
       propertyPath: m_Radius

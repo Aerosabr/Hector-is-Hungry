@@ -4,37 +4,26 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private Vector3 targetPoint = Vector3.zero;
-
-    public Player player;
-	//Sprite Movement
-	[SerializeField] private Rigidbody2D rb;
+	private Vector3 targetPoint = Vector3.zero;
+	public Player player; // Assign in Inspector
+	private Rigidbody2D rb;
 
 	public float moveSpeed = 3.0f;
+	public float lookAheadDistance = 5f;
+	public float lookAheadSpeed = 3f;
+	private float lookOffset = 0f;
 
-    public float lookAheadDistance = 5f, lookAheadSpeed = 3f;
+	private float minX = 15.7f;
+	private float maxX = 24.3f;
+	void Start()
+	{
+		rb = player.GetComponent<Rigidbody2D>(); // Assuming player has Rigidbody2D
+		targetPoint = player.transform.position - Vector3.forward * 10f; // Adjust the offset as needed
+	}
 
-    public float lookOffset;
-
-	public float reCalculationTimer = 3f;
-
-	private Coroutine coroutine;
-
-	public bool first = true;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        targetPoint = new Vector3(player.transform.position.x, player.transform.position.y, -10f);
-        rb = player.transform.GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    void LateUpdate()
-    {
-
-		Vector3 targetViewportPoint = Camera.main.WorldToViewportPoint(targetPoint);
-
+	void FixedUpdate()
+	{
+		// Adjust lookOffset based on player's horizontal velocity
 		if (rb.velocity.x > 0f)
 		{
 			lookOffset = Mathf.Lerp(lookOffset, lookAheadDistance, lookAheadSpeed * Time.deltaTime);
@@ -44,44 +33,24 @@ public class CameraController : MonoBehaviour
 			lookOffset = Mathf.Lerp(lookOffset, -lookAheadDistance, lookAheadSpeed * Time.deltaTime);
 		}
 
+		// Update targetPoint based on player's position and lookOffset
 		targetPoint.x = player.transform.position.x + lookOffset;
-		if (targetViewportPoint.x < -0.1 || targetViewportPoint.x > 1.1)
-		{
-			transform.position = Vector3.Lerp(transform.position, targetPoint + new Vector3(5, 0 , 0), moveSpeed * Time.deltaTime);
-		}
-
-		//if(first)
-		//{
-		//	transform.position = Vector3.Lerp(transform.position, targetPoint, moveSpeed * Time.deltaTime);
-		//}
-
-		//else
-		//{
-		//	// Check if targetPoint is outside of the camera's view
-		//	Debug.Log("ViewPort" + targetViewportPoint.x);
-		//	if (targetViewportPoint.x < -0.1 || targetViewportPoint.x > 1.5)
-		//	{
-		//		if (coroutine != null)
-		//		{
-		//			StopCoroutine(coroutine);
-		//		}
-		//		coroutine = StartCoroutine(GetToPoint(transform, targetPoint));
-		//	}
-		//}
-
-
 	}
 
-	IEnumerator GetToPoint(Transform current, Vector3 target)
+	void LateUpdate()
 	{
-		float Timer = 0f;
-		while(Vector3.Distance(current.position, target) > 0.1 && Timer < reCalculationTimer) 
+		float targetViewportX = Camera.main.WorldToViewportPoint(player.transform.position).x;
+		if (targetViewportX < 0.3f || targetViewportX > 0.7f)
 		{
-			Debug.Log("Distance" + Vector3.Distance(transform.position, target) + "Timer: " + Timer);
-			Timer += Time.deltaTime;
-			transform.position = Vector3.Lerp(transform.position, targetPoint, moveSpeed * Time.deltaTime);
-			yield return null;
+			// Smoothly move the camera towards targetPoint
+			Vector3 desiredPosition = Vector3.Lerp(transform.position, targetPoint, moveSpeed * Time.deltaTime);
+
+			// Ensure camera stays within horizontal boundaries
+			desiredPosition.x = Mathf.Clamp(desiredPosition.x, minX, maxX);
+
+			transform.position = desiredPosition;
 		}
-		yield return null;
 	}
 }
+
+
