@@ -233,7 +233,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 70, y: -70}
-  m_SizeDelta: {x: 280, y: 280}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6636351250338765955
 CanvasRenderer:
@@ -288,20 +288,12 @@ MonoBehaviour:
   image: {fileID: 8945902445593177537}
   box: {fileID: 836182758184331198}
   isDropped: 1
-  xSize: 3
-  ySize: 3
-  Slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  TopLeft: {fileID: 0}
+  TopRight: {fileID: 0}
+  BottomLeft: {fileID: 0}
+  BottomRight: {fileID: 0}
   InventoryImage: {fileID: 2587653431233724130}
-  HighlightObject: {fileID: 0}
+  HighlightObject: {fileID: 8639028992183381030}
   current: 0
 --- !u!50 &620422956121281133
 Rigidbody2D:
@@ -474,7 +466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Can't fit rock (3x3) into the inventory
+  m_text: Can't fit rock (2x2) into the inventory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f7a494ab2bd2f224fb3010b2b3cf0765, type: 2}
   m_sharedMaterial: {fileID: 7730081025244178804, guid: f7a494ab2bd2f224fb3010b2b3cf0765, type: 2}
