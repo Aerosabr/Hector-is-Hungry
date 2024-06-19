@@ -6,48 +6,87 @@ using UnityEngine.UI;
 
 public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
-    [SerializeField] private GameObject TopLeft;
-    [SerializeField] private GameObject TopRight;
-    [SerializeField] private GameObject BottomLeft;
-    [SerializeField] private GameObject BottomRight;
+    [SerializeField] private List<GameObject> Slots = new List<GameObject>();
     [SerializeField] private GameObject InventoryImage;
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private int current;
 
+    private float GetDivisors()
+    {
+        Vector3[] corners = new Vector3[4];
+        GetComponent<RectTransform>().GetWorldCorners(corners);
+        return corners[1].y - corners[0].y;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Vector2 temp = Input.mousePosition - transform.position;
-        if (temp.x <= 0 && temp.y > 0) //Top left
-            current = 1;
-        else if (temp.x > 0 && temp.y > 0) //Top right
-            current = 2;
-        else if (temp.x <= 0 && temp.y <= 0) //Bottom left
-            current = 3;
-        else //Bottom right
-            current = 4;
+        float divisor = GetDivisors() / 6;
+        if (temp.y >= divisor) //Top third
+        {
+            if (temp.x <= -divisor)
+                current = 1;
+            else if (temp.x <= divisor)
+                current = 2;
+            else
+                current = 3;
+        }
+        else if (temp.y >= -divisor) //Middle third
+        {
+            if (temp.x <= -divisor)
+                current = 4;
+            else if (temp.x <= divisor)
+                current = 5;
+            else
+                current = 6;
+        }
+        else //Bottom third
+        {
+            if (temp.x <= -divisor)
+                current = 7;
+            else if (temp.x <= divisor)
+                current = 8;
+            else
+                current = 9;
+        }
 
         image.raycastTarget = false;
-        TopLeft.GetComponent<InventorySlot>().Taken = false;
-        TopRight.GetComponent<InventorySlot>().Taken = false;
-        BottomLeft.GetComponent<InventorySlot>().Taken = false;
-        BottomRight.GetComponent<InventorySlot>().Taken = false;
+        foreach (GameObject slot in Slots)
+            slot.GetComponent<InventorySlot>().Taken = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+
+        float divisor = GetDivisors() / 3;
         switch (current)
         {
             case 1:
-                transform.position = Input.mousePosition - new Vector3(-35, 35);
+                transform.position = Input.mousePosition - new Vector3(-divisor, divisor);
                 break;
             case 2:
-                transform.position = Input.mousePosition - new Vector3(35, 35);
+                transform.position = Input.mousePosition - new Vector3(0, divisor);
                 break;
             case 3:
-                transform.position = Input.mousePosition - new Vector3(-35, -35);
+                transform.position = Input.mousePosition - new Vector3(divisor, divisor);
                 break;
             case 4:
-                transform.position = Input.mousePosition - new Vector3(35, -35);
+                transform.position = Input.mousePosition - new Vector3(-divisor, 0);
+                break;
+            case 5:
+                transform.position = Input.mousePosition;
+                break;
+            case 6:
+                transform.position = Input.mousePosition - new Vector3(divisor, 0);
+                break;
+            case 7:
+                transform.position = Input.mousePosition - new Vector3(-divisor, -divisor);
+                break;
+            case 8:
+                transform.position = Input.mousePosition - new Vector3(0, -divisor);
+                break;
+            case 9:
+                transform.position = Input.mousePosition - new Vector3(divisor, -divisor);
                 break;
         }
     }
@@ -56,12 +95,10 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
     {
         if (!isDropped)
         {
-            transform.position = new Vector3(((TopLeft.transform.position.x + BottomRight.transform.position.x) / 2), ((TopLeft.transform.position.y + BottomRight.transform.position.y) / 2));
+            transform.position = new Vector3(((Slots[0].transform.position.x + Slots[8].transform.position.x) / 2), ((Slots[0].transform.position.y + Slots[8].transform.position.y) / 2));
             image.raycastTarget = true;
-            TopLeft.GetComponent<InventorySlot>().Taken = true;
-            TopRight.GetComponent<InventorySlot>().Taken = true;
-            BottomLeft.GetComponent<InventorySlot>().Taken = true;
-            BottomRight.GetComponent<InventorySlot>().Taken = true;
+            foreach (GameObject slot in Slots)
+                slot.GetComponent<InventorySlot>().Taken = true;
         }
     }
 
@@ -79,23 +116,44 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
                     y -= 1;
                     break;
                 case 3:
-                    x -= 1;
+                    y -= 2;
                     break;
                 case 4:
                     x -= 1;
+                    break;
+                case 5:
+                    x -= 1;
                     y -= 1;
                     break;
+                case 6:
+                    x -= 1;
+                    y -= 2;
+                    break;
+                case 7:
+                    x -= 2;
+                    break;
+                case 8:
+                    x -= 2;
+                    y -= 1;
+                    break;
+                case 9:
+                    x -= 2;
+                    y -= 2;
+                    break;
             }
-
-            if (x == 0 || x == 4 || y == 0 || y == 4)
+            if ((x != 1 && x != 2) || (y != 1 && y != 2))
                 Debug.Log("Invalid");
-            else if (!Inventory.instance.Grid[x.ToString() + y.ToString()].Taken && !Inventory.instance.Grid[x.ToString() + (y + 1).ToString()].Taken
-                && !Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].Taken && !Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].Taken)
+            else if (CheckGrid(x, y))
             {
-                TopLeft = Inventory.instance.Grid[x.ToString() + y.ToString()].gameObject;
-                TopRight = Inventory.instance.Grid[x.ToString() + (y + 1).ToString()].gameObject;
-                BottomLeft = Inventory.instance.Grid[(x + 1).ToString() + y.ToString()].gameObject;
-                BottomRight = Inventory.instance.Grid[(x + 1).ToString() + (y + 1).ToString()].gameObject;
+                int index = 0;
+                for (int i = x; i <= x + 2; i++)
+                {
+                    for (int j = y; j <= y + 2; j++)
+                    {
+                        Slots[index] = Inventory.instance.Grid[i.ToString() + j.ToString()].gameObject;
+                        index++;
+                    }
+                }
                 return true;
             }
         }
@@ -103,11 +161,25 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         return false;
     }
 
+    public bool CheckGrid(int x, int y)
+    {
+        for (int i = x; i <= x + 2; i++)
+        {
+            for (int j = y; j <= y + 2; j++)
+            {
+                if (Inventory.instance.Grid[i.ToString() + j.ToString()].Taken)
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
     public override bool PickupItem()
     {
-        for (int i = 1; i <= 3; i++)
+        for (int i = 1; i <= 2; i++)
         {
-            for (int j = 1; j <= 3; j++)
+            for (int j = 1; j <= 2; j++)
             {
                 if (CheckSlot(i.ToString() + j.ToString()))
                 {
@@ -133,10 +205,8 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         image.enabled = false;
         box.enabled = true;
         isDropped = true;
-        TopLeft = null;
-        TopRight = null;
-        BottomLeft = null;
-        BottomRight = null;
+        for (int i = 0; i <= 8; i++)
+            Slots[i] = null;
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.position = GameObject.Find("Player").transform.position;

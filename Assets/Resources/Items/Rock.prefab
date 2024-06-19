@@ -288,11 +288,20 @@ MonoBehaviour:
   image: {fileID: 8945902445593177537}
   box: {fileID: 836182758184331198}
   isDropped: 1
-  TopLeft: {fileID: 0}
-  TopRight: {fileID: 0}
-  BottomLeft: {fileID: 0}
-  BottomRight: {fileID: 0}
+  xSize: 3
+  ySize: 3
+  Slots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   InventoryImage: {fileID: 2587653431233724130}
+  HighlightObject: {fileID: 0}
   current: 0
 --- !u!50 &620422956121281133
 Rigidbody2D:
@@ -465,7 +474,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Can't fit rock (2x2) into the inventory
+  m_text: Can't fit rock (3x3) into the inventory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f7a494ab2bd2f224fb3010b2b3cf0765, type: 2}
   m_sharedMaterial: {fileID: 7730081025244178804, guid: f7a494ab2bd2f224fb3010b2b3cf0765, type: 2}

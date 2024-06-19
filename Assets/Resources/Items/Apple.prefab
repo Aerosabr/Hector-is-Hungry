@@ -96,8 +96,11 @@ MonoBehaviour:
   image: {fileID: 4754936927610834279}
   box: {fileID: 3017334264679008165}
   isDropped: 1
+  xSize: 1
+  ySize: 1
   sprite: {fileID: 6933361079500250605}
   parentAfterDrag: {fileID: 0}
+  HighlightObject: {fileID: 0}
 --- !u!212 &6933361079500250605
 SpriteRenderer:
   m_ObjectHideFlags: 0
