@@ -141,7 +141,7 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
                     y -= 2;
                     break;
             }
-            if ((x != 1 && x != 2) || (y != 1 && y != 2))
+            if (x != 1 || y != 1)
                 Debug.Log("Invalid");
             else if (CheckGrid(x, y))
             {

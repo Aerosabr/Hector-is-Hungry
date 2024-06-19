@@ -60,34 +60,24 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
         Vector2 temp = Input.mousePosition - transform.position;
-        float divisor = GetDivisors() / 4;
-        if (temp.x <= 0 && temp.y > 0) //Top left quadrant
+        float divisor = GetDivisors() / 6;
+        if (temp.y >= 0) //Top half
         {
             if (temp.x <= -divisor)
                 current = 1;
-            else
+            else if (temp.x <= divisor)
                 current = 2;
-        }
-        else if (temp.x > 0 && temp.y > 0) //Top right quadrant
-        {
-            if (temp.x <= divisor)
-                current = 3;
             else
-                current = 4;
+                current = 3;
         }
-        else if (temp.x <= 0 && temp.y <= 0) //Bottom left quadrant
+        else //Bottom half
         {
             if (temp.x <= -divisor)
+                current = 4;
+            else if (temp.x <= divisor)
                 current = 5;
             else
                 current = 6;
-        }
-        else //Bottom right quadrant
-        {
-            if (temp.x <= divisor)
-                current = 7;
-            else
-                current = 8;
         }
 
         InventoryImage.GetComponent<Image>().raycastTarget = false;
@@ -98,32 +88,26 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        float divisor = GetDivisors() / 8;
+        float divisor = GetDivisors() / 6;
         switch (current)
         {
             case 1:
-                transform.position = Input.mousePosition - new Vector3(-(3 * divisor), divisor);
+                transform.position = Input.mousePosition - new Vector3(-(2 * divisor), divisor);
                 break;
             case 2:
-                transform.position = Input.mousePosition - new Vector3(-divisor, divisor);
+                transform.position = Input.mousePosition - new Vector3(0, divisor);
                 break;
             case 3:
-                transform.position = Input.mousePosition - new Vector3(divisor, divisor);
+                transform.position = Input.mousePosition - new Vector3(2 * divisor, divisor);
                 break;
             case 4:
-                transform.position = Input.mousePosition - new Vector3((3 * divisor), divisor);
+                transform.position = Input.mousePosition - new Vector3(-(2 * divisor), -divisor);
                 break;
             case 5:
-                transform.position = Input.mousePosition - new Vector3(-(3 * divisor), -divisor);
+                transform.position = Input.mousePosition - new Vector3(0, -divisor);
                 break;
             case 6:
-                transform.position = Input.mousePosition - new Vector3(-divisor, -divisor);
-                break;
-            case 7:
-                transform.position = Input.mousePosition - new Vector3(divisor, -divisor);
-                break;
-            case 8:
-                transform.position = Input.mousePosition - new Vector3((3 * divisor), -divisor);
+                transform.position = Input.mousePosition - new Vector3(2 * divisor, -divisor);
                 break;
         }
     }
@@ -157,26 +141,19 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                     y -= 2;
                     break;
                 case 4:
-                    y -= 3;
+                    x -= 1;
                     break;
                 case 5:
                     x -= 1;
+                    y -= 1;
                     break;
                 case 6:
                     x -= 1;
-                    y -= 1;
-                    break;
-                case 7:
-                    x -= 1;
                     y -= 2;
-                    break;
-                case 8:
-                    x -= 1;
-                    y -= 3;
                     break;
             }
 
-            if (x <= 0 || x == 4 || y != 1)
+            if ((x != 1 && x != 2) || y != 1)
                 Debug.Log("Invalid");
             else if (CheckGrid(x, y))
             {
@@ -184,7 +161,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                 int index = 0;
                 for (int i = x; i <= x + 1; i++)
                 {
-                    for (int j = 1; j <= 4; j++)
+                    for (int j = 1; j <= 3; j++)
                     {
                         Slots[index] = Inventory.instance.Grid[i.ToString() + j.ToString()].gameObject;
                         index++;
@@ -201,7 +178,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         for (int i = x; i <= x + 1; i++)
         {
-            for (int j = y; j <= y + 3; j++)
+            for (int j = y; j <= y + 2; j++)
             {
                 
                 if (Inventory.instance.Grid[i.ToString() + j.ToString()].Taken)
@@ -214,7 +191,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public override bool PickupItem()
     {
-        for (int i = 1; i <= 3; i++)
+        for (int i = 1; i <= 2; i++)
         {
             if (CheckSlot(i.ToString() + "1"))
             {

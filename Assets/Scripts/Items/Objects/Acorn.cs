@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
+public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Transform parentAfterDrag;
@@ -95,6 +95,6 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         effect = "None";
         effectValue = 0;
         Destroy(gameObject);
-        Debug.Log("Consume Apple");
+        Debug.Log("Consume Acorn");
     }
 }

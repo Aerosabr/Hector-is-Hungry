@@ -12,9 +12,9 @@ public class Inventory : MonoBehaviour
         instance = this;
         int x = 1, y = 1;
 
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 9; i++)
         {
-            if (y == 5)
+            if (y == 4)
             {
                 x++;
                 y = 1;
