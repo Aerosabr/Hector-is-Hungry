@@ -64,7 +64,11 @@ public class Player : Entity
 	{
 		if(closestItem != null)
 		{
-			closestItem.transform.GetChild(0).gameObject.SetActive(false);
+			Item itemComponent = closestItem.GetComponent<Item>();
+			if (itemComponent != null)
+			{
+				itemComponent.Highlight(false);
+			}
 		}
 		if (nearbyObjects.Count > 0)
 		{
@@ -80,7 +84,11 @@ public class Player : Entity
 				}
 			}
 			closestItem = nearbyObjects[index];
-			closestItem.transform.GetChild(0).gameObject.SetActive(true);
+			Item itemComponent = closestItem.GetComponent<Item>();
+			if (itemComponent != null)
+			{
+				itemComponent.Highlight(true);
+			}
 		}
 	}
 
