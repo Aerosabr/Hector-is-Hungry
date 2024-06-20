@@ -1436,6 +1436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numActive: 0
+  maxActive: 2
   Items:
   - {fileID: 4206576748557936608, guid: eee63c54e57e6254aa8557db32225324, type: 3}
   - {fileID: 7008989655677850792, guid: fa1841e0c59e31d4f92a3a8ed8764f5c, type: 3}

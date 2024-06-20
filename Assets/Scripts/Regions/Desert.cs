@@ -22,7 +22,7 @@ public class Desert : Region
 
     private void FixedUpdate()
     {
-        if (numActive < 4 && Spawnable)
+        if (numActive < maxActive && Spawnable)
         {
             Spawnable = false;
             StartCoroutine(SpawnItem());
@@ -32,8 +32,10 @@ public class Desert : Region
     private IEnumerator SpawnItem()
     {
         GameObject item = Items[Random.Range(0, Items.Count)];
-        yield return new WaitForSeconds(item.GetComponent<Item>().spawnDuration);
-        Spawning(item);
+        float spawnDur = Random.Range(item.GetComponent<Item>().spawnDuration - 3, item.GetComponent<Item>().spawnDuration + 3);
+        yield return new WaitForSeconds(spawnDur);
+        if (numActive < maxActive)
+            Spawning(item);
         Spawnable = true;
     }
 

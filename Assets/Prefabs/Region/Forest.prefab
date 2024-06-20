@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numActive: 0
+  maxActive: 6
   Items:
   - {fileID: 345338998095723322, guid: 465a12ce40b1e0648802132d3bcb1737, type: 3}
   - {fileID: 5844964311583196599, guid: 2262c262444c51742a31e6dd193407d6, type: 3}
@@ -174,6 +175,7 @@ MonoBehaviour:
   spawnX: 9
   spawnY: 7
   spawnLocation: 1
+  seed: {fileID: 2818690216346633376, guid: 585775fb30726d745aaf267c2dde1885, type: 3}
 --- !u!1 &4356413579571089337
 GameObject:
   m_ObjectHideFlags: 0
