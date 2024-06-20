@@ -9,7 +9,8 @@ public abstract class Item : MonoBehaviour
     public Image image;
     public BoxCollider2D box;
     public bool isDropped;
-
+    public int xSize;
+    public int ySize;
     public abstract bool CheckSlot(string Pos);
     public abstract bool PickupItem();
     public abstract void ItemDropped();

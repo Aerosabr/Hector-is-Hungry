@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
+public class Stalagmite : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
     [SerializeField] private GameObject InventoryImage;
@@ -21,22 +21,22 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
     public void OnBeginDrag(PointerEventData eventData)
     {
         Vector2 temp = Input.mousePosition - transform.position;
-        float divisor = GetDivisors() / 6;
-        if (temp.y >= 0) //Top half
+        float divisor = GetDivisors() / 4;
+        if (temp.x <= 0) //Left half
         {
-            if (temp.x <= -divisor)
+            if (temp.y >= divisor)
                 current = 1;
-            else if (temp.x <= divisor)
-                current = 2;
-            else
+            else if (temp.y >= -divisor)
                 current = 3;
-        }
-        else //Bottom half
-        {
-            if (temp.x <= -divisor)
-                current = 4;
-            else if (temp.x <= divisor)
+            else
                 current = 5;
+        }
+        else //Right half
+        {
+            if (temp.y >= divisor)
+                current = 2;
+            else if (temp.y >= -divisor)
+                current = 4;
             else
                 current = 6;
         }
@@ -48,26 +48,26 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 
     public void OnDrag(PointerEventData eventData)
     {
-        float divisor = GetDivisors() / 6;
+        float divisor = GetDivisors() / 4;
         switch (current)
         {
             case 1:
-                transform.position = Input.mousePosition - new Vector3(-(2 * divisor), divisor);
+                transform.position = Input.mousePosition - new Vector3(-divisor, 2 * divisor);
                 break;
             case 2:
-                transform.position = Input.mousePosition - new Vector3(0, divisor);
+                transform.position = Input.mousePosition - new Vector3(divisor, 2 * divisor);
                 break;
             case 3:
-                transform.position = Input.mousePosition - new Vector3(2 * divisor, divisor);
+                transform.position = Input.mousePosition - new Vector3(-divisor, 0);
                 break;
             case 4:
-                transform.position = Input.mousePosition - new Vector3(-(2 * divisor), -divisor);
+                transform.position = Input.mousePosition - new Vector3(divisor, 0);
                 break;
             case 5:
-                transform.position = Input.mousePosition - new Vector3(0, -divisor);
+                transform.position = Input.mousePosition - new Vector3(-divisor, -(2 * divisor));
                 break;
             case 6:
-                transform.position = Input.mousePosition - new Vector3(2 * divisor, -divisor);
+                transform.position = Input.mousePosition - new Vector3(divisor, -(2 * divisor));
                 break;
         }
     }
@@ -97,30 +97,30 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
                     y -= 1;
                     break;
                 case 3:
-                    y -= 2;
+                    x -= 1;
                     break;
                 case 4:
                     x -= 1;
-                    break;
-                case 5:
-                    x -= 1;
                     y -= 1;
                     break;
+                case 5:
+                    x -= 2;
+                    break;
                 case 6:
-                    x -= 1;
-                    y -= 2;
+                    x -= 2;
+                    y -= 1;
                     break;
             }
 
-            if ((x != 1 && x != 2) || y != 1)
+            if ((y != 1 && y != 2) || x != 1)
                 Debug.Log("Invalid");
             else if (CheckGrid(x, y))
             {
-                Debug.Log("Valid");
+                Debug.Log("Valid");          
                 int index = 0;
-                for (int i = x; i <= x + 1; i++)
+                for (int i = x; i <= x + 2; i++)
                 {
-                    for (int j = 1; j <= 3; j++)
+                    for (int j = y; j <= y + 1; j++)
                     {
                         Slots[index] = Inventory.instance.Grid[i.ToString() + j.ToString()].gameObject;
                         index++;
@@ -135,9 +135,9 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 
     public bool CheckGrid(int x, int y)
     {
-        for (int i = x; i <= x + 1; i++)
+        for (int i = x; i <= x + 2; i++)
         {
-            for (int j = y; j <= y + 2; j++)
+            for (int j = y; j <= y + 1; j++)
             {
                 if (Inventory.instance.Grid[i.ToString() + j.ToString()].Taken)
                     return false;
@@ -151,7 +151,7 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
     {
         for (int i = 1; i <= 2; i++)
         {
-            if (CheckSlot(i.ToString() + "1"))
+            if (CheckSlot("1" + i.ToString()))
             {
                 isDropped = false;
                 transform.SetParent(GameObject.Find("InventoryImages").transform);
@@ -190,13 +190,12 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
     }
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
-	{
-		eatTime = 75;
-		foodValue = 10;
-		effect = "Poison";
-		effectValue = 5;
-		Destroy(gameObject);
-		Debug.Log("Consume Rock");
-	}
+    {
+        eatTime = 75;
+        foodValue = 10;
+        effect = "Poison";
+        effectValue = 5;
+        Destroy(gameObject);
+        Debug.Log("Consume Stalagmite");
+    }
 }
-

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
+public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Transform parentAfterDrag;
@@ -70,39 +70,17 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     public override void ItemDropped()
     {
-        Transform player = GameObject.Find("Player").transform;
-		sprite.enabled = true;
+        sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         box.enabled = true;
         isDropped = true;
         transform.SetParent(GameObject.Find("RegionManager").transform);
-        transform.position = player.position;
+        transform.position = GameObject.Find("Player").transform.position;
         transform.localScale = new Vector3(.15f, .15f, .15f);
-        if(player.GetComponent<Rigidbody2D>().velocity.x > 0)
-		    StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(3f, 0f, 0f), 0.5f));
-        else
-			StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-3f, 0f, 0f), 0.5f));
-	}
-	private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float duration)
-	{
-		Vector3 startPosition = transform.position;
-		float elapsed = 0f;
+    }
 
-		while (elapsed < duration)
-		{
-			float height = 1f;
-			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
-			arcPosition.y += Mathf.Sin(Mathf.Clamp01(elapsed / duration) * Mathf.PI) * height;
-
-			transform.position = arcPosition;
-			elapsed += Time.deltaTime;
-			yield return null;
-		}
-
-		transform.position = targetPosition; // Ensure it reaches exactly the target position
-	}
-	public override void Highlight(bool toggle)
+    public override void Highlight(bool toggle)
     {
         if (toggle)
             HighlightObject.SetActive(true);
@@ -117,6 +95,6 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         effect = "None";
         effectValue = 0;
         Destroy(gameObject);
-        Debug.Log("Consume Apple");
+        Debug.Log("Consume Mushroom");
     }
 }
