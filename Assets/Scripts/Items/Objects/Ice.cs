@@ -195,6 +195,7 @@ public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         foodValue = 10;
         effect = "Poison";
         effectValue = 5;
+        region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Ice");
     }

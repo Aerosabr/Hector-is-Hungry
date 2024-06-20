@@ -8,6 +8,7 @@ public abstract class Item : MonoBehaviour
 {
     public Image image;
     public BoxCollider2D box;
+    public Region region;
     public bool isDropped;
     public int xSize;
     public int ySize;

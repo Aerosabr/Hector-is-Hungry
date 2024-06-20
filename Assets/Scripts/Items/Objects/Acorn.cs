@@ -94,6 +94,7 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         foodValue = 15;
         effect = "None";
         effectValue = 0;
+        region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Acorn");
     }

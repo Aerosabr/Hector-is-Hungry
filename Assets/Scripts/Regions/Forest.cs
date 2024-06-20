@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Farm : Region
+public class Forest : Region
 {
     [SerializeField] private Transform spawnArea;
     [SerializeField] private float spawnX;

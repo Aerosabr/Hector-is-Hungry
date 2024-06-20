@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Farm : Region
+public class Desert : Region
 {
     [SerializeField] private Transform spawnArea;
     [SerializeField] private float spawnX;
@@ -16,13 +16,13 @@ public class Farm : Region
 
     private void Start()
     {
-        for (int i = 0; i <= 2; i++)
-            Spawning(Items[Random.Range(0, Items.Count)]);
+        Spawning(Items[Random.Range(0, Items.Count)]);
+        Spawning(Items[Random.Range(0, Items.Count)]);
     }
 
     private void FixedUpdate()
     {
-        if (numActive < 6 && Spawnable)
+        if (numActive < 4 && Spawnable)
         {
             Spawnable = false;
             StartCoroutine(SpawnItem());

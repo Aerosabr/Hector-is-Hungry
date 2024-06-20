@@ -180,6 +180,7 @@ public class Tumbleweed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         foodValue = 10;
         effect = "Poison";
         effectValue = 5;
+        region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Tumbleweed");
     }

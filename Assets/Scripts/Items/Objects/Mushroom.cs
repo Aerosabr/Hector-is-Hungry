@@ -94,6 +94,7 @@ public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, 
         foodValue = 15;
         effect = "None";
         effectValue = 0;
+        region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Mushroom");
     }
