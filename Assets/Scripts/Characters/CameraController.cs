@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
 	public float lookAheadSpeed = 3f;
 	private float lookOffset = 0f;
 
-	private float minX = 15.7f;
+	private float minX = -4.2f;
 	private float maxX = 24.3f;
 	void Start()
 	{
