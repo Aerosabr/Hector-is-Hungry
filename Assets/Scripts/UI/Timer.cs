@@ -116,7 +116,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         if (!isDropped)
         {       
-            transform.position = new Vector3(((Slots[0].transform.position.x + Slots[7].transform.position.x) / 2), ((Slots[0].transform.position.y + Slots[7].transform.position.y) / 2));
+            transform.position = new Vector3(((Slots[0].transform.position.x + Slots[5].transform.position.x) / 2), ((Slots[0].transform.position.y + Slots[5].transform.position.y) / 2));
             InventoryImage.GetComponent<Image>().raycastTarget = true;
             foreach (GameObject slot in Slots)
                 slot.GetComponent<InventorySlot>().Taken = true;    
@@ -125,7 +125,6 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 
     public override bool CheckSlot(string Pos)
     {
-        Debug.Log("Checking");
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             int x = int.Parse(Pos.Substring(0, 1));
@@ -179,8 +178,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         for (int i = x; i <= x + 1; i++)
         {
             for (int j = y; j <= y + 2; j++)
-            {
-                
+            {         
                 if (Inventory.instance.Grid[i.ToString() + j.ToString()].Taken)
                     return false;
             }
@@ -203,6 +201,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                 Icon.SetActive(false);
                 UI.SetActive(false);
                 box.enabled = false;
+                uiActive = false;
                 transform.localScale = Vector3.one;
                 return true;
             }
@@ -220,7 +219,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         Icon.SetActive(true);
         box.enabled = true;
         InventoryImage.GetComponent<Image>().raycastTarget = true;
-        for (int i = 0; i <= 7; i++)
+        for (int i = 0; i <= 5; i++)
             Slots[i] = null;
         current = 0;
         transform.position = GameObject.Find("Player").transform.position - new Vector3(0, 0.5f);

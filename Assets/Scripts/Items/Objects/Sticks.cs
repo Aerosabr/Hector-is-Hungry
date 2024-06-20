@@ -60,7 +60,7 @@ public class Sticks : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
             if (current == 2)
                 y -= 1;
 
-            if (y < 1 || y == 4)
+            if (y != 1 && y != 2)
                 Debug.Log("Invalid");
             else if (CheckGrid(x, y))
             {
@@ -86,9 +86,9 @@ public class Sticks : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
 
     public override bool PickupItem()
     {
-        for (int i = 1; i <= 4; i++)
+        for (int i = 1; i <= 3; i++)
         {
-            for (int j = 1; j <= 3; j++)
+            for (int j = 1; j <= 2; j++)
             {
                 if (CheckSlot(i.ToString() + j.ToString()))
                 {
