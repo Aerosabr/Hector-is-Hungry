@@ -1,5 +1,4 @@
 using JetBrains.Annotations;
-using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +8,6 @@ public class Pig : MonoBehaviour, IConsumable
     public float runSpeed = 5.0f;
 
 	public GameObject item;
-
-	public AIDestinationSetter destinationSetter;
 
 	public Transform Player;
 	public Transform Wolf;

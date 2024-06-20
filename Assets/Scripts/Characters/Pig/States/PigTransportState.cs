@@ -13,7 +13,6 @@ public class PigTransportState : PigState
 	public override void EnterState()
 	{
 		Debug.Log("Enter Transport State");
-		Pig.destinationSetter.target = Pig.Wolf;
 	}
 	public override void ExitState()
 	{
