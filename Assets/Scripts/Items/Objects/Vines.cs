@@ -21,7 +21,7 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
     public void OnBeginDrag(PointerEventData eventData)
     {
         Vector2 temp = Input.mousePosition - transform.position;
-        float divisor = GetDivisors() / 4;
+        float divisor = GetDivisors() / 2;
         if (temp.y >= divisor) //Top
             current = 1;
         else if (temp.y >= -divisor) //Middle
@@ -36,17 +36,17 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     public void OnDrag(PointerEventData eventData)
     {
-        float divisor = GetDivisors() / 4;
+        float divisor = GetDivisors();
         switch (current)
         {
             case 1:
-                transform.position = Input.mousePosition - new Vector3(0, 2 * divisor);
+                transform.position = Input.mousePosition - new Vector3(0, divisor);
                 break;
             case 2:
                 transform.position = Input.mousePosition;
                 break;
             case 3:
-                transform.position = Input.mousePosition - new Vector3(0, -(2 * divisor));
+                transform.position = Input.mousePosition - new Vector3(0, -divisor);
                 break;
         }
     }
@@ -80,7 +80,7 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
                     break;
             }
 
-            if ((x != 1 && x != 2 && x != 3))
+            if (x != 1)
                 Debug.Log("Invalid");
             else if (CheckGrid(x, y))
             {
