@@ -1657,6 +1657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numActive: 0
+  maxActive: 6
   Items:
   - {fileID: 345338998095723322, guid: 465a12ce40b1e0648802132d3bcb1737, type: 3}
   - {fileID: 8698306235478316235, guid: 46518ad47d54ba74b9c09288d2c95548, type: 3}
@@ -1666,3 +1667,4 @@ MonoBehaviour:
   spawnX: 9
   spawnY: 7
   spawnLocation: 1
+  seed: {fileID: 2818690216346633376, guid: b975981536d8c3a4592a9904693e07fb, type: 3}

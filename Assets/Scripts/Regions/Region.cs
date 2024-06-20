@@ -5,6 +5,9 @@ using UnityEngine;
 public class Region : MonoBehaviour
 {
     public int numActive;
+    public int maxActive;
     public List<GameObject> Items = new List<GameObject>();
     public bool Spawnable = true;
+    
 }
+

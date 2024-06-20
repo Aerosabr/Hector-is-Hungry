@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 5849288587262856366}
   - component: {fileID: 6300203682980863410}
   m_Layer: 7
-  m_Name: Circle
+  m_Name: Sprite
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

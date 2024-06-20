@@ -678,6 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numActive: 0
+  maxActive: 4
   Items:
   - {fileID: 345338998095723322, guid: 465a12ce40b1e0648802132d3bcb1737, type: 3}
   - {fileID: 7954047639676647434, guid: 7e8de9792fd77cb4a9fd5a0a0a0d7756, type: 3}
@@ -687,6 +688,7 @@ MonoBehaviour:
   spawnX: 9
   spawnY: 7
   spawnLocation: 1
+  seed: {fileID: 2818690216346633376, guid: d75883a891677b84d930ffb2a73337d3, type: 3}
 --- !u!1 &3501463854021498807
 GameObject:
   m_ObjectHideFlags: 0
