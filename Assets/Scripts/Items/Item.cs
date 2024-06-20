@@ -11,6 +11,7 @@ public abstract class Item : MonoBehaviour
     public bool isDropped;
     public int xSize;
     public int ySize;
+    public int spawnDuration;
     public abstract bool CheckSlot(string Pos);
     public abstract bool PickupItem();
     public abstract void ItemDropped();

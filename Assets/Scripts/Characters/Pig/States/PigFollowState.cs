@@ -13,7 +13,6 @@ public class PigFollowState : PigState
 	public override void EnterState()
 	{
 		Debug.Log("Enter Follow State");
-		Pig.destinationSetter.target = Pig.Player;
 	}
 	public override void ExitState()
 	{
