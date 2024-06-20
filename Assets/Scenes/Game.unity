@@ -8447,7 +8447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9843138, g: 0.6862745, b: 0.6392157, a: 1}
+  m_Color: {r: 0.5686275, g: 0.70980394, b: 0.43921572, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9070,29 +9070,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 8799663664298762422}
   m_maskType: 0
---- !u!114 &2484906028335725352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8698306237381452376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7948cbd469297f944aa631cab525ee28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 640945814614850200}
-  box: {fileID: 9159637132525307870}
-  isDropped: 1
-  xSize: 3
-  ySize: 1
-  Slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  InventoryImage: {fileID: 7057203842242282294}
-  HighlightObject: {fileID: 2253861723891494052}
-  current: 0
 --- !u!1001 &3413329050939002484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12326,7 +12303,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 7.52, y: 1.11}
-  m_SizeDelta: {x: 90, y: 184}
+  m_SizeDelta: {x: 90, y: 278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &7567941949422879176 stripped
 RectTransform:
@@ -12548,7 +12525,6 @@ GameObject:
   - component: {fileID: 640945814614850200}
   - component: {fileID: 5450831502490306379}
   - component: {fileID: 9159637132525307870}
-  - component: {fileID: 2484906028335725352}
   - component: {fileID: 9159637132525307871}
   m_Layer: 7
   m_Name: Vines
@@ -12705,6 +12681,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9790e7bac9676384ba166cc66f6d0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 640945814614850200}
+  box: {fileID: 9159637132525307870}
+  isDropped: 1
+  xSize: 3
+  ySize: 1
+  Slots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  InventoryImage: {fileID: 7057203842242282294}
+  HighlightObject: {fileID: 2253861723891494052}
+  current: 0
 --- !u!1 &9190779448295179716
 GameObject:
   m_ObjectHideFlags: 0
