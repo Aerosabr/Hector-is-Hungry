@@ -26,11 +26,11 @@ public class CameraController : MonoBehaviour
 		// Adjust lookOffset based on player's horizontal velocity
 		if (rb.velocity.x > 0f)
 		{
-			lookOffset = Mathf.Lerp(lookOffset, lookAheadDistance, lookAheadSpeed * Time.deltaTime);
+			lookOffset = lookAheadDistance;
 		}
 		else if (rb.velocity.x < 0f)
 		{
-			lookOffset = Mathf.Lerp(lookOffset, -lookAheadDistance, lookAheadSpeed * Time.deltaTime);
+			lookOffset = -lookAheadDistance;
 		}
 
 		// Update targetPoint based on player's position and lookOffset

@@ -23,7 +23,14 @@ public class Player : Entity
 		if (collision.gameObject.tag == "Wolf")
 			transform.GetChild(0).gameObject.SetActive(false);
 		if (collision.gameObject.tag == "Item")
-            nearbyObjects.Remove(collision.gameObject);
+		{
+			nearbyObjects.Remove(collision.gameObject);
+			Item itemComponent = collision.gameObject.GetComponent<Item>();
+			if (itemComponent != null)
+			{
+				itemComponent.Highlight(false);
+			}
+		}
     }
 
 	public void OnTriggerStay2D(Collider2D collision)
@@ -51,7 +58,8 @@ public class Player : Entity
         }
         else if (nearbyObjects.Count == 1)
 			containSpace = nearbyObjects[index].GetComponent<Item>().PickupItem();
-		if(!containSpace)
+		
+		if(!containSpace && nearbyObjects.Count != 0)
 		{
 			nearbyObjects[index].transform.GetChild(1).gameObject.SetActive(true);
 			if (coroutine != null)
