@@ -287,9 +287,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 8945902445593177537}
   box: {fileID: 836182758184331198}
+  region: {fileID: 0}
   isDropped: 1
   xSize: 2
   ySize: 3
+  spawnDuration: 30
   Slots:
   - {fileID: 0}
   - {fileID: 0}

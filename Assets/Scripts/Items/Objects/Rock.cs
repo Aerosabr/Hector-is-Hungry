@@ -195,7 +195,8 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 		foodValue = 10;
 		effect = "Poison";
 		effectValue = 5;
-		Destroy(gameObject);
+        region.numActive--;
+        Destroy(gameObject);
 		Debug.Log("Consume Rock");
 	}
 }

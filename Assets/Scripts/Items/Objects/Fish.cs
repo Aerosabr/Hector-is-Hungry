@@ -136,6 +136,7 @@ public class Fish : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         foodValue = 10;
         effect = "Poison";
         effectValue = 5;
+        region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Fish");
     }

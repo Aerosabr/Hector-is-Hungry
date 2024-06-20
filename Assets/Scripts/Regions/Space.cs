@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Farm : Region
+public class Space : Region
 {
     [SerializeField] private Transform spawnArea;
     [SerializeField] private float spawnX;
@@ -16,13 +16,12 @@ public class Farm : Region
 
     private void Start()
     {
-        for (int i = 0; i <= 2; i++)
-            Spawning(Items[Random.Range(0, Items.Count)]);
+        Spawning(Items[Random.Range(0, Items.Count)]);
     }
 
     private void FixedUpdate()
     {
-        if (numActive < 6 && Spawnable)
+        if (numActive < 2 && Spawnable)
         {
             Spawnable = false;
             StartCoroutine(SpawnItem());
@@ -44,19 +43,19 @@ public class Farm : Region
         {
             case 1:
                 x = Random.Range(-spawnX / 2, 0);
-                y = Random.Range(0, (spawnY / 2) - 2);
+                y = Random.Range(0, (spawnY / 2));
                 break;
             case 2:
                 x = Random.Range(0, spawnX / 2);
-                y = Random.Range(0, (spawnY / 2) - 2);
+                y = Random.Range(0, (spawnY / 2));
                 break;
             case 3:
                 x = Random.Range(-spawnX / 2, 0);
-                y = Random.Range((-spawnY / 2) - 2, 0);
+                y = Random.Range((-spawnY / 2), 0);
                 break;
             case 4:
                 x = Random.Range(0, spawnX / 2);
-                y = Random.Range((-spawnY / 2) - 2, 0);
+                y = Random.Range((-spawnY / 2), 0);
                 break;
             default:
                 x = 0;

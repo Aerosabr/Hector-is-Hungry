@@ -157,6 +157,7 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         foodValue = 10;
         effect = "Poison";
         effectValue = 5;
+        region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Vines");
     }

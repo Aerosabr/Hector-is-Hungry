@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &863699639947131466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5312640066756577957}
+  m_Layer: 8
+  m_Name: SpawnArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5312640066756577957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863699639947131466}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3969942526287864548}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2026663234524952697
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +43,7 @@ GameObject:
   - component: {fileID: 3971052481682018907}
   - component: {fileID: 1076477047331592856}
   - component: {fileID: 8398093629266556620}
+  - component: {fileID: -7142113813201349816}
   m_Layer: 8
   m_Name: Forest
   m_TagString: Environment
@@ -34,6 +66,7 @@ Transform:
   m_Children:
   - {fileID: 1609853400363631736}
   - {fileID: 6216853236662814888}
+  - {fileID: 5312640066756577957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &3971052481682018907
@@ -119,6 +152,28 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &-7142113813201349816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026663234524952697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89000e4d17ed4f4cb4961b29206649d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numActive: 0
+  Items:
+  - {fileID: 345338998095723322, guid: 465a12ce40b1e0648802132d3bcb1737, type: 3}
+  - {fileID: 5844964311583196599, guid: 2262c262444c51742a31e6dd193407d6, type: 3}
+  - {fileID: 8122121896873151427, guid: 01f4741f4830c6a47a79d239005668aa, type: 3}
+  Spawnable: 1
+  spawnArea: {fileID: 5312640066756577957}
+  spawnX: 9
+  spawnY: 7
+  spawnLocation: 1
 --- !u!1 &4356413579571089337
 GameObject:
   m_ObjectHideFlags: 0

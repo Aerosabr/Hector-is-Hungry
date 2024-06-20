@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2700078900703171987}
   - component: {fileID: 6933361079500250605}
   - component: {fileID: 7881288477474494148}
-  - component: {fileID: 3017334264679008165}
+  - component: {fileID: 1953739345024935158}
   m_Layer: 7
   m_Name: Apple
   m_TagString: Item
@@ -94,7 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 4754936927610834279}
-  box: {fileID: 3017334264679008165}
+  box: {fileID: 1953739345024935158}
+  region: {fileID: 0}
   isDropped: 1
   xSize: 1
   ySize: 1
@@ -181,7 +182,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &3017334264679008165
+--- !u!61 &1953739345024935158
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,7 +214,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.07412255, y: -0.56703687}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -224,7 +225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 3.311412, y: 3.3632975}
   m_EdgeRadius: 0
 --- !u!1 &5160754112537115518
 GameObject:

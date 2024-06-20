@@ -219,9 +219,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 4413178403055189713}
   box: {fileID: 4167758158744399678}
+  region: {fileID: 0}
   isDropped: 1
   xSize: 1
   ySize: 1
+  spawnDuration: 10
   sprite: {fileID: 8157494878663046527}
   parentAfterDrag: {fileID: 0}
   HighlightObject: {fileID: 7336561004013927175}

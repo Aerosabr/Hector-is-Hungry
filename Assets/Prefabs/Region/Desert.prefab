@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 489365433446126193}
   - component: {fileID: -6819133989966522585}
   - component: {fileID: 8242378231825799746}
+  - component: {fileID: 3171932358244689056}
   m_Layer: 8
   m_Name: Desert
   m_TagString: Environment
@@ -34,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 5561088411949157756}
   - {fileID: 651677542465995343}
+  - {fileID: 7192291303423327271}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &489365433446126193
@@ -119,6 +121,26 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &3171932358244689056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425023602402174273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab88b3d7f4173f44b79d5c8108df3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numActive: 0
+  Items:
+  - {fileID: 986035250294819909, guid: d680b919f926d054790d8ab85712b862, type: 3}
+  Spawnable: 1
+  spawnArea: {fileID: 7192291303423327271}
+  spawnX: 9
+  spawnY: 7
+  spawnLocation: 1
 --- !u!1 &889726368515370157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,3 +1633,34 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!1 &6699189255824090664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7192291303423327271}
+  m_Layer: 8
+  m_Name: SpawnArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7192291303423327271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699189255824090664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8373036622582700594}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

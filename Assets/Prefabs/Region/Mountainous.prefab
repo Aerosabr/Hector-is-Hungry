@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7988722433856588841}
   - component: {fileID: -8240519930434264901}
   - component: {fileID: -7700567425377819405}
+  - component: {fileID: 444709377257211116}
   m_Layer: 8
   m_Name: Mountainous
   m_TagString: Environment
@@ -34,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 1306587514939813381}
   - {fileID: 865188452165262912}
+  - {fileID: 3738702501426586793}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &7988722433856588841
@@ -119,6 +121,58 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &444709377257211116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204622926497971846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1948b482097ef214eb7b974ae46da0bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numActive: 0
+  Items:
+  - {fileID: 3403955550088199010, guid: ffb46695af12b644c9a81422c0a08a18, type: 3}
+  - {fileID: 4093822179315014745, guid: 99b8a57c9b5d9a3448251efd254fe293, type: 3}
+  Spawnable: 1
+  spawnArea: {fileID: 3738702501426586793}
+  spawnX: 9
+  spawnY: 7
+  spawnLocation: 1
+--- !u!1 &6678962152296756104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3738702501426586793}
+  m_Layer: 8
+  m_Name: SpawnArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3738702501426586793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6678962152296756104}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6116373285359164914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7369889751800377497
 GameObject:
   m_ObjectHideFlags: 0
