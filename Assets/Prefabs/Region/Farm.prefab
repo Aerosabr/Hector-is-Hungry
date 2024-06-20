@@ -1657,12 +1657,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numActive: 0
+  maxActive: 6
   Items:
   - {fileID: 3418380458207545283, guid: d8724aedc0f197d44adb267e7d3af947, type: 3}
   - {fileID: 3448385962548998414, guid: e5282921bf4f0db499e6b833d916a0e1, type: 3}
-  unspawnableLayers:
-    serializedVersion: 2
-    m_Bits: 128
+  Spawnable: 1
   spawnArea: {fileID: 3825945808072913729}
   spawnX: 9
   spawnY: 7
+  spawnLocation: 1
+  seed: {fileID: 2818690216346633376, guid: 6ab687fd8c5adbb4cb3032b73eab0fc2, type: 3}

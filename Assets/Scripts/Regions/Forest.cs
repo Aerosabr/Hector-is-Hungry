@@ -8,7 +8,7 @@ public class Forest : Region
     [SerializeField] private float spawnX;
     [SerializeField] private float spawnY;
     [SerializeField] private int spawnLocation = 1;
-
+    [SerializeField] private GameObject seed;
     public void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(spawnArea.position, new Vector3(spawnX, spawnY));
@@ -18,11 +18,13 @@ public class Forest : Region
     {
         for (int i = 0; i <= 2; i++)
             Spawning(Items[Random.Range(0, Items.Count)]);
+
+        SpawnSeed(1);
     }
 
     private void FixedUpdate()
     {
-        if (numActive < 6 && Spawnable)
+        if (numActive < maxActive && Spawnable)
         {
             Spawnable = false;
             StartCoroutine(SpawnItem());
@@ -32,8 +34,10 @@ public class Forest : Region
     private IEnumerator SpawnItem()
     {
         GameObject item = Items[Random.Range(0, Items.Count)];
-        yield return new WaitForSeconds(item.GetComponent<Item>().spawnDuration);
-        Spawning(item);
+        float spawnDur = Random.Range(item.GetComponent<Item>().spawnDuration - 3, item.GetComponent<Item>().spawnDuration + 3);
+        yield return new WaitForSeconds(spawnDur);
+        if (numActive < maxActive)
+            Spawning(item);
         Spawnable = true;
     }
 
@@ -76,4 +80,14 @@ public class Forest : Region
             spawnLocation++;
     }
 
+    private void SpawnSeed(int num)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            Vector3 SpawnArea = new Vector3(Random.Range(-spawnX, spawnX), Random.Range(-spawnY, spawnY));
+
+            GameObject temp = Instantiate(seed, transform);
+            temp.GetComponent<Seed>().InitiateSeed(SpawnArea, this);
+        }
+    }
 }

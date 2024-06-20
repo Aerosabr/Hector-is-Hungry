@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numActive: 0
+  maxActive: 4
   Items:
   - {fileID: 986035250294819909, guid: d680b919f926d054790d8ab85712b862, type: 3}
   Spawnable: 1
