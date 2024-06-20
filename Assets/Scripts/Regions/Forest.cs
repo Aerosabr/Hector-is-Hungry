@@ -16,8 +16,8 @@ public class Forest : Region
 
     private void Start()
     {
-        for (int i = 0; i <= 2; i++)
-            Spawning(Items[Random.Range(0, Items.Count)]);
+        Spawning(Items[Random.Range(0, Items.Count)]);
+        Spawning(Items[Random.Range(0, Items.Count)]);
 
         SpawnSeed(1);
     }
@@ -84,7 +84,7 @@ public class Forest : Region
     {
         for (int i = 0; i < num; i++)
         {
-            Vector3 SpawnArea = new Vector3(Random.Range(-spawnX, spawnX), Random.Range(-spawnY, spawnY));
+            Vector3 SpawnArea = new Vector3(Random.Range(-spawnX / 2, spawnX / 2), Random.Range((-spawnY / 2) - 1.5f, (spawnY / 2) - 1.5f));
 
             GameObject temp = Instantiate(seed, transform);
             temp.GetComponent<Seed>().InitiateSeed(SpawnArea, this);

@@ -98,6 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3474505910318776239}
   - component: {fileID: 3611926864912447096}
+  - component: {fileID: -4109154986917878656}
   - component: {fileID: 5086509714943459352}
   - component: {fileID: 5978170735701061260}
   - component: {fileID: 3869370898925389178}
@@ -158,6 +159,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
+--- !u!58 &-4109154986917878656
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818690216346633376}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1847
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.5, y: -0.5}
+  serializedVersion: 2
+  m_Radius: 0.3
 --- !u!61 &5086509714943459352
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -270,6 +306,7 @@ MonoBehaviour:
   current: 0
   item: {fileID: 1796007153731013410, guid: 0763cb22cccee544a90ad3b1c1a02a35, type: 3}
   Spawnable: 1
+  itemsOnSelf: []
   isSeed: 1
 --- !u!1 &2970095531015545647
 GameObject:
