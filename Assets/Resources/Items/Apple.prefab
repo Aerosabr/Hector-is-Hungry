@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7200411919060826191}
   - component: {fileID: 4754936927610834279}
   - component: {fileID: 2700078900703171987}
+  - component: {fileID: 10161860955678798}
   - component: {fileID: 6933361079500250605}
   - component: {fileID: 7881288477474494148}
   - component: {fileID: 1953739345024935158}
@@ -97,12 +98,25 @@ MonoBehaviour:
   box: {fileID: 1953739345024935158}
   region: {fileID: 0}
   isDropped: 1
+  isMarked: 0
   xSize: 1
   ySize: 1
   spawnDuration: 10
   sprite: {fileID: 6933361079500250605}
   parentAfterDrag: {fileID: 0}
   HighlightObject: {fileID: 7216063772031465094}
+--- !u!114 &10161860955678798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3448385962548998414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b0f65ae8b5ce940a7a86d081dc9d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &6933361079500250605
 SpriteRenderer:
   m_ObjectHideFlags: 0

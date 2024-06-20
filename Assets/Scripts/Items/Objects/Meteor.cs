@@ -184,6 +184,7 @@ public class Meteor : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
                 if (CheckSlot(i.ToString() + j.ToString()))
                 {
                     isDropped = false;
+                    isMarked = false;
                     transform.SetParent(GameObject.Find("InventoryImages").transform);
                     OnEndDrag(null);
                     InventoryImage.SetActive(false);
@@ -198,7 +199,7 @@ public class Meteor : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
         return false;
     }
 
-    public override void ItemDropped()
+    public override void ItemDropped(GameObject Character)
     {
         InventoryImage.SetActive(true);
         image.raycastTarget = true;
@@ -209,11 +210,40 @@ public class Meteor : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
             Slots[i] = null;
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
-        transform.position = GameObject.Find("Player").transform.position;
         transform.localScale = Vector3.one;
-    }
+        Transform character = Character.transform;
+		transform.position = character.position;
+		if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
+			StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f));
+		else
+			StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-2f, 0f, 0f), 0.5f));
+	}
+	private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float duration)
+	{
+		Vector3 startPosition = transform.position;
+		float elapsed = 0f;
 
-    public override void Highlight(bool toggle)
+		while (elapsed < duration)
+		{
+			float height = 1f;
+			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+			arcPosition.y += Mathf.Sin(Mathf.Clamp01(elapsed / duration) * Mathf.PI) * height;
+
+			Collider2D[] hits = Physics2D.OverlapCircleAll(arcPosition, 0.5f);
+			foreach (Collider2D hit in hits)
+			{
+				if (hit.CompareTag("Wolf"))
+					isMarked = true;
+			}
+			transform.position = arcPosition;
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+
+		transform.position = targetPosition;
+	}
+
+	public override void Highlight(bool toggle)
     {
         if (toggle)
             HighlightObject.SetActive(true);

@@ -9,6 +9,7 @@ TagManager:
   - UI
   - Wolf
   - NPC
+  - Building
   layers:
   - Default
   - TransparentFX

@@ -210,7 +210,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         return false;
     }
 
-    public override void ItemDropped()
+    public override void ItemDropped(GameObject Character)
     {
         isDropped = true;
         transform.SetParent(GameObject.Find("RegionManager").transform);
@@ -222,11 +222,39 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         for (int i = 0; i <= 5; i++)
             Slots[i] = null;
         current = 0;
-        transform.position = GameObject.Find("Player").transform.position - new Vector3(0, 0.5f);
         transform.localScale = Vector3.one;
-    }
+		Transform character = Character.transform;
+		transform.position = character.position;
+		if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
+			StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f));
+		else
+			StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-2f, 0f, 0f), 0.5f));
+	}
+	private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float duration)
+	{
+		Vector3 startPosition = transform.position;
+		float elapsed = 0f;
 
-    public override void Highlight(bool toggle)
+		while (elapsed < duration)
+		{
+			float height = 1f;
+			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+			arcPosition.y += Mathf.Sin(Mathf.Clamp01(elapsed / duration) * Mathf.PI) * height;
+
+			Collider2D[] hits = Physics2D.OverlapCircleAll(arcPosition, 0.5f);
+			foreach (Collider2D hit in hits)
+			{
+				if (hit.CompareTag("Wolf"))
+					isMarked = true;
+			}
+			transform.position = arcPosition;
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+
+		transform.position = targetPosition;
+	}
+	public override void Highlight(bool toggle)
     {
         if (toggle)
         {

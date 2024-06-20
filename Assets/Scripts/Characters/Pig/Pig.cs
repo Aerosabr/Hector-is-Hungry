@@ -11,6 +11,7 @@ public class Pig : MonoBehaviour, IConsumable
 
 	public Transform Player;
 	public Transform Wolf;
+	public Rigidbody2D rb;
 
 	public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
 	{

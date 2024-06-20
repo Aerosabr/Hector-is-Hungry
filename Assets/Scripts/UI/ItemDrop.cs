@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class ItemDrop : MonoBehaviour, IDropHandler
 {
     public static ItemDrop instance;
+    public GameObject Player;
 
     private void Awake()
     {
@@ -14,7 +15,7 @@ public class ItemDrop : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        eventData.pointerDrag.GetComponent<Item>().ItemDropped();
+        eventData.pointerDrag.GetComponent<Item>().ItemDropped(Player);
     }
 
 }

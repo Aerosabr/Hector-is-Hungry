@@ -116,6 +116,7 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
             if (CheckSlot("1" + i.ToString()))
             {
                 isDropped = false;
+                isMarked = false;
                 transform.SetParent(GameObject.Find("InventoryImages").transform);
                 OnEndDrag(null);
                 InventoryImage.SetActive(false);
@@ -128,7 +129,7 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         return false;
     }
 
-    public override void ItemDropped()
+    public override void ItemDropped(GameObject Character)
     {
         InventoryImage.SetActive(true);
         image.raycastTarget = true;
@@ -138,12 +139,68 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         for (int i = 0; i <= 2; i++)
             Slots[i] = null;
         current = 0;
-        transform.SetParent(GameObject.Find("RegionManager").transform);
-        transform.position = GameObject.Find("Player").transform.position;
-        transform.localScale = Vector3.one;
-    }
+		transform.SetParent(GameObject.Find("RegionManager").transform);
+		transform.localScale = Vector3.one;
+        Transform character = Character.transform;
+		transform.position = character.position;
+		if (character.tag == "Player")
+		{
+			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
+				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f, character));
+			else
+				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-2f, 0f, 0f), 0.5f, character));
+		}
+		else
+		{
+			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
+				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(3f, 0f, 0f), 0.5f, character));
+			else
+				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-3f, 0f, 0f), 0.5f, character));
+		}
+	}
+	private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float duration, Transform character)
+	{
+		Vector3 startPosition = transform.position;
+		float elapsed = 0f;
 
-    public override void Highlight(bool toggle)
+		while (elapsed < duration)
+		{
+			float height = 1f;
+			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+			arcPosition.y += Mathf.Sin(Mathf.Clamp01(elapsed / duration) * Mathf.PI) * height;
+
+			Collider2D[] hits = Physics2D.OverlapCircleAll(arcPosition, 0.5f);
+			foreach (Collider2D hit in hits)
+			{
+				if (hit.CompareTag("Wolf"))
+					isMarked = true;
+				else if (hit.CompareTag("NPC"))
+				{
+					if (hit.TryGetComponent(out Pig pig) && character.tag == "Player")
+					{
+						if (pig.item == null)
+						{
+							pig.item = transform.gameObject;
+							pig.runSpeed = pig.runSpeed / 3;
+							isDropped = false;
+							isMarked = false;
+							transform.SetParent(pig.transform);
+							//sprite.enabled = false;
+							box.enabled = false;
+							transform.localScale = new Vector3(1, 1, 1);
+						}
+					}
+				}
+			}
+			transform.position = arcPosition;
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+
+		transform.position = targetPosition;
+	}
+
+	public override void Highlight(bool toggle)
     {
         if (toggle)
             HighlightObject.SetActive(true);
