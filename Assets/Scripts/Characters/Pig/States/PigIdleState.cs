@@ -20,12 +20,14 @@ public class PigIdleState : PigState
 	}
 	public override void UpdateState()
 	{
-		if (Pig.item != null)
+		if(Pig.isDropped == false)
+			return;
+		else if (Pig.canHelp == false)
+			StateMachine.ChangeState(PigStateMachine.EPigState.Home);
+		else if (Pig.item != null)
 			StateMachine.ChangeState(PigStateMachine.EPigState.Transport);
 		else if (Vector3.Distance(Pig.transform.position, Pig.Player.position) > 5.0f)
-		{
 			StateMachine.ChangeState(PigStateMachine.EPigState.Follow);
-		}
 	}
 	public override PigStateMachine.EPigState GetState()
 	{

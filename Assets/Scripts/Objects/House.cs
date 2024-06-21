@@ -44,7 +44,8 @@ public class House : MonoBehaviour
 				{
 					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
-					//Instantiate(pig, transform.position, Quaternion.identity); Activate pig here
+					//Instantiate(pig, transform.position, Quaternion.identity);
+					pig.transform.GetComponent<Pig>().Activate();
 				}
 			}
 			else if (material == "Sticks" && stickScript != null)
@@ -57,9 +58,10 @@ public class House : MonoBehaviour
 				{
 					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
-                    //Instantiate(pig, transform.position, Quaternion.identity); Activate pig here
-                }
-            }
+					//Instantiate(pig, transform.position, Quaternion.identity);
+					pig.transform.GetComponent<Pig>().Activate();
+				}
+			}
 			else if (material == "Rock" && (rockScript != null || meteorScript != null))
 			{
 				currentAmount += 1;
@@ -98,8 +100,9 @@ public class House : MonoBehaviour
 				{
 					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
-                    //Instantiate(pig, transform.position, Quaternion.identity); Activate pig here
-                }
+					//Instantiate(pig, transform.position, Quaternion.identity); Activate pig here
+					pig.transform.GetComponent<Pig>().Activate();
+				}
             }
 			else if (material == "Sticks" && stickScript != null)
 			{
@@ -111,8 +114,9 @@ public class House : MonoBehaviour
 				{
 					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
-                    //Instantiate(pig, transform.position, Quaternion.identity); Activate pig here
-                }
+					//Instantiate(pig, transform.position, Quaternion.identity); Activate pig here
+					pig.transform.GetComponent<Pig>().Activate();
+				}
             }
 			else if (material == "Rock" && (rockScript != null || meteorScript != null))
 			{
