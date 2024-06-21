@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0260b652fdb64814f93053955d0411c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 1992752302}
 --- !u!1 &203596729
 GameObject:
   m_ObjectHideFlags: 0
@@ -4131,6 +4131,10 @@ PrefabInstance:
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 231288785}
+    - target: {fileID: 4151097360058934076, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 2743
+      objectReference: {fileID: 0}
     - target: {fileID: 8556585250658775287, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4746,7 +4750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb4c98cbcf43ca468e2aa708e653306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1992752304}
   moveSpeed: 5
   lookAheadDistance: -1
   lookAheadSpeed: 5
@@ -4817,6 +4821,17 @@ Transform:
   - {fileID: 7523303444843293292}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &827429973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5596768406023100030, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
+  m_PrefabInstance: {fileID: 702604959}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9c5e9525842ae48853556e9cb43eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &851419770
 GameObject:
   m_ObjectHideFlags: 0
@@ -7202,7 +7217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480fb87029e355d4dbc095e6ca388b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wolf: {fileID: 0}
+  wolf: {fileID: 827429973}
   hungerBar: {fileID: 47620368}
   Icon: {fileID: 727711470}
 --- !u!224 &1493123234 stripped
@@ -9196,6 +9211,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 390, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1992752302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8556585250658775287, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
+  m_PrefabInstance: {fileID: 720347690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1992752304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3179231790878341580, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
+  m_PrefabInstance: {fileID: 720347690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992752302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbee8049335f2a744a6fd24c14b9bbc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2022494332
 PrefabInstance:
   m_ObjectHideFlags: 0

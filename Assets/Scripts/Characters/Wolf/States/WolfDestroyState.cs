@@ -57,10 +57,21 @@ public class WolfDestroyState : WolfState
 		}
 		else
 		{
-			// Destroy the GameObject associated with the collider
 			if (other.TryGetComponent(out DestroyOnContact contact))
 			{
-				contact.DestroyObject();
+				// Check if the collision is with a player
+				if (other.gameObject.CompareTag("Player"))
+				{
+					// Check if the player has a BoxCollider2D
+					if (other.GetType().ToString() == "UnityEngine.BoxCollider2D")
+					{
+						contact.DestroyObject();
+					}
+				}
+				else
+				{
+					contact.DestroyObject();
+				}
 			}
 		}
 	}
@@ -100,7 +111,19 @@ public class WolfDestroyState : WolfState
 		{
 			if (other.TryGetComponent(out DestroyOnContact contact))
 			{
-				contact.DestroyObject();
+				// Check if the collision is with a player
+				if (other.gameObject.CompareTag("Player"))
+				{
+					// Check if the player has a BoxCollider2D
+					if (other.GetType().ToString() == "UnityEngine.BoxCollider2D")
+					{
+						contact.DestroyObject();
+					}
+				}
+				else
+				{
+					contact.DestroyObject();
+				}
 			}
 		}
 	}
