@@ -96,7 +96,7 @@ public class WolfDestroyState : WolfState
 				{
 					Wolf.foodInRange.Add(consumable);
 				}
-				StateMachine.ChangeState(WolfStateMachine.EWolfState.Eat);
+				StateMachine.ChangeState(WolfStateMachine.EWolfState.Idle);
 			}
 			else
 			{
