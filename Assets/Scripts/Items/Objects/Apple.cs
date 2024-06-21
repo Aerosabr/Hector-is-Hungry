@@ -86,7 +86,6 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
-        box.enabled = true;
         isDropped = true;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         Transform character = Character.transform;
@@ -146,8 +145,9 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 			yield return null;
 		}
 
-		transform.position = targetPosition; 
-	}
+		transform.position = targetPosition;
+        box.enabled = true;
+    }
 	public override void Highlight(bool toggle)
     {
         if (toggle)

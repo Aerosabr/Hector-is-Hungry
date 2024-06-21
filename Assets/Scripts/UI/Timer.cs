@@ -225,7 +225,6 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         OnEndDrag(null);
 		sprite.enabled = true;
 		Icon.SetActive(true);
-        box.enabled = true;
         InventoryImg.SetActive(false);
         image.raycastTarget = true;
         for (int i = 0; i <= 5; i++)
@@ -262,7 +261,8 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 		}
 
 		transform.position = targetPosition;
-	}
+        box.enabled = true;
+    }
 	public override void Highlight(bool toggle)
     {
         if (toggle)
@@ -287,7 +287,6 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         foodValue = 60;
         effect = "Stun";
         effectValue = 30;
-        region.numActive--;
         brickHouse.SetActive(true);
         Destroy(gameObject);
         Debug.Log("Consume Stalagmite");

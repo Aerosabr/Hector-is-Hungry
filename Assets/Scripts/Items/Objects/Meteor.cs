@@ -209,7 +209,6 @@ public class Meteor : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
 		sprite.enabled = true;
 		image.raycastTarget = true;
         image.enabled = false;
-        box.enabled = true;
         isDropped = true;
         for (int i = 0; i <= 5; i++)
             Slots[i] = null;
@@ -246,7 +245,8 @@ public class Meteor : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
 		}
 
 		transform.position = targetPosition;
-	}
+        box.enabled = true;
+    }
 
 	public override void Highlight(bool toggle)
     {

@@ -125,7 +125,6 @@ public class Fish : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
-        box.enabled = true;
         isDropped = true;
         Slots[0] = null;
         Slots[1] = null;
@@ -189,7 +188,8 @@ public class Fish : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 		}
 
 		transform.position = targetPosition;
-	}
+        box.enabled = true;
+    }
 
 	public override void Highlight(bool toggle)
     {

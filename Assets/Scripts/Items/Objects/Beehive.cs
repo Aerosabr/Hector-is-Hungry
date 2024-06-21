@@ -162,7 +162,6 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
         sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
-        box.enabled = true;
         isDropped = true;
         for (int i = 0; i <= 3; i++)
             Slots[i] = null;
@@ -226,7 +225,8 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 		}
 
 		transform.position = targetPosition;
-	}
+        box.enabled = true;
+    }
 
 	public override void Highlight(bool toggle)
     {
