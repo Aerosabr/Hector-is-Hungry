@@ -245,9 +245,9 @@ public class Haybale : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 50;
-        foodValue = 45;
-        effect = "None";
+        eatTime = 75;
+        foodValue = 10;
+        effect = "Poison";
         effectValue = 5;
         region.numActive--;
         Destroy(gameObject);
