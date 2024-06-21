@@ -48,7 +48,7 @@ public class WolfEatState : WolfState
 		}
 		else if (eatTimer <= 0)
 		{
-			if (Wolf.effect == "Poison")
+			if (Wolf.effect == "Stun")
 				StateMachine.ChangeState(WolfStateMachine.EWolfState.Stun);
 			else if(Wolf.effect == "Slow")
 			{
