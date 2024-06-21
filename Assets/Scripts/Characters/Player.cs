@@ -7,7 +7,12 @@ public class Player : Entity
     [SerializeField] private List<GameObject> nearbyObjects = new List<GameObject>();
 	[SerializeField] private GameObject closestItem;
 	[SerializeField] private Coroutine coroutine;
+	[SerializeField] private GameObject gameOver;
 
+	public void OnDestroy()
+	{
+		gameOver.SetActive(true);
+	}
 	public void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Enter")
@@ -84,11 +89,14 @@ public class Player : Entity
 			int index = 0;
 			for (int i = 0; i < nearbyObjects.Count; i++)
 			{
-				if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+				if (nearbyObjects[i])
 				{
+					if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+					{
 
-					distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
-					index = i;
+						distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
+						index = i;
+					}
 				}
 			}
 			closestItem = nearbyObjects[index];

@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 8571130944131544960}
   - component: {fileID: 1219528526579731047}
   - component: {fileID: 3179231790878341580}
+  - component: {fileID: 1191788940700171577}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -198,7 +199,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -217,7 +218,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1719
+    m_Bits: 3767
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -262,7 +263,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 823
+    m_Bits: 2871
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -281,7 +282,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.15
+  m_Radius: 0.4
 --- !u!114 &8571130944131544960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,3 +347,15 @@ MonoBehaviour:
   movementSpeed: 1
   nearbyObjects: []
   closestItem: {fileID: 0}
+--- !u!114 &1191788940700171577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8556585250658775287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b0f65ae8b5ce940a7a86d081dc9d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

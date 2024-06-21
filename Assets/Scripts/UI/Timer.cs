@@ -7,8 +7,8 @@ using TMPro;
 public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
-    [SerializeField] private GameObject InventoryImage;
-    [SerializeField] private GameObject UI;
+	[SerializeField] private SpriteRenderer sprite;
+	[SerializeField] private GameObject UI;
     [SerializeField] private GameObject Icon;
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private GameObject HighlightUI;
@@ -53,7 +53,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
     private float GetDivisors()
     {
         Vector3[] corners = new Vector3[4];
-        InventoryImage.GetComponent<RectTransform>().GetWorldCorners(corners);
+        GetComponent<RectTransform>().GetWorldCorners(corners);
         return corners[2].x - corners[1].x;
     }
 
@@ -80,7 +80,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
                 current = 6;
         }
 
-        InventoryImage.GetComponent<Image>().raycastTarget = false;
+        image.raycastTarget = false;
         foreach (GameObject slot in Slots)
             slot.GetComponent<InventorySlot>().Taken = false;
         
@@ -117,7 +117,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         if (!isDropped)
         {       
             transform.position = new Vector3(((Slots[0].transform.position.x + Slots[5].transform.position.x) / 2), ((Slots[0].transform.position.y + Slots[5].transform.position.y) / 2));
-            InventoryImage.GetComponent<Image>().raycastTarget = true;
+            image.raycastTarget = true;
             foreach (GameObject slot in Slots)
                 slot.GetComponent<InventorySlot>().Taken = true;    
         }
@@ -197,8 +197,8 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
                 isDropped = false;
                 transform.SetParent(GameObject.Find("InventoryImages").transform);
                 OnEndDrag(null);
-                InventoryImage.SetActive(true);
-                Icon.SetActive(false);
+				sprite.enabled = false;
+				Icon.SetActive(false);
                 UI.SetActive(false);
                 box.enabled = false;
                 uiActive = false;
@@ -210,23 +210,51 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         return false;
     }
 
-    public override void ItemDropped()
+    public override void ItemDropped(GameObject Character)
     {
         isDropped = true;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         OnEndDrag(null);
-        InventoryImage.SetActive(false);
-        Icon.SetActive(true);
+		sprite.enabled = true;
+		Icon.SetActive(true);
         box.enabled = true;
-        InventoryImage.GetComponent<Image>().raycastTarget = true;
+        image.raycastTarget = true;
         for (int i = 0; i <= 5; i++)
             Slots[i] = null;
         current = 0;
-        transform.position = GameObject.Find("Player").transform.position - new Vector3(0, 0.5f);
         transform.localScale = Vector3.one;
-    }
+		Transform character = Character.transform;
+		transform.position = character.position;
+		if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
+			StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f));
+		else
+			StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-2f, 0f, 0f), 0.5f));
+	}
+	private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float duration)
+	{
+		Vector3 startPosition = transform.position;
+		float elapsed = 0f;
 
-    public override void Highlight(bool toggle)
+		while (elapsed < duration)
+		{
+			float height = 1f;
+			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+			arcPosition.y += Mathf.Sin(Mathf.Clamp01(elapsed / duration) * Mathf.PI) * height;
+
+			Collider2D[] hits = Physics2D.OverlapCircleAll(arcPosition, 0.5f);
+			foreach (Collider2D hit in hits)
+			{
+				if (hit.CompareTag("Wolf"))
+					isMarked = true;
+			}
+			transform.position = arcPosition;
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+
+		transform.position = targetPosition;
+	}
+	public override void Highlight(bool toggle)
     {
         if (toggle)
         {
