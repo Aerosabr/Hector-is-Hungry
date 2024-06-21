@@ -16,7 +16,7 @@ public class Mountainous : Region
 
     private void Start()
     {
-        Spawning(Items[Random.Range(0, Items.Count)]);
+        
     }
 
     private void FixedUpdate()

@@ -17,7 +17,6 @@ public class Swamp : Region
     private void Start()
     {
         Spawning(Items[Random.Range(0, Items.Count)]);
-        Spawning(Items[Random.Range(0, Items.Count)]);
         SpawnSeed(1);
     }
 
@@ -83,7 +82,7 @@ public class Swamp : Region
     {
         for (int i = 0; i < num; i++)
         {
-            Vector3 SpawnArea = new Vector3(Random.Range(-spawnX, spawnX), Random.Range(-spawnY, spawnY));
+            Vector3 SpawnArea = new Vector3(Random.Range(-spawnX / 2, spawnX / 2), Random.Range((-spawnY / 2) - 1.5f, (spawnY / 2) - 1.5f));
 
             GameObject temp = Instantiate(seed, transform);
             temp.GetComponent<Seed>().InitiateSeed(SpawnArea, this);

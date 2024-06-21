@@ -12,7 +12,7 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
     [SerializeField] private int current;
     [SerializeField] private GameObject item;
     [SerializeField] private bool Spawnable = true;
-
+    [SerializeField] private List<GameObject> itemsOnSelf = new List<GameObject>();
     public bool isSeed = true;
     
 
@@ -23,19 +23,9 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
             if (Spawnable && region.numActive < 6)
                 StartCoroutine(SpawnItem());
 
-            bool temp = false;
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1f);
-            foreach (Collider2D collider in colliders)
-            {
-                if (collider.gameObject.tag == "Item" && collider.name != "Seed(Clone)")
-                {
-                    box.enabled = false;
-                    temp = true;
-                    break;
-                }
-            }
-
-            if (!temp)
+            if (itemsOnSelf.Count > 0)
+                box.enabled = false;
+            else
                 box.enabled = true;
         }
     }
@@ -43,9 +33,10 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
     #region Seed Functions
     private IEnumerator SpawnItem()
     {
+        Spawnable = false;
         float spawnDur = Random.Range(item.GetComponent<Item>().spawnDuration / 2, item.GetComponent<Item>().spawnDuration);
         yield return new WaitForSeconds(spawnDur);
-        if (region.numActive < 6)
+        if (region.numActive < 6 && box.enabled)
             Spawning(item);
         Spawnable = true;
     }
@@ -296,4 +287,22 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         Debug.Log("Consume Seed");
     }
     #endregion  
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Item")
+        {
+            Debug.Log(collision.name + " entered");
+            itemsOnSelf.Add(collision.gameObject);
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Item")
+        {
+            Debug.Log(collision.name + " left");
+            itemsOnSelf.Remove(collision.gameObject);
+        }
+    }
 }
