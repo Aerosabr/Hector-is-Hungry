@@ -31,7 +31,7 @@ public class Player : Entity
         //Debug.Log("Enter")
         if (collision.gameObject.tag == "Wolf")
             transform.GetChild(0).gameObject.SetActive(true);
-		if (collision.gameObject.tag == "Item")
+		if (collision.gameObject.tag == "Item" || collision.gameObject.tag == "NPC")
             nearbyObjects.Add(collision.gameObject);
     }
 
@@ -40,8 +40,8 @@ public class Player : Entity
 		//Debug.Log("Exit");
 		if (collision.gameObject.tag == "Wolf")
 			transform.GetChild(0).gameObject.SetActive(false);
-		if (collision.gameObject.tag == "Item")
-		{
+        if (collision.gameObject.tag == "Item" || collision.gameObject.tag == "NPC")
+        {
 			nearbyObjects.Remove(collision.gameObject);
 			Item itemComponent = collision.gameObject.GetComponent<Item>();
 			if (itemComponent != null)
