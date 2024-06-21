@@ -86,7 +86,6 @@ public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, 
 		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
-        box.enabled = true;
         isDropped = true;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         Transform character = Character.transform;
@@ -146,7 +145,8 @@ public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, 
 		}
 
 		transform.position = targetPosition;
-	}
+        box.enabled = true;
+    }
 
 	public override void Highlight(bool toggle)
     {

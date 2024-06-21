@@ -86,7 +86,7 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
-        box.enabled = true;
+        
         isDropped = true;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.localScale = new Vector3(.15f, .15f, .15f);
@@ -147,7 +147,8 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 		}
 
 		transform.position = targetPosition;
-	}
+        box.enabled = true;
+    }
 
 	public override void Highlight(bool toggle)
     {
