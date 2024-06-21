@@ -13,6 +13,11 @@ public class Wolf : MonoBehaviour
 	public float stunTimer = 0;
 	public float visionRadius = 10f;
 
+	public bool GracePeriod = false;
+	public SpriteRenderer sprite;
+	public float slowTimer = 0;
+	public bool isSlowed = false;
+
 	public float eatTime, foodValue, effectValue;
 	public string effect;
 
@@ -31,6 +36,14 @@ public class Wolf : MonoBehaviour
 			timeSinceLastIncrease = 0f;
 		}
 
+		if(slowTimer >= effectValue)
+		{
+			isSlowed = false;
+		}
+		else
+		{
+			slowTimer += 1 * Time.deltaTime;
+		}
 	}
 
 	private void IncreaseEatingSpeed()
@@ -40,7 +53,7 @@ public class Wolf : MonoBehaviour
 
 	public void AddHunger(float foodValue)
 	{
-		if(currentHunger < maxHunger)
+		if (currentHunger < maxHunger)
 		{
 			currentHunger += foodValue;
 		}
@@ -50,4 +63,12 @@ public class Wolf : MonoBehaviour
 	{
 		hungerDrainSpeed = speed;
 	}
+
+	public void Slowed()
+	{
+		slowTimer = 0;
+		isSlowed = true;
+	}
+
+
 }

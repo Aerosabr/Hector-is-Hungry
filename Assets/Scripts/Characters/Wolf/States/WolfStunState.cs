@@ -14,11 +14,13 @@ public class WolfStunState : WolfState
 	public override void EnterState()
 	{
 		stunTimer = Wolf.effectValue;
+		Wolf.sprite.color = Color.yellow;
 		Wolf.transform.GetChild(2).gameObject.SetActive(true);
 		//Debug.Log("Enter Stun State");
 	}
 	public override void ExitState()
 	{
+		Wolf.sprite.color = Color.white;
 		Wolf.transform.GetChild(2).gameObject.SetActive(false);
 		//Debug.Log("Exit Stun State");
 	}
@@ -26,7 +28,7 @@ public class WolfStunState : WolfState
 	{
 		if(stunTimer > 0)
 		{
-			stunTimer -= 0.9f + Time.deltaTime;
+			stunTimer -= 1 * Time.deltaTime;
 		}
 		else
 		{
@@ -39,14 +41,11 @@ public class WolfStunState : WolfState
 	}
 	public override void OnTriggerEnter2D(Collider2D other)
 	{
-		throw new System.NotImplementedException();
 	}
 	public override void OnTriggerExit2D(Collider2D other)
 	{
-		throw new System.NotImplementedException();
 	}
 	public override void OnTriggerStay2D(Collider2D other)
 	{
-		throw new System.NotImplementedException();
 	}
 }

@@ -14,6 +14,7 @@ public class House : MonoBehaviour
 	[SerializeField] private SpriteRenderer sprite;
 	[SerializeField] private TextMeshPro text;
 	[SerializeField] private GameObject bubble;
+	[SerializeField] private Victory victory;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -64,7 +65,7 @@ public class House : MonoBehaviour
 				{
 					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
-					Instantiate(pig, transform.position, Quaternion.identity);
+					victory.VictoryScreen();
 				}
 			}
 		}
