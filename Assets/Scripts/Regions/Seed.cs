@@ -211,6 +211,7 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.localScale = Vector3.one;
         Transform character = Character.transform;
+        transform.position = character.position;
 		if (character.tag == "Player")
 		{
 			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)

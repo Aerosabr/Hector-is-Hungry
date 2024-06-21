@@ -7,7 +7,12 @@ public class Player : Entity
     [SerializeField] private List<GameObject> nearbyObjects = new List<GameObject>();
 	[SerializeField] private GameObject closestItem;
 	[SerializeField] private Coroutine coroutine;
+	[SerializeField] private GameObject gameOver;
 
+	public void OnDestroy()
+	{
+		gameOver.SetActive(true);
+	}
 	public void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Enter")

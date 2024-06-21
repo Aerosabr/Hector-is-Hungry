@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Diagnostics;
 
 public class House : MonoBehaviour
 {
@@ -23,12 +24,43 @@ public class House : MonoBehaviour
 	{
 		if(collision.tag == "Item" && currentAmount < requireAmount)
 		{
-			if(collision.name == material)
+			//Debug.Log(collision.gameObject.name);
+
+			// Check if the collision object has a "haybale" or "apple" script
+			Haybale haybaleScript = collision.gameObject.GetComponent<Haybale>();
+			Sticks stickScript = collision.gameObject.GetComponent<Sticks>();
+			Rock rockScript = collision.gameObject.GetComponent<Rock>();
+
+			if(material == "Haybale" && haybaleScript != null)
 			{
 				currentAmount += 1;
 				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
 				collision.GetComponent<DestroyOnContact>().DestroyObject();
 				if(currentAmount == requireAmount) 
+				{
+					bubble.SetActive(false);
+					sprite.sprite = sprite_List[1];
+					Instantiate(pig, transform.position, Quaternion.identity);
+				}
+			}
+			else if (material == "Sticks" && stickScript != null)
+			{
+				currentAmount += 1;
+				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
+				collision.GetComponent<DestroyOnContact>().DestroyObject();
+				if (currentAmount == requireAmount)
+				{
+					bubble.SetActive(false);
+					sprite.sprite = sprite_List[1];
+					Instantiate(pig, transform.position, Quaternion.identity);
+				}
+			}
+			else if (material == "Rock" && rockScript != null)
+			{
+				currentAmount += 1;
+				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
+				collision.GetComponent<DestroyOnContact>().DestroyObject();
+				if (currentAmount == requireAmount)
 				{
 					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
