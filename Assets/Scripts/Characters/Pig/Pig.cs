@@ -10,7 +10,6 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private int current;
-    [SerializeField] private BoxCollider2D box;
     [SerializeField] private CircleCollider2D circle;
     public float runSpeed = 5.0f;
 

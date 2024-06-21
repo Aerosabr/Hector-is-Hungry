@@ -3859,6 +3859,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1097018629670965419, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
   m_PrefabInstance: {fileID: 838107436}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &639288051 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5185385386134003700, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
+  m_PrefabInstance: {fileID: 838107436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &662526393
 GameObject:
   m_ObjectHideFlags: 0
@@ -4954,6 +4959,10 @@ PrefabInstance:
       propertyPath: House
       value: 
       objectReference: {fileID: 906149079}
+    - target: {fileID: 4457199107387957587, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
+      propertyPath: circle
+      value: 
+      objectReference: {fileID: 639288051}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7550,6 +7559,10 @@ PrefabInstance:
       propertyPath: House
       value: 
       objectReference: {fileID: 245753574}
+    - target: {fileID: 4457199107387957587, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
+      propertyPath: circle
+      value: 
+      objectReference: {fileID: 1735281062}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8328,6 +8341,11 @@ CanvasRenderer:
 --- !u!1 &1735281055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1097018629670965419, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
+  m_PrefabInstance: {fileID: 1531914933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1735281062 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5185385386134003700, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
   m_PrefabInstance: {fileID: 1531914933}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1757743677
