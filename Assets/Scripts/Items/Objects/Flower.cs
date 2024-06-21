@@ -201,10 +201,10 @@ public class Flower : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 75;
-        foodValue = 10;
+        eatTime = 10;
+        foodValue = 20;
         effect = "Poison";
-        effectValue = 5;
+        effectValue = 15;
         region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Flower");

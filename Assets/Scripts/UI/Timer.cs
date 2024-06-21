@@ -7,6 +7,7 @@ using TMPro;
 public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
+    [SerializeField] private GameObject houseBrick;
 	[SerializeField] private SpriteRenderer sprite;
 	[SerializeField] private GameObject UI;
     [SerializeField] private GameObject Icon;
@@ -280,10 +281,11 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
         eatTime = 75;
-        foodValue = 10;
+        foodValue = 100;
         effect = "Poison";
         effectValue = 5;
         region.numActive--;
+        houseBrick.SetActive(true);
         Destroy(gameObject);
         Debug.Log("Consume Stalagmite");
     }

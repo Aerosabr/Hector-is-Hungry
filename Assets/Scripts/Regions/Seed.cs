@@ -298,9 +298,9 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 75;
-        foodValue = 10;
-        effect = "Poison";
+        eatTime = 25;
+        foodValue = 50;
+        effect = "None";
         effectValue = 5;
         region.numActive--;
         Destroy(gameObject);

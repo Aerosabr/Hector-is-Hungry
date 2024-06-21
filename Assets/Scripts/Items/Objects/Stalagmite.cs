@@ -227,8 +227,8 @@ public class Stalagmite : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
         eatTime = 75;
-        foodValue = 10;
-        effect = "Poison";
+        foodValue = 25;
+        effect = "None";
         effectValue = 5;
         region.numActive--;
         Destroy(gameObject);
