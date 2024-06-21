@@ -221,7 +221,8 @@ public class Tumbleweed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 							transform.SetParent(pig.transform);
 							sprite.enabled = false;
 							box.enabled = false;
-							transform.localScale = new Vector3(1, 1, 1);
+                            box.excludeLayers |= LayerMask.GetMask("Character");
+                            transform.localScale = new Vector3(1, 1, 1);
 						}
 					}
 				}
