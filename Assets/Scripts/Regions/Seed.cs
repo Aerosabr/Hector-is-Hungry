@@ -276,7 +276,6 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 						{
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 4;
-							isDropped = false;
 							isMarked = false;
 							transform.SetParent(pig.transform);
 							sprite.enabled = false;

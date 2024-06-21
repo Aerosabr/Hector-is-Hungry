@@ -193,7 +193,6 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 						{
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 3;
-							isDropped = false;
 							isMarked = false;
 							transform.SetParent(pig.transform);
 							sprite.enabled = false;

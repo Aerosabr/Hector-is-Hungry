@@ -129,7 +129,6 @@ public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, 
 						if (pig.item == null)
 						{
 							pig.item = transform.gameObject;
-							isDropped = false;
 							isMarked = false;
 							transform.SetParent(pig.transform);
 							sprite.enabled = false;
