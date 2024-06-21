@@ -401,7 +401,7 @@ MonoBehaviour:
   bodySize: 1
   maxHunger: 100
   currentHunger: 100
-  hungerDrainSpeed: 1
+  hungerDrainSpeed: 6
   eatingSpeed: 1
   stunTimer: 0
   visionRadius: 10
