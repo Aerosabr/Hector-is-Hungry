@@ -30,7 +30,9 @@ public class WolfIdleState : WolfState
 		{
 			Wolf.GracePeriod = true;
 			DrainHunger();
+			ConsumeNearbyFood();
 		}
+		
 	}
 	public override WolfStateMachine.EWolfState GetState()
 	{
@@ -58,17 +60,6 @@ public class WolfIdleState : WolfState
 	}
 	public override void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.TryGetComponent(out IConsumable consumable))
-		{
-			// Check if consumable is not already in foodInRange
-			if (!Wolf.foodInRange.Contains(consumable))
-			{
-				Wolf.foodInRange.Add(consumable);
-				ConsumeNearbyFood(); // Optionally consume food immediately upon detection
-			}
-			else
-				ConsumeNearbyFood(); // Optionally consume food immediately upon detection
-		}
 	}
 
 	public void DrainHunger()
