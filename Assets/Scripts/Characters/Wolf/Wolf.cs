@@ -39,6 +39,7 @@ public class Wolf : MonoBehaviour
 		if(slowTimer >= effectValue)
 		{
 			isSlowed = false;
+			sprite.color = Color.white;
 		}
 		else
 		{
@@ -66,6 +67,7 @@ public class Wolf : MonoBehaviour
 
 	public void Slowed()
 	{
+		sprite.color = Color.magenta;
 		slowTimer = 0;
 		isSlowed = true;
 	}

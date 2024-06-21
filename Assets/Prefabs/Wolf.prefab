@@ -114,14 +114,14 @@ RectTransform:
   m_GameObject: {fileID: 1210672589387940482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.7, y: 2.7, z: 1}
+  m_LocalScale: {x: 2, y: 2.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1706043857974278052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.2, y: 1}
+  m_AnchoredPosition: {x: 5.2, y: 1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &389344034145024298
@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 5596768406023100030}
   - component: {fileID: 6094999551353952011}
   - component: {fileID: 908620645611386722}
-  - component: {fileID: 4278944316374364935}
   m_Layer: 10
   m_Name: Wolf
   m_TagString: Wolf
@@ -318,8 +317,8 @@ RectTransform:
   m_Children:
   - {fileID: 5392102719168035084}
   - {fileID: 701725668155709122}
-  - {fileID: 8495833924379581565}
   - {fileID: 72411522989708506}
+  - {fileID: 8495833924379581565}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -407,7 +406,7 @@ MonoBehaviour:
   stunTimer: 0
   visionRadius: 10
   GracePeriod: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 6078588985510790978}
   slowTimer: 0
   isSlowed: 0
   eatTime: 0
@@ -457,10 +456,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 6, y: 1.5}
+  m_Offset: {x: 5, y: 1.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -471,40 +470,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.5, y: 12.5}
+  m_Size: {x: 5, y: 12.5}
   m_EdgeRadius: 0
---- !u!58 &4278944316374364935
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4584241203533315182}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 1079
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 7
