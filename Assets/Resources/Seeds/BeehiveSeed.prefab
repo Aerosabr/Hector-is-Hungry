@@ -219,6 +219,7 @@ MonoBehaviour:
   HighlightObject: {fileID: 2970095531015545647}
   current: 0
   item: {fileID: 8122121896873151427, guid: 01f4741f4830c6a47a79d239005668aa, type: 3}
+  VoidItem: {fileID: 2972177539916344341, guid: 4d925222c6ada0d45b6504a8769b6713, type: 3}
   Spawnable: 1
   itemsOnSelf: []
   isSeed: 1

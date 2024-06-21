@@ -199,6 +199,11 @@ public class UFO : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        return false;
+    }
+
     public override void ItemDropped(GameObject Character)
     {
         sprite.enabled = true;

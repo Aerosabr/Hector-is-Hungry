@@ -152,6 +152,11 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        return false;
+    }
+
     public override void ItemDropped(GameObject Character)
     {
         sprite.enabled = true;

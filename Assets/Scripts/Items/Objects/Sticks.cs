@@ -108,6 +108,11 @@ public class Sticks : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        return false;
+    }
+
     public override void ItemDropped(GameObject Character)
     {
         sprite.enabled = true;

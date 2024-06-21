@@ -10,12 +10,18 @@ public abstract class Item : MonoBehaviour
     public BoxCollider2D box;
     public Region region;
     public bool isDropped;
+
+    public float speedDuration;
+
     public bool isMarked = false;
+
     public int xSize;
     public int ySize;
     public int spawnDuration;
+    public abstract void Highlight(bool toggle);
     public abstract bool CheckSlot(string Pos);
     public abstract bool PickupItem();
+    public abstract bool EatItem(Player player);
     public abstract void ItemDropped(GameObject Character);
-    public abstract void Highlight(bool toggle);
+
 }

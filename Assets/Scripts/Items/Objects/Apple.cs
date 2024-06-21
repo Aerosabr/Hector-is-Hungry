@@ -69,6 +69,18 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        if (player.sprintDuration <= 0)
+            player.sprintDuration += speedDuration;
+        else
+            player.sprintDuration += speedDuration / 2;
+        region.numActive--;
+        Destroy(gameObject);
+        Debug.Log("Ate Apple");
+        return true;
+    }
+
     public override void ItemDropped(GameObject Character)
     {
 		sprite.enabled = true;

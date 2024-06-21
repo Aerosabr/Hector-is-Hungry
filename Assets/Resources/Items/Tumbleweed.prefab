@@ -183,6 +183,7 @@ MonoBehaviour:
   box: {fileID: 2952024288604229408}
   region: {fileID: 0}
   isDropped: 1
+  speedDuration: 2
   isMarked: 0
   xSize: 2
   ySize: 2

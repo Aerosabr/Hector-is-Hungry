@@ -7,12 +7,25 @@ public class Player : Entity
     [SerializeField] private List<GameObject> nearbyObjects = new List<GameObject>();
 	[SerializeField] private GameObject closestItem;
 	[SerializeField] private Coroutine coroutine;
-	[SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject gameOver;
+    public float sprintDuration = 0;
+
+    private void FixedUpdate()
+    {
+        if (sprintDuration > 0)
+        {
+            sprintDuration -= Time.deltaTime;
+            movementSpeed = 1.5f;
+        }
+        else
+            movementSpeed = 1;
+    }
 
 	public void OnDestroy()
 	{
 		gameOver.SetActive(true);
 	}
+
 	public void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Enter")
@@ -73,7 +86,37 @@ public class Player : Entity
 		}
     }
 
-	public void HighlightNearest()
+    public void OnEat()
+    {
+        int index = 0;
+        bool containSpace = false;
+        if (nearbyObjects.Count > 1)
+        {
+            float distance = Mathf.Infinity;
+            for (int i = 0; i < nearbyObjects.Count; i++)
+            {
+                if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+                {
+
+                    distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
+                    index = i;
+                }
+            }
+            containSpace = nearbyObjects[index].GetComponent<Item>().EatItem(this);
+        }
+        else if (nearbyObjects.Count == 1)
+            containSpace = nearbyObjects[index].GetComponent<Item>().EatItem(this);
+
+        if (!containSpace && nearbyObjects.Count != 0)
+        {
+            nearbyObjects[index].transform.GetChild(2).gameObject.SetActive(true);
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = StartCoroutine(DeactivateAfterDelay(nearbyObjects[index].transform.GetChild(2).gameObject, 2.0f));
+        }
+    }
+
+    public void HighlightNearest()
 	{
 		if(closestItem != null)
 		{

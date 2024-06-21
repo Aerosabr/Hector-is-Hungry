@@ -167,6 +167,11 @@ public class Stalagmite : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        return false;
+    }
+
     public override void ItemDropped(GameObject Character)
     {
         sprite.enabled = true;
