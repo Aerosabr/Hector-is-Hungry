@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WolfIdleState : WolfState
 {
+	private float GraceTimer = 0;
 	public WolfIdleState(WolfStateMachine stateMachine, Wolf wolf, WolfStateMachine.EWolfState wolfState) : base(stateMachine, wolf, wolfState)
     {
 		StateMachine = stateMachine;
@@ -21,7 +22,15 @@ public class WolfIdleState : WolfState
 	}
 	public override void UpdateState()
 	{
-		DrainHunger();
+		if (GraceTimer < 15f && Wolf.GracePeriod)
+		{
+			GraceTimer += 1 * Time.deltaTime;
+		}
+		else
+		{
+			Wolf.GracePeriod = true;
+			DrainHunger();
+		}
 	}
 	public override WolfStateMachine.EWolfState GetState()
 	{
@@ -66,7 +75,7 @@ public class WolfIdleState : WolfState
 	{
 		if (Wolf.currentHunger > 0)
 		{
-			Wolf.currentHunger -= Wolf.hungerDrainSpeed / 1000 + Time.deltaTime;
+			Wolf.currentHunger -= Wolf.hungerDrainSpeed * Time.deltaTime;
 		}
 		if(Wolf.currentHunger < 0)
 		{
