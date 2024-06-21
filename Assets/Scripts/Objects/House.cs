@@ -31,6 +31,7 @@ public class House : MonoBehaviour
 			Haybale haybaleScript = collision.gameObject.GetComponent<Haybale>();
 			Sticks stickScript = collision.gameObject.GetComponent<Sticks>();
 			Rock rockScript = collision.gameObject.GetComponent<Rock>();
+			Meteor meteorScript = collision.gameObject.GetComponent<Meteor>();
 
 			if(material == "Haybale" && haybaleScript != null)
 			{
@@ -58,7 +59,7 @@ public class House : MonoBehaviour
 					Instantiate(pig, transform.position, Quaternion.identity);
 				}
 			}
-			else if (material == "Rock" && rockScript != null)
+			else if (material == "Rock" && (rockScript != null || meteorScript != null))
 			{
 				currentAmount += 1;
 				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
@@ -78,14 +79,51 @@ public class House : MonoBehaviour
 	{
 		if (collision.tag == "Item" && currentAmount < requireAmount)
 		{
-			if (collision.name == material)
+			//Debug.Log(collision.gameObject.name);
+
+			// Check if the collision object has a "haybale" or "apple" script
+			Haybale haybaleScript = collision.gameObject.GetComponent<Haybale>();
+			Sticks stickScript = collision.gameObject.GetComponent<Sticks>();
+			Rock rockScript = collision.gameObject.GetComponent<Rock>();
+			Meteor meteorScript = collision.gameObject.GetComponent<Meteor>();
+
+			if (material == "Haybale" && haybaleScript != null)
 			{
 				currentAmount += 1;
+				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
+				collision.GetComponent<Item>().region.numActive--;
 				collision.GetComponent<DestroyOnContact>().DestroyObject();
 				if (currentAmount == requireAmount)
 				{
+					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
 					Instantiate(pig, transform.position, Quaternion.identity);
+				}
+			}
+			else if (material == "Sticks" && stickScript != null)
+			{
+				currentAmount += 1;
+				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
+				collision.GetComponent<Item>().region.numActive--;
+				collision.GetComponent<DestroyOnContact>().DestroyObject();
+				if (currentAmount == requireAmount)
+				{
+					bubble.SetActive(false);
+					sprite.sprite = sprite_List[1];
+					Instantiate(pig, transform.position, Quaternion.identity);
+				}
+			}
+			else if (material == "Rock" && (rockScript != null || meteorScript != null))
+			{
+				currentAmount += 1;
+				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
+				collision.GetComponent<Item>().region.numActive--;
+				collision.GetComponent<DestroyOnContact>().DestroyObject();
+				if (currentAmount == requireAmount)
+				{
+					bubble.SetActive(false);
+					sprite.sprite = sprite_List[1];
+					victory.VictoryScreen();
 				}
 			}
 		}
