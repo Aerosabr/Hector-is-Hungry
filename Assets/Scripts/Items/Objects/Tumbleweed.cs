@@ -176,8 +176,8 @@ public class Tumbleweed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.localScale = Vector3.one;
-		Transform character = transform;
-		transform.position = character.position;
+		Transform character = Character.transform;
+        transform.position = character.position;
 		if (character.tag == "Player")
 		{
 			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
