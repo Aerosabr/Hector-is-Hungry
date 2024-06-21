@@ -3859,11 +3859,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1097018629670965419, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
   m_PrefabInstance: {fileID: 838107436}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &639288051 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5185385386134003700, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
-  m_PrefabInstance: {fileID: 838107436}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &662526393
 GameObject:
   m_ObjectHideFlags: 0
@@ -4959,10 +4954,6 @@ PrefabInstance:
       propertyPath: House
       value: 
       objectReference: {fileID: 906149079}
-    - target: {fileID: 4457199107387957587, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
-      propertyPath: circle
-      value: 
-      objectReference: {fileID: 639288051}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7559,10 +7550,6 @@ PrefabInstance:
       propertyPath: House
       value: 
       objectReference: {fileID: 245753574}
-    - target: {fileID: 4457199107387957587, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
-      propertyPath: circle
-      value: 
-      objectReference: {fileID: 1735281062}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8341,11 +8328,6 @@ CanvasRenderer:
 --- !u!1 &1735281055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1097018629670965419, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
-  m_PrefabInstance: {fileID: 1531914933}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &1735281062 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5185385386134003700, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
   m_PrefabInstance: {fileID: 1531914933}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1757743677
@@ -9885,7 +9867,7 @@ GameObject:
   - component: {fileID: 1953378288}
   - component: {fileID: 1953378290}
   m_Layer: 7
-  m_Name: TimerUI
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10572,8 +10554,8 @@ MonoBehaviour:
   - {fileID: 3036574510944471396, guid: 0b47cedd91f67fc4ca19d0a3c01f6e0b, type: 3}
   - {fileID: 2026663234524952697, guid: d844b1bc79428d249956533693926a59, type: 3}
   Region3:
-  - {fileID: 5604355655601546913, guid: 961daf42d79aca449a071919b5757eb8, type: 3}
   - {fileID: 204622926497971846, guid: aceffce01eb36d345920c95a74db5963, type: 3}
+  - {fileID: 5604355655601546913, guid: 961daf42d79aca449a071919b5757eb8, type: 3}
   - {fileID: 6723230534750379339, guid: 54e4f86f94975054883b91a1d61717c8, type: 3}
 --- !u!4 &2115197708
 Transform:
