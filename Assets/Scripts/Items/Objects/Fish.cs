@@ -107,6 +107,18 @@ public class Fish : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        if (player.sprintDuration <= 0)
+            player.sprintDuration += speedDuration;
+        else
+            player.sprintDuration += speedDuration / 2;
+        region.numActive--;
+        Destroy(gameObject);
+        Debug.Log("Ate Fish");
+        return true;
+    }
+
     public override void ItemDropped()
     {
         InventoryImage.SetActive(true);

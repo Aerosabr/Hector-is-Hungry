@@ -151,6 +151,11 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        return false;
+    }
+
     public override void ItemDropped()
     {
         InventoryImage.SetActive(true);

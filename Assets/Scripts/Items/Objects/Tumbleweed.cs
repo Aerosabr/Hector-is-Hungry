@@ -151,6 +151,18 @@ public class Tumbleweed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        if (player.sprintDuration <= 0)
+            player.sprintDuration += speedDuration;
+        else
+            player.sprintDuration += speedDuration / 2;
+        region.numActive--;
+        Destroy(gameObject);
+        Debug.Log("Ate Tumbleweed");
+        return true;
+    }
+
     public override void ItemDropped()
     {
         InventoryImage.SetActive(true);

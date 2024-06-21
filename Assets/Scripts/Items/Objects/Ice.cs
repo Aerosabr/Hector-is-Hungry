@@ -166,6 +166,11 @@ public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        return false;
+    }
+
     public override void ItemDropped()
     {
         InventoryImage.SetActive(true);

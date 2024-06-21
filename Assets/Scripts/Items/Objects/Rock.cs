@@ -166,6 +166,11 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        return false;
+    }
+
     public override void ItemDropped()
     {
         InventoryImage.SetActive(true);

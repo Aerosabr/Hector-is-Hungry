@@ -210,6 +210,11 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        return false;
+    }
+
     public override void ItemDropped()
     {
         isDropped = true;

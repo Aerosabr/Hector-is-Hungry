@@ -345,6 +345,7 @@ MonoBehaviour:
   box: {fileID: 1961888031176087649}
   region: {fileID: 0}
   isDropped: 1
+  speedDuration: 8
   xSize: 1
   ySize: 2
   spawnDuration: 15

@@ -198,6 +198,11 @@ public class Meteor : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
         return false;
     }
 
+    public override bool EatItem(Player player)
+    {
+        return false;
+    }
+
     public override void ItemDropped()
     {
         InventoryImage.SetActive(true);
