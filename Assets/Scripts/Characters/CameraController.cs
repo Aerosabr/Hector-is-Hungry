@@ -39,6 +39,8 @@ public class CameraController : MonoBehaviour
 
 	void LateUpdate()
 	{
+		if (player == null)
+			return;
 		float targetViewportX = Camera.main.WorldToViewportPoint(player.transform.position).x;
 		if (targetViewportX < 0.4f || targetViewportX > 0.6f)
 		{
