@@ -10853,6 +10853,10 @@ PrefabInstance:
       propertyPath: HighlightUI
       value: 
       objectReference: {fileID: 1093449946}
+    - target: {fileID: 2313170084900286184, guid: 66a9836cdfa113744a6fda6ccc87935c, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 439
+      objectReference: {fileID: 0}
     - target: {fileID: 5371046674975197288, guid: 66a9836cdfa113744a6fda6ccc87935c, type: 3}
       propertyPath: m_Name
       value: Timer
