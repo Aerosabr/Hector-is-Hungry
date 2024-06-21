@@ -33,14 +33,28 @@ public class WolfEatState : WolfState
 	{
 		if (beginEating && eatTimer > 0)
 		{
-			Wolf.AddHunger((Wolf.foodValue / Wolf.eatTime) * Time.deltaTime);
+			if(Wolf.isSlowed)
+			{
+				Wolf.AddHunger(((Wolf.foodValue / Wolf.eatTime)/2) * Time.deltaTime);
 
-			eatTimer -= Wolf.eatingSpeed * Time.deltaTime;
+				eatTimer -= (Wolf.eatingSpeed/2) * Time.deltaTime;
+			}
+			else
+			{
+				Wolf.AddHunger((Wolf.foodValue / Wolf.eatTime) * Time.deltaTime);
+
+				eatTimer -= Wolf.eatingSpeed * Time.deltaTime;
+			}
 		}
 		else if (eatTimer <= 0)
 		{
 			if (Wolf.effect == "Poison")
 				StateMachine.ChangeState(WolfStateMachine.EWolfState.Stun);
+			else if(Wolf.effect == "Slow")
+			{
+				Wolf.Slowed();
+				StateMachine.ChangeState(WolfStateMachine.EWolfState.Idle);
+			}
 			else
 				StateMachine.ChangeState(WolfStateMachine.EWolfState.Idle);
 		}
