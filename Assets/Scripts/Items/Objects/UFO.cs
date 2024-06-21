@@ -258,10 +258,10 @@ public class UFO : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 75;
-        foodValue = 10;
-        effect = "Poison";
-        effectValue = 5;
+        eatTime = Random.Range(5f, 10f);
+        foodValue = 90;
+        effect = "Stun";
+        effectValue = 25;
         region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume UFO");
