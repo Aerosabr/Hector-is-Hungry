@@ -158,7 +158,7 @@ public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, 
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 0;
+        eatTime = 1;
         foodValue = 10;
         effect = "Slow";
         effectValue = 2;

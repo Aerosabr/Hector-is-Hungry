@@ -226,7 +226,7 @@ public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 0;
+        eatTime = 1;
         foodValue = 60;
         effect = "Slow";
         effectValue = 12;
