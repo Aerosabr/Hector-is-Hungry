@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4191700301537851101}
   - component: {fileID: 5946917593866635185}
   - component: {fileID: 5185385386134003700}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Pig
   m_TagString: NPC
   m_Icon: {fileID: 0}
