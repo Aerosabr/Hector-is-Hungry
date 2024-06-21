@@ -318,7 +318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4230458695565515231
 RectTransform:
   m_ObjectHideFlags: 0
@@ -479,6 +479,7 @@ MonoBehaviour:
   box: {fileID: 1020541684077965727}
   region: {fileID: 0}
   isDropped: 1
+  speedDuration: 0
   isMarked: 0
   xSize: 2
   ySize: 3

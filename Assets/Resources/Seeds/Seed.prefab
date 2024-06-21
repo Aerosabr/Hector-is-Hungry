@@ -341,6 +341,7 @@ MonoBehaviour:
   box: {fileID: 5086509714943459352}
   region: {fileID: 0}
   isDropped: 1
+  speedDuration: 20
   isMarked: 0
   xSize: 2
   ySize: 2
@@ -354,6 +355,7 @@ MonoBehaviour:
   HighlightObject: {fileID: 2970095531015545647}
   current: 0
   item: {fileID: 0}
+  VoidItem: {fileID: 0}
   Spawnable: 1
   itemsOnSelf: []
   isSeed: 1
