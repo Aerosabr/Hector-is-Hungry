@@ -19,6 +19,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
     [SerializeField] private TextMeshPro textItem;
     [SerializeField] private bool uiActive = true;
     [SerializeField] private GameObject brickHouse;
+    public bool TimerActive = true;
     public float timerElapse = 0f;
     /*
     private void Awake()
@@ -43,13 +44,16 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     private void FixedUpdate()
     {
-        timerElapse += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(timerElapse / 60);
-        int seconds = Mathf.FloorToInt(timerElapse % 60);
-        string secondsString = seconds < 10 ? "0" + seconds.ToString() : seconds.ToString();
-        textInventory.text = minutes.ToString() + ":" + secondsString;
-        textItem.text = minutes.ToString() + ":" + secondsString;
-        textUI.text = minutes.ToString() + ":" + secondsString;
+        if (TimerActive)
+        {
+            timerElapse += Time.deltaTime;
+            int minutes = Mathf.FloorToInt(timerElapse / 60);
+            int seconds = Mathf.FloorToInt(timerElapse % 60);
+            string secondsString = seconds < 10 ? "0" + seconds.ToString() : seconds.ToString();
+            textInventory.text = minutes.ToString() + ":" + secondsString;
+            textItem.text = minutes.ToString() + ":" + secondsString;
+            textUI.text = minutes.ToString() + ":" + secondsString;
+        }
     }
 
     private float GetDivisors()
