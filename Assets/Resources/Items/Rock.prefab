@@ -126,7 +126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8490693730743630830
 RectTransform:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
+    oldSize: {x: 3.2, y: 3.2}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Not Editable
+  m_text: Not Edible
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f7a494ab2bd2f224fb3010b2b3cf0765, type: 2}
   m_sharedMaterial: {fileID: 7730081025244178804, guid: f7a494ab2bd2f224fb3010b2b3cf0765, type: 2}

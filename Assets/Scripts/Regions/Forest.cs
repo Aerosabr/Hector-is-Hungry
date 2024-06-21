@@ -18,6 +18,7 @@ public class Forest : Region
     {
         Spawning(Items[Random.Range(0, Items.Count)]);
         Spawning(Items[Random.Range(0, Items.Count)]);
+        Spawning(Items[Random.Range(0, Items.Count)]);
 
         SpawnSeed(1);
     }

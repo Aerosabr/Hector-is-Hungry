@@ -21,7 +21,10 @@ public class RegionManager : MonoBehaviour
 
     public void LoadRegions()
     {
-        GameObject region1 = Instantiate(Almanac.instance.Region1[Random.Range(0, Almanac.instance.Region1.Count)], gameObject.transform);
+        int roll = 0;
+        if (Random.Range(0, 100) < 20)
+            roll = 1;
+        GameObject region1 = Instantiate(Almanac.instance.Region1[roll], gameObject.transform);
         Regions.Add(region1);
         region1.transform.position = new Vector2(10, 0);
 

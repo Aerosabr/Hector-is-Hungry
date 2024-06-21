@@ -19,6 +19,7 @@ public class Farm : Region
     {
         Spawning(Items[Random.Range(0, Items.Count)]);
         Spawning(Items[Random.Range(0, Items.Count)]);
+        Spawning(Items[Random.Range(0, Items.Count)]);
         SpawnSeed(2);
     }
 

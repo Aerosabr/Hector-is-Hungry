@@ -253,7 +253,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1222338313
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 404656337, guid: e0a9f6643c7f9de459f2d0a9d52c254b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -793,6 +793,7 @@ MonoBehaviour:
   textInventory: {fileID: 843285858222295360}
   textItem: {fileID: 1145511046529411369}
   uiActive: 1
+  brickHouse: {fileID: 0}
   timerElapse: 0
 --- !u!50 &5995170097091941390
 Rigidbody2D:

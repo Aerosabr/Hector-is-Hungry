@@ -2228,10 +2228,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apple
       objectReference: {fileID: 0}
-    - target: {fileID: 3448385962548998414, guid: e5282921bf4f0db499e6b833d916a0e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3099,10 +3095,6 @@ PrefabInstance:
     - target: {fileID: 4093822179315014745, guid: 99b8a57c9b5d9a3448251efd254fe293, type: 3}
       propertyPath: m_Name
       value: Rock
-      objectReference: {fileID: 0}
-    - target: {fileID: 4093822179315014745, guid: 99b8a57c9b5d9a3448251efd254fe293, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8490693730743630830, guid: 99b8a57c9b5d9a3448251efd254fe293, type: 3}
       propertyPath: m_Pivot.x
@@ -10464,10 +10456,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meteor
       objectReference: {fileID: 0}
-    - target: {fileID: 7008989655677850792, guid: fa1841e0c59e31d4f92a3a8ed8764f5c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7406442335835440935, guid: fa1841e0c59e31d4f92a3a8ed8764f5c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10628,10 +10616,6 @@ PrefabInstance:
     - target: {fileID: 8122121896873151427, guid: 01f4741f4830c6a47a79d239005668aa, type: 3}
       propertyPath: m_Name
       value: Beehive
-      objectReference: {fileID: 0}
-    - target: {fileID: 8122121896873151427, guid: 01f4741f4830c6a47a79d239005668aa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8879654113789845380, guid: 01f4741f4830c6a47a79d239005668aa, type: 3}
       propertyPath: m_Pivot.x
@@ -10819,10 +10803,6 @@ PrefabInstance:
     - target: {fileID: 8698306235478316235, guid: 46518ad47d54ba74b9c09288d2c95548, type: 3}
       propertyPath: m_Name
       value: Flower
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698306235478316235, guid: 46518ad47d54ba74b9c09288d2c95548, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11034,10 +11014,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fish
       objectReference: {fileID: 0}
-    - target: {fileID: 7236256467063729191, guid: 2a03bc75d926ebe4dabc5dde1554116c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11135,10 +11111,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice
       objectReference: {fileID: 0}
-    - target: {fileID: 7642227583489275521, guid: 0a1efa60446baa04a97504573e804a67, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11155,10 +11127,6 @@ PrefabInstance:
     - target: {fileID: 986035250294819909, guid: d680b919f926d054790d8ab85712b862, type: 3}
       propertyPath: m_Name
       value: Tumbleweed
-      objectReference: {fileID: 0}
-    - target: {fileID: 986035250294819909, guid: d680b919f926d054790d8ab85712b862, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7302173965093133187, guid: d680b919f926d054790d8ab85712b862, type: 3}
       propertyPath: m_Pivot.x
@@ -11364,10 +11332,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vines
       objectReference: {fileID: 0}
-    - target: {fileID: 7954047639676647434, guid: 7e8de9792fd77cb4a9fd5a0a0a0d7756, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11384,10 +11348,6 @@ PrefabInstance:
     - target: {fileID: 3403955550088199010, guid: ffb46695af12b644c9a81422c0a08a18, type: 3}
       propertyPath: m_Name
       value: Stalagmite
-      objectReference: {fileID: 0}
-    - target: {fileID: 3403955550088199010, guid: ffb46695af12b644c9a81422c0a08a18, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7609388365360989967, guid: ffb46695af12b644c9a81422c0a08a18, type: 3}
       propertyPath: m_Pivot.x
@@ -11485,10 +11445,6 @@ PrefabInstance:
     - target: {fileID: 4206576748557936608, guid: eee63c54e57e6254aa8557db32225324, type: 3}
       propertyPath: m_Name
       value: UFO
-      objectReference: {fileID: 0}
-    - target: {fileID: 4206576748557936608, guid: eee63c54e57e6254aa8557db32225324, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5907320723292199210, guid: eee63c54e57e6254aa8557db32225324, type: 3}
       propertyPath: m_Pivot.x
@@ -11667,10 +11623,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Acorn
       objectReference: {fileID: 0}
-    - target: {fileID: 5844964311583196599, guid: 2262c262444c51742a31e6dd193407d6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11705,10 +11657,6 @@ PrefabInstance:
     - target: {fileID: 345338998095723322, guid: 465a12ce40b1e0648802132d3bcb1737, type: 3}
       propertyPath: m_Name
       value: Sticks
-      objectReference: {fileID: 0}
-    - target: {fileID: 345338998095723322, guid: 465a12ce40b1e0648802132d3bcb1737, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7567941949832207544, guid: 465a12ce40b1e0648802132d3bcb1737, type: 3}
       propertyPath: m_Pivot.x
@@ -13893,10 +13841,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom
       objectReference: {fileID: 0}
-    - target: {fileID: 1796007153731013410, guid: 0763cb22cccee544a90ad3b1c1a02a35, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6001879887319311197, guid: 0763cb22cccee544a90ad3b1c1a02a35, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14649,10 +14593,6 @@ PrefabInstance:
     - target: {fileID: 3418380458207545283, guid: d8724aedc0f197d44adb267e7d3af947, type: 3}
       propertyPath: m_Name
       value: Haybale
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418380458207545283, guid: d8724aedc0f197d44adb267e7d3af947, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

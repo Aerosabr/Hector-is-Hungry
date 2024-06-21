@@ -17,6 +17,7 @@ public class Swamp : Region
     private void Start()
     {
         Spawning(Items[Random.Range(0, Items.Count)]);
+        Spawning(Items[Random.Range(0, Items.Count)]);
         SpawnSeed(1);
     }
 
