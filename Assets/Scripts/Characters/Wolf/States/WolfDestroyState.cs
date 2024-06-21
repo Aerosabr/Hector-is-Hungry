@@ -87,7 +87,7 @@ public class WolfDestroyState : WolfState
 
 		if (item != null)
 		{
-			if (item.isMarked)
+			if (item.isMarked || other.tag == "NPC")
 			{
 				// Perform actions if the item is marked
 				Debug.Log("Item is marked");

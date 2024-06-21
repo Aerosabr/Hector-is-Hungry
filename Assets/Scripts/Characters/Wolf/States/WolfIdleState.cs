@@ -75,12 +75,15 @@ public class WolfIdleState : WolfState
 	}
 	private void ConsumeNearbyFood()
 	{
-		if(Wolf.foodInRange.Count > 0)
+		if (Wolf.foodInRange.Count > 0)
 		{
-			Wolf.foodInRange[0].Consume(out Wolf.eatTime, out Wolf.foodValue, out Wolf.effect, out Wolf.effectValue);
-			//Wolf.foodInRange.RemoveAt(0);
-			StateMachine.ChangeState(WolfStateMachine.EWolfState.Eat);
-			Debug.Log($"Consumed food with values: eatTime={Wolf.eatTime}, foodValue={Wolf.foodValue}, effect={Wolf.effect}, effectValue={Wolf.effectValue}");
+			if (Wolf.foodInRange[0] != null)
+			{
+				Wolf.foodInRange[0].Consume(out Wolf.eatTime, out Wolf.foodValue, out Wolf.effect, out Wolf.effectValue);
+				//Wolf.foodInRange.RemoveAt(0);
+				StateMachine.ChangeState(WolfStateMachine.EWolfState.Eat);
+				Debug.Log($"Consumed food with values: eatTime={Wolf.eatTime}, foodValue={Wolf.foodValue}, effect={Wolf.effect}, effectValue={Wolf.effectValue}");
+			}
 		}
 	}
 }
