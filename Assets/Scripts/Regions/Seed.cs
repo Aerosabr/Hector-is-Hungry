@@ -11,6 +11,7 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private int current;
     [SerializeField] private GameObject item;
+    [SerializeField] private GameObject VoidItem;
     [SerializeField] private bool Spawnable = true;
     [SerializeField] private List<GameObject> itemsOnSelf = new List<GameObject>();
     public bool isSeed = true;
@@ -183,6 +184,12 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
             {
                 if (CheckSlot(i.ToString() + j.ToString()))
                 {
+                    if (isSeed)
+                    {
+                        GameObject tempVoid = Instantiate(VoidItem, GameObject.Find("RegionManager").transform);
+                        tempVoid.transform.position = transform.position;
+                        isSeed = false;
+                    }
                     isDropped = false;
                     transform.SetParent(GameObject.Find("InventoryImages").transform);
                     OnEndDrag(null);
@@ -190,7 +197,7 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
                     image.enabled = true;
                     box.enabled = false;
                     transform.localScale = new Vector3(1, 1, 1);
-                    isSeed = false;
+                    
                     return true;
                 }
             }
