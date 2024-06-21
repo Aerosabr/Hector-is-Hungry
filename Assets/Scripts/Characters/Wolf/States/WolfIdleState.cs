@@ -58,8 +58,10 @@ public class WolfIdleState : WolfState
 	}
 	public override void OnTriggerStay2D(Collider2D other)
 	{
+		Debug.Log(other);
 		if (other.TryGetComponent(out IConsumable consumable))
 		{
+			Debug.Log(consumable);
 			// Check if consumable is not already in foodInRange
 			if (!Wolf.foodInRange.Contains(consumable))
 			{
