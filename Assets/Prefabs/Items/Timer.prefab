@@ -766,11 +766,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a0f0f1981715a478991c007d06b8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 1527355941312257552}
   box: {fileID: 2313170084900286184}
   region: {fileID: 0}
   isDropped: 1
   speedDuration: 0
+  isMarked: 0
   xSize: 2
   ySize: 3
   spawnDuration: 0
@@ -781,9 +782,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  InventoryImage: {fileID: 7282447444438099519}
+  sprite: {fileID: 7517603189656465967}
   UI: {fileID: 0}
   Icon: {fileID: 2788939459088535600}
+  InventoryImg: {fileID: 7282447444438099519}
   HighlightObject: {fileID: 8397505722102157709}
   HighlightUI: {fileID: 0}
   current: 0

@@ -211,6 +211,13 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
             player.sprintDuration += speedDuration;
         else
             player.sprintDuration += speedDuration / 2;
+
+        if (isSeed)
+        {
+            GameObject tempVoid = Instantiate(VoidItem, GameObject.Find("RegionManager").transform);
+            tempVoid.transform.position = transform.position;
+            isSeed = false;
+        }
         region.numActive--;
         Destroy(gameObject);
         Debug.Log("Ate Apple");

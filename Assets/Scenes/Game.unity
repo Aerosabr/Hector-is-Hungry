@@ -2248,10 +2248,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7216063772031465094, guid: e5282921bf4f0db499e6b833d916a0e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3201,10 +3197,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8490693730743630830, guid: 99b8a57c9b5d9a3448251efd254fe293, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8639028992183381030, guid: 99b8a57c9b5d9a3448251efd254fe293, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4200,10 +4192,6 @@ PrefabInstance:
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 231288785}
-    - target: {fileID: 4151097360058934076, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 2743
-      objectReference: {fileID: 0}
     - target: {fileID: 8556585250658775287, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4821,7 +4809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1992752304}
   moveSpeed: 5
-  lookAheadDistance: -1
+  lookAheadDistance: -2
   lookAheadSpeed: 5
 --- !u!20 &813411908
 Camera:
@@ -8662,7 +8650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1880151780
 Transform:
   m_ObjectHideFlags: 0
