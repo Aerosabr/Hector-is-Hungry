@@ -158,8 +158,8 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 50;
-        foodValue = 15;
+        eatTime = 1;
+        foodValue = 10;
         effect = "None";
         effectValue = 0;
         //region.numActive--;

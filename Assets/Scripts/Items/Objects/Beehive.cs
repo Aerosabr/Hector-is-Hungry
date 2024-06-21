@@ -238,10 +238,10 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 75;
-        foodValue = 10;
-        effect = "Poison";
-        effectValue = 5;
+        eatTime = 0;
+        foodValue = 40;
+        effect = "Stun";
+        effectValue = 8;
         region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Beehive");
