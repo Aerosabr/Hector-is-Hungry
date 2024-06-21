@@ -29,7 +29,7 @@ public class WolfIdleState : WolfState
 	}
 	public override void OnTriggerEnter2D(Collider2D other)
 	{
-		//Debug.Log("Collided");
+		Debug.Log("Collided");
 		// Check if the collided object has a component that implements IConsumable
 		//IConsumable consumable = other.GetComponent<IConsumable>();
 		//Debug.Log(consumable);
@@ -49,10 +49,16 @@ public class WolfIdleState : WolfState
 	}
 	public override void OnTriggerStay2D(Collider2D other)
 	{
-
-		if (other.TryGetComponent(out IConsumable consumable) && Wolf.foodInRange.Contains(consumable))
+		if (other.TryGetComponent(out IConsumable consumable))
 		{
-			ConsumeNearbyFood();
+			// Check if consumable is not already in foodInRange
+			if (!Wolf.foodInRange.Contains(consumable))
+			{
+				Wolf.foodInRange.Add(consumable);
+				ConsumeNearbyFood(); // Optionally consume food immediately upon detection
+			}
+			else
+				ConsumeNearbyFood(); // Optionally consume food immediately upon detection
 		}
 	}
 
