@@ -238,7 +238,7 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 0;
+        eatTime = 1;
         foodValue = 40;
         effect = "Stun";
         effectValue = 8;
