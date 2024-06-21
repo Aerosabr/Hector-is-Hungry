@@ -77,4 +77,21 @@ public class Space : Region
             spawnLocation++;
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && collision.name == "SpaceDetection")
+        {
+            Debug.Log("Now in space");
+            collision.transform.parent.GetComponent<PlayerSpriteController>().inSpace = true;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && collision.name == "SpaceDetection")
+        {
+            Debug.Log("Left space");
+            collision.transform.parent.GetComponent<PlayerSpriteController>().inSpace = false;
+        }
+    }
 }

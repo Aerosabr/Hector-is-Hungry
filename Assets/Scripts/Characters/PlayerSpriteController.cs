@@ -16,6 +16,10 @@ public class PlayerSpriteController : MonoBehaviour
     //Walk speed
     public float walkSpeed;
 
+    //Space region movement
+    public bool inSpace;
+    [SerializeField] private float slowdownRate;
+
     //Basic movement
     [SerializeField] private bool isMoving;
     [SerializeField] private bool Movable = true;
@@ -30,10 +34,31 @@ public class PlayerSpriteController : MonoBehaviour
     {
         if (Movable)
         {
-            smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
-            rb.velocity = smoothedMovementInput * player.movementSpeed * 3;
+            if (inSpace)
+            {
+                if (movementInput == Vector2.zero)
+                {
+                    smoothedMovementInput = Vector2.Lerp(smoothedMovementInput, Vector2.zero, slowdownRate * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
+                }
 
-            currentDirection = movementInput;
+                rb.velocity = smoothedMovementInput * player.movementSpeed;
+
+                if (smoothedMovementInput.magnitude > 0.1f)
+                {
+                    currentDirection = smoothedMovementInput;
+                }
+            }
+            else
+            {
+                smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
+                rb.velocity = smoothedMovementInput * player.movementSpeed * 3;
+
+                currentDirection = movementInput;
+            }
         }
     }
 

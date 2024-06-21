@@ -6219,13 +6219,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5740368290660091766, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
+    - target: {fileID: 4996023032743106614, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6455379816222987955, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
       propertyPath: m_Radius
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8556585250658775287, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
       propertyPath: m_Name
@@ -8058,8 +8058,6 @@ MonoBehaviour:
   - {fileID: 3036574510944471396, guid: 0b47cedd91f67fc4ca19d0a3c01f6e0b, type: 3}
   - {fileID: 2026663234524952697, guid: d844b1bc79428d249956533693926a59, type: 3}
   Region3:
-  - {fileID: 204622926497971846, guid: aceffce01eb36d345920c95a74db5963, type: 3}
-  - {fileID: 5604355655601546913, guid: 961daf42d79aca449a071919b5757eb8, type: 3}
   - {fileID: 6723230534750379339, guid: 54e4f86f94975054883b91a1d61717c8, type: 3}
 --- !u!4 &2115197708
 Transform:
