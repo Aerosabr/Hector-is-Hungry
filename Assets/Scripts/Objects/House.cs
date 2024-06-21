@@ -36,6 +36,7 @@ public class House : MonoBehaviour
 			{
 				currentAmount += 1;
 				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
+                collision.GetComponent<Item>().region.numActive--;
 				collision.GetComponent<DestroyOnContact>().DestroyObject();
 				if(currentAmount == requireAmount) 
 				{
@@ -48,7 +49,8 @@ public class House : MonoBehaviour
 			{
 				currentAmount += 1;
 				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
-				collision.GetComponent<DestroyOnContact>().DestroyObject();
+                collision.GetComponent<Item>().region.numActive--;
+                collision.GetComponent<DestroyOnContact>().DestroyObject();
 				if (currentAmount == requireAmount)
 				{
 					bubble.SetActive(false);
@@ -60,7 +62,8 @@ public class House : MonoBehaviour
 			{
 				currentAmount += 1;
 				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
-				collision.GetComponent<DestroyOnContact>().DestroyObject();
+                collision.GetComponent<Item>().region.numActive--;
+                collision.GetComponent<DestroyOnContact>().DestroyObject();
 				if (currentAmount == requireAmount)
 				{
 					bubble.SetActive(false);
