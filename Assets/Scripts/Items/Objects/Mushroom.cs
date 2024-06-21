@@ -158,10 +158,10 @@ public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, 
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 50;
-        foodValue = 15;
-        effect = "None";
-        effectValue = 0;
+        eatTime = 0;
+        foodValue = 10;
+        effect = "Slow";
+        effectValue = 2;
         region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Mushroom");

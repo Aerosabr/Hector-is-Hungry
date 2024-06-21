@@ -4066,6 +4066,18 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 6078588985510790978, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078588985510790978, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078588985510790978, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

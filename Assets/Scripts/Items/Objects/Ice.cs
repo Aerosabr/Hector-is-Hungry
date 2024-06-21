@@ -226,11 +226,11 @@ public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 75;
-        foodValue = 10;
-        effect = "Poison";
-        effectValue = 5;
-        //region.numActive--;
+        eatTime = 0;
+        foodValue = 60;
+        effect = "Slow";
+        effectValue = 12;
+        region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Ice");
     }
