@@ -71,7 +71,6 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     public override void ItemDropped(GameObject Character)
     {
-        Debug.Log("Dropped");
 		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;

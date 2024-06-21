@@ -13,6 +13,14 @@ public class Pig : MonoBehaviour, IConsumable
 	public Transform Wolf;
 	public Rigidbody2D rb;
 
+	public void Start()
+	{
+		GameObject playerObj = GameObject.Find("Player");
+		Player = playerObj.transform;
+		GameObject wolfParentObj = GameObject.Find("Wolf");
+		Wolf = wolfParentObj.transform.GetChild(3);
+	}
+
 	public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
 	{
 		eatTime = 50;

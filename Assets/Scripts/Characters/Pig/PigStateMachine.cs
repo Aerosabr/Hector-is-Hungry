@@ -26,7 +26,7 @@ public class PigStateMachine : StateManager<PigStateMachine.EPigState>
 		States.Add(EPigState.Roam, new PigRoamState(this, pig, EPigState.Roam));
 		States.Add(EPigState.Follow, new PigFollowState(this, pig, EPigState.Follow));
 		States.Add(EPigState.Transport, new PigTransportState(this, pig, EPigState.Transport));
-		CurrentState = States[EPigState.Follow];
+		CurrentState = States[EPigState.Idle];
 	}
 
 	public void ChangeState(EPigState state)

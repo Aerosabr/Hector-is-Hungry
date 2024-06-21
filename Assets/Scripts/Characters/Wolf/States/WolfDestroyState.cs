@@ -12,11 +12,11 @@ public class WolfDestroyState : WolfState
 
 	public override void EnterState()
 	{
-		Debug.Log("Enter Destroy State");
+		//Debug.Log("Enter Destroy State");
 	}
 	public override void ExitState()
 	{
-		Debug.Log("Exit Destroy State");
+		//Debug.Log("Exit Destroy State");
 	}
 	public override void UpdateState()
 	{

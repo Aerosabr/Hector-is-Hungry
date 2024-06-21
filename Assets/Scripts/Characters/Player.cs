@@ -84,11 +84,14 @@ public class Player : Entity
 			int index = 0;
 			for (int i = 0; i < nearbyObjects.Count; i++)
 			{
-				if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+				if (nearbyObjects[i])
 				{
+					if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+					{
 
-					distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
-					index = i;
+						distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
+						index = i;
+					}
 				}
 			}
 			closestItem = nearbyObjects[index];

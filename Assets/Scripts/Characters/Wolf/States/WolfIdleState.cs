@@ -13,11 +13,11 @@ public class WolfIdleState : WolfState
 
 	public override void EnterState()
 	{
-		Debug.Log("Enter Idle State");
+		//Debug.Log("Enter Idle State");
 	}
 	public override void ExitState()
 	{
-		Debug.Log("Exit Idle State");
+		//Debug.Log("Exit Idle State");
 	}
 	public override void UpdateState()
 	{
@@ -29,7 +29,7 @@ public class WolfIdleState : WolfState
 	}
 	public override void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log("Collided");
+		//Debug.Log("Collided");
 		// Check if the collided object has a component that implements IConsumable
 		//IConsumable consumable = other.GetComponent<IConsumable>();
 		//Debug.Log(consumable);

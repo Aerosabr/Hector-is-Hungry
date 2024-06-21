@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
-    [SerializeField] private GameObject InventoryImage;
+    [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private int current;
 
@@ -141,7 +141,7 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
                     isMarked = false;
                     transform.SetParent(GameObject.Find("InventoryImages").transform);
                     OnEndDrag(null);
-                    InventoryImage.SetActive(false);
+                    sprite.enabled = false;
                     image.enabled = true;
                     box.enabled = false;
                     transform.localScale = new Vector3(1, 1, 1);
@@ -154,7 +154,7 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 
     public override void ItemDropped(GameObject Character)
     {
-        InventoryImage.SetActive(true);
+        sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         box.enabled = true;

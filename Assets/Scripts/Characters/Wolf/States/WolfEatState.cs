@@ -17,7 +17,7 @@ public class WolfEatState : WolfState
 
 	public override void EnterState()
 	{
-		Debug.Log("Enter Eat State");
+		//Debug.Log("Enter Eat State");
 
 		eatTimer = Wolf.eatTime;
 
@@ -26,7 +26,7 @@ public class WolfEatState : WolfState
 
 	public override void ExitState()
 	{
-		Debug.Log("Exit Eat State");
+		//Debug.Log("Exit Eat State");
 	}
 
 	public override void UpdateState()
