@@ -2,42 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PigFollowState : PigState
+public class PigHomeState : PigState
 {
-	private float followDistance = 5.0f;
+	private float followDistance = 0.5f;
 	private float decelerationRate = 5000.0f;
-	public PigFollowState(PigStateMachine stateMachine, Pig pig, PigStateMachine.EPigState stateKey) : base(stateMachine, pig, stateKey)
+	public PigHomeState(PigStateMachine stateMachine, Pig pig, PigStateMachine.EPigState stateKey) : base(stateMachine, pig, stateKey)
 	{
 		StateMachine = stateMachine;
 		Pig = pig;
-
 	}
 
 	public override void EnterState()
 	{
-		Debug.Log("Enter Follow State");
+		Debug.Log("Enter Home State");
 	}
 
 	public override void ExitState()
 	{
-		//Debug.Log("Exit Follow State");
+		//Debug.Log("Exit Home State");
 	}
 
 	public override void UpdateState()
 	{
-		if (Pig.Player == null || Pig.isDropped == false)
+		if (Pig.House == null || Pig.isDropped == false)
 		{
 			return;
 		}
+		if (Pig.canHelp == true)
+		{
+			StateMachine.ChangeState(PigStateMachine.EPigState.Idle);
+		}
 
-		// Calculate direction towards the player
-		Vector3 direction = (Pig.Player.position - Pig.transform.position).normalized;
+		Vector3 direction = (Pig.House.position - Pig.transform.position).normalized;
 
-		// Move towards the player
 		Pig.rb.velocity = direction * Pig.runSpeed;
 
-		// Check distance to stop following
-		if (Vector3.Distance(Pig.transform.position, Pig.Player.position) <= followDistance)
+		if (Vector3.Distance(Pig.transform.position, Pig.House.position) <= followDistance)
 		{
 			Pig.rb.velocity = Vector3.Lerp(Pig.rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
 

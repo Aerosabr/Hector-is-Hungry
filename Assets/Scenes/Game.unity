@@ -4950,6 +4950,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4457199107387957587, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
+      propertyPath: House
+      value: 
+      objectReference: {fileID: 906149079}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7542,6 +7546,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4457199107387957587, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
+      propertyPath: House
+      value: 
+      objectReference: {fileID: 245753574}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15071,5 +15079,5 @@ SceneRoots:
   - {fileID: 813411909}
   - {fileID: 720347690}
   - {fileID: 702604959}
-  - {fileID: 838107436}
   - {fileID: 1531914933}
+  - {fileID: 838107436}
