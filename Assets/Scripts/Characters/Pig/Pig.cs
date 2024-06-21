@@ -16,7 +16,10 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
 
     public Transform Player;
     public Transform Wolf;
+    public Transform House;
     public Rigidbody2D rb;
+
+    public bool canHelp = false;
 
     public void Start()
     {
@@ -279,6 +282,13 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         effectValue = 0;
         Destroy(gameObject);
         Debug.Log("Consume Pig");
+    }
+
+    public void Activate()
+    {
+        item = null;
+        canHelp = true;
+        runSpeed = 2.5f;
     }
 
 }
