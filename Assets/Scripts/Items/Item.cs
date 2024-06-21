@@ -18,6 +18,7 @@ public abstract class Item : MonoBehaviour
     public int xSize;
     public int ySize;
     public int spawnDuration;
+    public abstract void Highlight(bool toggle);
     public abstract bool CheckSlot(string Pos);
     public abstract bool PickupItem();
     public abstract bool EatItem(Player player);
