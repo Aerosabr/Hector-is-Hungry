@@ -10,6 +10,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 	[SerializeField] private SpriteRenderer sprite;
 	[SerializeField] private GameObject UI;
     [SerializeField] private GameObject Icon;
+    [SerializeField] private GameObject InventoryImg;
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private GameObject HighlightUI;
     [SerializeField] private int current;
@@ -53,7 +54,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
     private float GetDivisors()
     {
         Vector3[] corners = new Vector3[4];
-        GetComponent<RectTransform>().GetWorldCorners(corners);
+        InventoryImg.GetComponent<RectTransform>().GetWorldCorners(corners);
         return corners[2].x - corners[1].x;
     }
 
@@ -200,6 +201,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 				sprite.enabled = false;
 				Icon.SetActive(false);
                 UI.SetActive(false);
+                InventoryImg.SetActive(true);
                 box.enabled = false;
                 uiActive = false;
                 transform.localScale = Vector3.one;
@@ -223,6 +225,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 		sprite.enabled = true;
 		Icon.SetActive(true);
         box.enabled = true;
+        InventoryImg.SetActive(false);
         image.raycastTarget = true;
         for (int i = 0; i <= 5; i++)
             Slots[i] = null;
