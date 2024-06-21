@@ -32,8 +32,9 @@ public class House : MonoBehaviour
 			Sticks stickScript = collision.gameObject.GetComponent<Sticks>();
 			Rock rockScript = collision.gameObject.GetComponent<Rock>();
 			Meteor meteorScript = collision.gameObject.GetComponent<Meteor>();
+			Tumbleweed tumbleweedScript = collision.gameObject.GetComponent<Tumbleweed>();
 
-			if(material == "Haybale" && haybaleScript != null)
+			if(material == "Haybale" && (haybaleScript != null || tumbleweedScript != null))
 			{
 				currentAmount += 1;
 				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();

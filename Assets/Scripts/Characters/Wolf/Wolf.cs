@@ -16,6 +16,7 @@ public class Wolf : MonoBehaviour
 	public bool GracePeriod = false;
 	public SpriteRenderer sprite;
 	public float slowTimer = 0;
+	public float slowDuration;
 	public bool isSlowed = false;
 
 	public float eatTime, foodValue, effectValue;
@@ -36,7 +37,7 @@ public class Wolf : MonoBehaviour
 			timeSinceLastIncrease = 0f;
 		}
 
-		if(slowTimer >= effectValue)
+		if(slowTimer >= slowDuration)
 		{
 			isSlowed = false;
 			sprite.color = Color.white;
@@ -69,6 +70,7 @@ public class Wolf : MonoBehaviour
 	{
 		sprite.color = Color.magenta;
 		slowTimer = 0;
+		slowDuration = effectValue;
 		isSlowed = true;
 	}
 
