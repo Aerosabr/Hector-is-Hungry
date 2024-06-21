@@ -165,7 +165,6 @@ public class Sticks : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
 						{
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 2;
-							isDropped = false;
 							isMarked = false;
 							transform.SetParent(pig.transform);
 							sprite.enabled = false;

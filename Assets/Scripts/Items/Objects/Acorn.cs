@@ -131,7 +131,6 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 						{
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 1;
-							isDropped = false;
 							isMarked = false;
 							transform.SetParent(pig.transform);
 							sprite.enabled = false;
