@@ -54,6 +54,7 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
                 if (!Inventory.instance.Grid[i.ToString() + j.ToString()].Taken)
                 {
                     isDropped = false;
+                    isMarked = false;
                     InventorySlot openSlot = Inventory.instance.Grid[i.ToString() + j.ToString()];
                     transform.SetParent(openSlot.transform);
                     openSlot.Taken = true;
@@ -80,23 +81,33 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         return true;
     }
 
-    public override void ItemDropped()
+    public override void ItemDropped(GameObject Character)
     {
-        Transform player = GameObject.Find("Player").transform;
 		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         box.enabled = true;
         isDropped = true;
         transform.SetParent(GameObject.Find("RegionManager").transform);
-        transform.position = player.position;
+        Transform character = Character.transform;
+        transform.position = character.position;
         transform.localScale = new Vector3(.15f, .15f, .15f);
-        if(player.GetComponent<Rigidbody2D>().velocity.x > 0)
-		    StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(3f, 0f, 0f), 0.5f));
-        else
-			StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-3f, 0f, 0f), 0.5f));
+		if (character.tag == "Player")
+		{
+			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
+				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f, character));
+			else
+				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-2f, 0f, 0f), 0.5f, character));
+		}
+		else
+		{
+			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
+				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(3f, 0f, 0f), 0.5f, character));
+			else
+				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-3f, 0f, 0f), 0.5f, character));
+		}
 	}
-	private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float duration)
+	private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float duration, Transform character)
 	{
 		Vector3 startPosition = transform.position;
 		float elapsed = 0f;
@@ -107,12 +118,35 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
 			arcPosition.y += Mathf.Sin(Mathf.Clamp01(elapsed / duration) * Mathf.PI) * height;
 
+			Collider2D[] hits = Physics2D.OverlapCircleAll(arcPosition, 0.5f);
+			foreach (Collider2D hit in hits)
+			{
+				if (hit.CompareTag("Wolf")) 
+                    isMarked = true;
+                else if (hit.CompareTag("NPC"))
+                {
+                    if(hit.TryGetComponent(out Pig pig) && character.tag == "Player")
+                    {
+                        if(pig.item == null)
+                        {
+							pig.item = transform.gameObject;
+                            pig.runSpeed = pig.runSpeed / 1;
+							isDropped = false;
+							isMarked = false;
+							transform.SetParent(pig.transform);
+							sprite.enabled = false;
+							box.enabled = false;
+							transform.localScale = new Vector3(1, 1, 1);
+						}
+					}
+				}
+			}
 			transform.position = arcPosition;
 			elapsed += Time.deltaTime;
 			yield return null;
 		}
 
-		transform.position = targetPosition; // Ensure it reaches exactly the target position
+		transform.position = targetPosition; 
 	}
 	public override void Highlight(bool toggle)
     {
@@ -128,7 +162,7 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         foodValue = 15;
         effect = "None";
         effectValue = 0;
-        region.numActive--;
+        //region.numActive--;
         Destroy(gameObject);
         Debug.Log("Consume Apple");
     }

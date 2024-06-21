@@ -13,11 +13,11 @@ public class WolfIdleState : WolfState
 
 	public override void EnterState()
 	{
-		Debug.Log("Enter Idle State");
+		//Debug.Log("Enter Idle State");
 	}
 	public override void ExitState()
 	{
-		Debug.Log("Exit Idle State");
+		//Debug.Log("Exit Idle State");
 	}
 	public override void UpdateState()
 	{
@@ -49,10 +49,16 @@ public class WolfIdleState : WolfState
 	}
 	public override void OnTriggerStay2D(Collider2D other)
 	{
-
-		if (other.TryGetComponent(out IConsumable consumable) && Wolf.foodInRange.Contains(consumable))
+		if (other.TryGetComponent(out IConsumable consumable))
 		{
-			ConsumeNearbyFood();
+			// Check if consumable is not already in foodInRange
+			if (!Wolf.foodInRange.Contains(consumable))
+			{
+				Wolf.foodInRange.Add(consumable);
+				ConsumeNearbyFood(); // Optionally consume food immediately upon detection
+			}
+			else
+				ConsumeNearbyFood(); // Optionally consume food immediately upon detection
 		}
 	}
 

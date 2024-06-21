@@ -14,11 +14,13 @@ public class WolfStunState : WolfState
 	public override void EnterState()
 	{
 		stunTimer = Wolf.effectValue;
-		Debug.Log("Enter Stun State");
+		Wolf.transform.GetChild(2).gameObject.SetActive(true);
+		//Debug.Log("Enter Stun State");
 	}
 	public override void ExitState()
 	{
-		Debug.Log("Exit Stun State");
+		Wolf.transform.GetChild(2).gameObject.SetActive(false);
+		//Debug.Log("Exit Stun State");
 	}
 	public override void UpdateState()
 	{

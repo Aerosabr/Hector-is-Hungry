@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
 	void LateUpdate()
 	{
 		float targetViewportX = Camera.main.WorldToViewportPoint(player.transform.position).x;
-		if (targetViewportX < 0.3f || targetViewportX > 0.7f)
+		if (targetViewportX < 0.4f || targetViewportX > 0.6f)
 		{
 			// Smoothly move the camera towards targetPoint
 			Vector3 desiredPosition = Vector3.Lerp(transform.position, targetPoint, moveSpeed * Time.deltaTime);

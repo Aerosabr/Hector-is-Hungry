@@ -22,6 +22,10 @@ public class PigIdleState : PigState
 	{
 		if (Pig.item != null)
 			StateMachine.ChangeState(PigStateMachine.EPigState.Transport);
+		else if (Vector3.Distance(Pig.transform.position, Pig.Player.position) > 5.0f)
+		{
+			StateMachine.ChangeState(PigStateMachine.EPigState.Follow);
+		}
 	}
 	public override PigStateMachine.EPigState GetState()
 	{
@@ -29,14 +33,11 @@ public class PigIdleState : PigState
 	}
 	public override void OnTriggerEnter2D(Collider2D other)
 	{
-		throw new System.NotImplementedException();
 	}
 	public override void OnTriggerExit2D(Collider2D other)
 	{
-		throw new System.NotImplementedException();
 	}
 	public override void OnTriggerStay2D(Collider2D other)
 	{
-		throw new System.NotImplementedException();
 	}
 }

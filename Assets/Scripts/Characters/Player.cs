@@ -7,6 +7,7 @@ public class Player : Entity
     [SerializeField] private List<GameObject> nearbyObjects = new List<GameObject>();
 	[SerializeField] private GameObject closestItem;
 	[SerializeField] private Coroutine coroutine;
+    [SerializeField] private GameObject gameOver;
     public float sprintDuration = 0;
 
     private void FixedUpdate()
@@ -20,7 +21,12 @@ public class Player : Entity
             movementSpeed = 1;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+	public void OnDestroy()
+	{
+		gameOver.SetActive(true);
+	}
+
+	public void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Enter")
         if (collision.gameObject.tag == "Wolf")
@@ -126,11 +132,14 @@ public class Player : Entity
 			int index = 0;
 			for (int i = 0; i < nearbyObjects.Count; i++)
 			{
-				if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+				if (nearbyObjects[i])
 				{
+					if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+					{
 
-					distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
-					index = i;
+						distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
+						index = i;
+					}
 				}
 			}
 			closestItem = nearbyObjects[index];
