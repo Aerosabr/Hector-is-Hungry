@@ -34,6 +34,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
     private void Start()
     {
         StartCoroutine(startTimer());
+
     }
 
     private IEnumerator startTimer()
