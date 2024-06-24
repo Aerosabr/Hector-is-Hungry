@@ -191,7 +191,8 @@ public class UFO : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
                     image.enabled = true;
                     box.enabled = false;
                     transform.localScale = new Vector3(1, 1, 1);
-                    return true;
+					MusicManager.instance.soundSources[17].Play();
+					return true;
                 }
             }
         }
@@ -206,7 +207,8 @@ public class UFO : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
 
     public override void ItemDropped(GameObject Character)
     {
-        sprite.enabled = true;
+		MusicManager.instance.soundSources[16].Play();
+		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         isDropped = true;

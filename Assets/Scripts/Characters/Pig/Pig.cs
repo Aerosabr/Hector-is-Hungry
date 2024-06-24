@@ -10,6 +10,7 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private int current;
+    [SerializeField] private CircleCollider2D circle;
     public float runSpeed = 5.0f;
 
     public GameObject item;
@@ -289,6 +290,8 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         item = null;
         canHelp = true;
         runSpeed = 2.5f;
-    }
+        circle.excludeLayers &= ~LayerMask.GetMask("Item");
+        box.excludeLayers &= ~LayerMask.GetMask("Item");
+	}
 
 }

@@ -23,14 +23,19 @@ public class Player : Entity
 
 	public void OnDestroy()
 	{
+		GameObject.Find("Timer").GetComponent<Timer>().TimerActive = false;
+		MusicManager.instance.soundSources[2].Play();
 		gameOver.SetActive(true);
 	}
 
 	public void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Enter")
-        if (collision.gameObject.tag == "Wolf")
-            transform.GetChild(0).gameObject.SetActive(true);
+		//Debug.Log("Enter")
+		if (collision.gameObject.tag == "Wolf")
+		{
+			transform.GetChild(0).gameObject.SetActive(true);
+			MusicManager.instance.soundSources[13].Play();
+		}
 		if (collision.gameObject.tag == "Item" || collision.gameObject.tag == "NPC")
             nearbyObjects.Add(collision.gameObject);
     }
