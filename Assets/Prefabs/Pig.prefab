@@ -386,14 +386,11 @@ MonoBehaviour:
   sprite: {fileID: 5946917593866635185}
   HighlightObject: {fileID: 5312992188663136322}
   current: 0
-  circle: {fileID: 5185385386134003700}
   runSpeed: 2.5
   item: {fileID: 0}
   Player: {fileID: 2366165843529601112, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
   Wolf: {fileID: 1706043857974278052, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
-  House: {fileID: 0}
   rb: {fileID: 7924328200600979679}
-  canHelp: 0
 --- !u!222 &1419071939970290255
 CanvasRenderer:
   m_ObjectHideFlags: 0

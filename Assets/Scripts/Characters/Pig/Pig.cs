@@ -10,7 +10,6 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private int current;
-    [SerializeField] private CircleCollider2D circle;
     public float runSpeed = 5.0f;
 
     public GameObject item;
@@ -28,8 +27,6 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         Player = playerObj.transform;
         GameObject wolfParentObj = GameObject.Find("Wolf");
         Wolf = wolfParentObj.transform.GetChild(3);
-        box.enabled = false;
-        circle.enabled = false;
     }
 
     private float GetDivisors()
@@ -292,8 +289,6 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         item = null;
         canHelp = true;
         runSpeed = 2.5f;
-        box.enabled = true;
-        circle.enabled = true;
     }
 
 }
