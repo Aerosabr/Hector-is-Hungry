@@ -2742,7 +2742,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 369280421
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.28125, y: 0.28125, z: 0}
   m_MaxChunkCount: 16
@@ -2863,11 +2863,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -4.99473, y: 5.9911675}
-  - {x: 4.9997854, y: 6.0037766}
-  - {x: 4.9947586, y: 2.0135117}
-  - {x: -5.0015125, y: 1.995868}
-  - {x: -4.9997687, y: 5.993375}
+  - {x: -7.5272174, y: 7.565417}
+  - {x: 7.532273, y: 7.523269}
+  - {x: 7.519993, y: 0.9425423}
+  - {x: -7.5203114, y: 1.0513185}
+  - {x: -7.5185666, y: 7.553935}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -2892,7 +2892,7 @@ MonoBehaviour:
   - {fileID: 1796007153731013410, guid: 0763cb22cccee544a90ad3b1c1a02a35, type: 3}
   Spawnable: 1
   spawnArea: {fileID: 2149442320351083035}
-  spawnX: 9
-  spawnY: 7
+  spawnX: 13.5
+  spawnY: 7.5
   spawnLocation: 1
   seed: {fileID: 2818690216346633376, guid: b975981536d8c3a4592a9904693e07fb, type: 3}

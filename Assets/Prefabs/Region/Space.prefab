@@ -1461,8 +1461,8 @@ MonoBehaviour:
   - {fileID: 7008989655677850792, guid: fa1841e0c59e31d4f92a3a8ed8764f5c, type: 3}
   Spawnable: 1
   spawnArea: {fileID: 5780017303827365575}
-  spawnX: 8
-  spawnY: 10
+  spawnX: 12
+  spawnY: 14
   spawnLocation: 1
 --- !u!61 &9021685335508933009
 BoxCollider2D:
@@ -1496,7 +1496,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01799202, y: -0.03598523}
+  m_Offset: {x: -0.0060453415, y: -0.012090683}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1507,7 +1507,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.032255, y: 12.011433}
+  m_Size: {x: 15.073776, y: 18.080372}
   m_EdgeRadius: 0
 --- !u!1 &8492593791081976950
 GameObject:
