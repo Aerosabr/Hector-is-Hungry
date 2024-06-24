@@ -43,7 +43,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2972177539916344341}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellSize: {x: 1.5, y: 1.5, z: 1.5}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -109,11 +109,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.0009656, y: 0.0031561032}
+  - {x: -1.5026877, y: 0.019340701}
   - {x: -0.00024604797, y: 0.005664125}
-  - {x: -0.002869606, y: -0.99901044}
-  - {x: -1.0067816, y: -0.9988564}
-  - {x: -1.00071, y: 0.0020025373}
+  - {x: 0.0025250912, y: -1.516917}
+  - {x: -1.5138985, y: -1.5167631}
+  - {x: -1.5078269, y: 0.034371704}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -175,23 +175,23 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 4eac3b103dbd6c741a233203f0a2597c, type: 2}
+    m_Data: {fileID: 11400000, guid: 3d03be2f9d8f0034fa9ba46e56860f32, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 1
-    m_Data: {fileID: 1858026686, guid: e0a9f6643c7f9de459f2d0a9d52c254b, type: 3}
+    m_Data: {fileID: -235730259, guid: 42c1873970ad4ed448657514fa9a0c6d, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
       e00: 1
       e01: 0
       e02: 0
-      e03: 0
+      e03: 0.007843733
       e10: 0
       e11: 1
       e12: 0
-      e13: 0
+      e13: 0.007843256
       e20: 0
       e21: 0
       e22: 1
@@ -269,7 +269,7 @@ TilemapRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.28125, y: 0.28125, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
