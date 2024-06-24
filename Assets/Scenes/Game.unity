@@ -5796,7 +5796,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4584241203533315182, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 957045418}
   m_SourcePrefab: {fileID: 100100000, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
 --- !u!1001 &720347690
 PrefabInstance:
@@ -6821,7 +6824,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5596768406023100030, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
   m_PrefabInstance: {fileID: 702604959}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 957045412}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e9c5e9525842ae48853556e9cb43eb8, type: 3}
@@ -7428,6 +7431,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &957045412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4584241203533315182, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
+  m_PrefabInstance: {fileID: 702604959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &957045418
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957045412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b06788250009d542a327d39f5a4ab67, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &999954711
 GameObject:
   m_ObjectHideFlags: 0
@@ -10491,6 +10520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PigSticks
       objectReference: {fileID: 0}
+    - target: {fileID: 1578023848406606913, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 46126459d4a510042841b8038ed8ff28, type: 3}
     - target: {fileID: 4431262734455192442, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10575,10 +10608,17 @@ PrefabInstance:
       propertyPath: House
       value: 
       objectReference: {fileID: 245753574}
+    - target: {fileID: 5946917593866635185, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 46126459d4a510042841b8038ed8ff28, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1097018629670965419, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1735281065}
   m_SourcePrefab: {fileID: 100100000, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
 --- !u!1 &1539363964
 GameObject:
@@ -11355,6 +11395,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1097018629670965419, guid: fd769efaf85bc644f8c6a78b6df85628, type: 3}
   m_PrefabInstance: {fileID: 1531914933}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1735281065
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735281055}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e38078a942a40646969695521eddb4e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1753471638
 GameObject:
   m_ObjectHideFlags: 0
