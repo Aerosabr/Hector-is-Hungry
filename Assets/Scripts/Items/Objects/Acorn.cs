@@ -62,7 +62,8 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
                     image.enabled = true;
                     box.enabled = false;
                     transform.localScale = new Vector3(1, 1, 1);
-                    return true;
+					MusicManager.instance.soundSources[17].Play();
+					return true;
                 }
             }
         }
@@ -75,7 +76,8 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
             player.sprintDuration += speedDuration;
         else
             player.sprintDuration += speedDuration / 2;
-        region.numActive--;
+		MusicManager.instance.soundSources[0].Play();
+		region.numActive--;
         Destroy(gameObject);
         Debug.Log("Ate Acorn");
         return true;
@@ -83,7 +85,8 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     public override void ItemDropped(GameObject Character)
     {
-        sprite.enabled = true;
+		MusicManager.instance.soundSources[16].Play();
+		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         
@@ -129,6 +132,7 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 					{
 						if (pig.item == null)
 						{
+							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 1;
 							isMarked = false;

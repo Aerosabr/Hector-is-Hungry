@@ -45,6 +45,7 @@ public class House : MonoBehaviour
 					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
 					//Instantiate(pig, transform.position, Quaternion.identity);
+					MusicManager.instance.soundSources[14].Play();
 					pig.transform.GetComponent<Pig>().Activate();
 				}
 			}
@@ -59,6 +60,7 @@ public class House : MonoBehaviour
 					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
 					//Instantiate(pig, transform.position, Quaternion.identity);
+					MusicManager.instance.soundSources[14].Play();
 					pig.transform.GetComponent<Pig>().Activate();
 				}
 			}
@@ -72,6 +74,7 @@ public class House : MonoBehaviour
 				{
 					bubble.SetActive(false);
 					sprite.sprite = sprite_List[1];
+					MusicManager.instance.soundSources[14].Play();
 					victory.VictoryScreen();
 				}
 			}

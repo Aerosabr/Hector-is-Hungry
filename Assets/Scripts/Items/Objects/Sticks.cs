@@ -100,7 +100,8 @@ public class Sticks : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
                     image.enabled = true;
                     box.enabled = false;
                     transform.localScale = new Vector3(1, 1, 1);
-                    return true;
+					MusicManager.instance.soundSources[17].Play();
+					return true;
                 }
             }
         }
@@ -115,7 +116,8 @@ public class Sticks : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
 
     public override void ItemDropped(GameObject Character)
     {
-        sprite.enabled = true;
+		MusicManager.instance.soundSources[16].Play();
+		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         isDropped = true;
@@ -163,6 +165,7 @@ public class Sticks : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
 					{
 						if (pig.item == null)
 						{
+							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 2;
 							isMarked = false;

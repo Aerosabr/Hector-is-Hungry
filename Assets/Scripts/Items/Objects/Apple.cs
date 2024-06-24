@@ -53,7 +53,7 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
             {
                 if (!Inventory.instance.Grid[i.ToString() + j.ToString()].Taken)
                 {
-                    isDropped = false;
+					isDropped = false;
                     isMarked = false;
                     InventorySlot openSlot = Inventory.instance.Grid[i.ToString() + j.ToString()];
                     transform.SetParent(openSlot.transform);
@@ -62,6 +62,7 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
                     image.enabled = true;
                     box.enabled = false;
                     transform.localScale = new Vector3(1, 1, 1);
+					MusicManager.instance.soundSources[17].Play();
                     return true;
                 }
             }
@@ -75,7 +76,8 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
             player.sprintDuration += speedDuration;
         else
             player.sprintDuration += speedDuration / 2;
-        region.numActive--;
+		MusicManager.instance.soundSources[0].Play();
+		region.numActive--;
         Destroy(gameObject);
         Debug.Log("Ate Apple");
         return true;
@@ -83,6 +85,7 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     public override void ItemDropped(GameObject Character)
     {
+		MusicManager.instance.soundSources[16].Play();
 		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
@@ -128,6 +131,7 @@ public class Apple : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
                     {
                         if(pig.item == null)
                         {
+							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
                             pig.runSpeed = pig.runSpeed / 1;
 							isMarked = false;
