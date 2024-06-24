@@ -23,6 +23,7 @@ public class Player : Entity
 
 	public void OnDestroy()
 	{
+		GameObject.Find("Timer").GetComponent<Timer>().TimerActive = false;
 		gameOver.SetActive(true);
 	}
 
