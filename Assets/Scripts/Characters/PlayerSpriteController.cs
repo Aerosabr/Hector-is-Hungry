@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 public class PlayerSpriteController : MonoBehaviour
 {
     [SerializeField] private Player player;
-
+ 
     //Sprite Movement
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Vector2 movementInput; //The input from keyboard
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputSmoothVelocity;
     [SerializeField] private Vector2 currentDirection; //Direction player is facing for sprite purposes
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     //Walk speed
     public float walkSpeed;
@@ -66,12 +68,40 @@ public class PlayerSpriteController : MonoBehaviour
     public void OnMovement(InputValue inputValue)
     {
         movementInput = inputValue.Get<Vector2>();
+        animator.Play("Run");
 
         if (movementInput.x != 0 || movementInput.y != 0)
+        { 
             currentDirection = movementInput;
-        
+            if(player.movementSpeed == 1)
+            {
+				MusicManager.instance.soundSources[3].Stop();
+                if(!MusicManager.instance.soundSources[4].isPlaying)
+				    MusicManager.instance.soundSources[4].Play();
+			}
+            else if(player.movementSpeed == 1.5) 
+            {
+				MusicManager.instance.soundSources[4].Stop();
+				if (!MusicManager.instance.soundSources[3].isPlaying)
+					MusicManager.instance.soundSources[3].Play();
+			}
+            if(movementInput.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if(movementInput.x > 0)
+            {
+				spriteRenderer.flipX = false;
+			}
+        }
+
         if (movementInput.x == 0 && movementInput.y == 0)
+        {
             isMoving = false;
+			MusicManager.instance.soundSources[4].Stop();
+			MusicManager.instance.soundSources[3].Stop();
+			animator.Play("Idle");
+        }
         else
             isMoving = true;
     }
@@ -82,5 +112,6 @@ public class PlayerSpriteController : MonoBehaviour
         movementInput = new Vector2(0, 0);
         Movable = false;
         isMoving = false;
+        animator.Play("Idle");
     }
 }

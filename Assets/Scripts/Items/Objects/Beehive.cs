@@ -145,7 +145,8 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
                     image.enabled = true;
                     box.enabled = false;
                     transform.localScale = new Vector3(1, 1, 1);
-                    return true;
+					MusicManager.instance.soundSources[17].Play();
+					return true;
                 }
             }
         }
@@ -159,7 +160,8 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 
     public override void ItemDropped(GameObject Character)
     {
-        sprite.enabled = true;
+		MusicManager.instance.soundSources[16].Play();
+		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         isDropped = true;
@@ -207,6 +209,7 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 					{
 						if (pig.item == null)
 						{
+							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 4;
 							isMarked = false;

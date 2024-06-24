@@ -15,11 +15,13 @@ public class PigTransportState : PigState
 	public override void EnterState()
 	{
 		Debug.Log("Enter Transfer State");
+		MusicManager.instance.soundSources[4].Play();
 	}
 
 	public override void ExitState()
 	{
 		Debug.Log("Exit Transfer State");
+		MusicManager.instance.soundSources[4].Stop();
 	}
 
 	public override void UpdateState()

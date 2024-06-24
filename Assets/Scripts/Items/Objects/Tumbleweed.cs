@@ -145,7 +145,8 @@ public class Tumbleweed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
                     image.enabled = true;
                     box.enabled = false;
                     transform.localScale = new Vector3(1, 1, 1);
-                    return true;
+					MusicManager.instance.soundSources[17].Play();
+					return true;
                 }
             }
         }
@@ -159,14 +160,16 @@ public class Tumbleweed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
         else
             player.sprintDuration += speedDuration / 2;
         region.numActive--;
-        Destroy(gameObject);
+		MusicManager.instance.soundSources[0].Play();
+		Destroy(gameObject);
         Debug.Log("Ate Tumbleweed");
         return true;
     }
 
     public override void ItemDropped(GameObject Character)
     {
-        sprite.enabled = true;
+		MusicManager.instance.soundSources[16].Play();
+		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         
@@ -215,6 +218,7 @@ public class Tumbleweed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 					{
 						if (pig.item == null)
 						{
+							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 4;
 							isMarked = false;

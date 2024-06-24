@@ -153,7 +153,8 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         {
             if (CheckSlot(i.ToString() + "1"))
             {
-                isDropped = false;
+				MusicManager.instance.soundSources[17].Play();
+				isDropped = false;
                 isMarked = false;
                 transform.SetParent(GameObject.Find("InventoryImages").transform);
                 OnEndDrag(null);
@@ -174,6 +175,7 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 
     public override void ItemDropped(GameObject Character)
     {
+		MusicManager.instance.soundSources[16].Play();
 		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;

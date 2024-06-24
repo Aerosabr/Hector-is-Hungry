@@ -123,7 +123,8 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
                 image.enabled = true;
                 box.enabled = false;
                 transform.localScale = new Vector3(1, 1, 1);
-                return true;
+				MusicManager.instance.soundSources[17].Play();
+				return true;
             }
         }
         return false;
@@ -136,14 +137,16 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         else
             player.sprintDuration += speedDuration / 2;
         region.numActive--;
-        Destroy(gameObject);
+		MusicManager.instance.soundSources[0].Play();
+		Destroy(gameObject);
         Debug.Log("Ate Vines");
         return true;
     }
 
     public override void ItemDropped(GameObject Character)
     {
-        sprite.enabled = true;
+		MusicManager.instance.soundSources[16].Play();
+		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         isDropped = true;
@@ -191,6 +194,7 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 					{
 						if (pig.item == null)
 						{
+							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 3;
 							isMarked = false;
