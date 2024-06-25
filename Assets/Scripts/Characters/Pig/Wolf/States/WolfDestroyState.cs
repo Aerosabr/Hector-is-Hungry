@@ -15,12 +15,14 @@ public class WolfDestroyState : WolfState
 	public override void EnterState()
 	{
 		//Debug.Log("Enter Destroy State");
+		MusicManager.instance.TransitionDanger(true);
 		MusicManager.instance.soundSources[7].Play();
 		Wolf.PlayWalkSound();
 	}
 	public override void ExitState()
 	{
 		//Debug.Log("Exit Destroy State");
+		MusicManager.instance.TransitionDanger(false);
 		Wolf.StopWalkSound();
 	}
 	public override void UpdateState()
