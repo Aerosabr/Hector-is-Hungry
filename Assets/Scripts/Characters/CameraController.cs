@@ -13,8 +13,9 @@ public class CameraController : MonoBehaviour
 	public float lookAheadSpeed = 3f;
 	private float lookOffset = 0f;
 
-	private float minX = -9.2f;
+	[SerializeField] private float minX = -9.2f;
 	private float maxX = 39.2f;
+	[SerializeField] private Transform minimumX;
 	void Start()
 	{
 		rb = player.GetComponent<Rigidbody2D>(); // Assuming player has Rigidbody2D
@@ -24,6 +25,7 @@ public class CameraController : MonoBehaviour
 	void FixedUpdate()
 	{
 		// Adjust lookOffset based on player's horizontal velocity
+		minX = minimumX.position.x + 13.57f;
 		if (rb.velocity.x > 0f)
 		{
 			lookOffset = lookAheadDistance;

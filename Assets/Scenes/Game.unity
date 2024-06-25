@@ -5458,11 +5458,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635303793}
   m_CullTransparentMesh: 1
---- !u!1 &659037340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4584241203533315182, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
-  m_PrefabInstance: {fileID: 702604959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &662526393
 GameObject:
   m_ObjectHideFlags: 0
@@ -5876,17 +5871,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf
       objectReference: {fileID: 0}
-    - target: {fileID: 5596768406023100030, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 827429979}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4584241203533315182, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 827429985}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
 --- !u!1001 &720347690
 PrefabInstance:
@@ -6816,6 +6804,8 @@ MonoBehaviour:
   moveSpeed: 5
   lookAheadDistance: -2
   lookAheadSpeed: 5
+  minX: -9.2
+  minimumX: {fileID: 1961327409}
 --- !u!20 &813411908
 Camera:
   m_ObjectHideFlags: 0
@@ -6888,62 +6878,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5596768406023100030, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
   m_PrefabInstance: {fileID: 702604959}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659037340}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e9c5e9525842ae48853556e9cb43eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &827429979 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4196630986018788171, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
-  m_PrefabInstance: {fileID: 702604959}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &827429985
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659037340}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 3510
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.6}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 10.4}
-    newSize: {x: 8, y: 10.4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5, y: 15}
-  m_EdgeRadius: 0
 --- !u!1 &851419770
 GameObject:
   m_ObjectHideFlags: 0
@@ -12592,6 +12532,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953378287}
   m_CullTransparentMesh: 1
+--- !u!224 &1961327409 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7348713668360747028, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
+  m_PrefabInstance: {fileID: 702604959}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1961669578
 PrefabInstance:
   m_ObjectHideFlags: 0
