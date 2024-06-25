@@ -18,6 +18,7 @@ public class WolfEatState : WolfState
 	public override void EnterState()
 	{
 		//Debug.Log("Enter Eat State");
+		Wolf.animator.Play("Bite");
 
 		eatTimer = Wolf.eatTime;
 

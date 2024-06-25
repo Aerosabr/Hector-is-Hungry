@@ -7,10 +7,14 @@ using UnityEngine.UI;
 public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
-    [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private int current;
     [SerializeField] private CircleCollider2D circle;
+    public SpriteRenderer sprite;
+    public Animator animator;
+    public AudioSource oink;
+    public AudioSource squeal;
+    public AudioSource walk;
     public float runSpeed = 5.0f;
 
     public GameObject item;
@@ -28,7 +32,8 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         Player = playerObj.transform;
         GameObject wolfParentObj = GameObject.Find("Wolf");
         Wolf = wolfParentObj.transform.GetChild(3);
-    }
+		StartCoroutine(PlayAudioWithRandomInterval());
+	}
 
     private float GetDivisors()
     {
@@ -281,11 +286,25 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         foodValue = 90;
         effect = "None";
         effectValue = 0;
+        squeal.Play();
         Destroy(gameObject);
         Debug.Log("Consume Pig");
     }
 
-    public void Activate()
+	IEnumerator PlayAudioWithRandomInterval()
+	{
+		while (true)
+		{
+			// Wait for a random time between 15 and 20 seconds
+			float waitTime = Random.Range(10f, 20f);
+			yield return new WaitForSeconds(waitTime);
+
+            // Play the audio source
+            oink.Play();
+		}
+	}
+
+	public void Activate()
     {
         item = null;
         canHelp = true;
