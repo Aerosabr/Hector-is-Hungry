@@ -46,19 +46,19 @@ public class Desert : Region
         {
             case 1:
                 x = Random.Range(-spawnX / 2, 0);
-                y = Random.Range(0, (spawnY / 2) - 2);
+                y = Random.Range(0, (spawnY / 2) - 3);
                 break;
             case 2:
                 x = Random.Range(0, spawnX / 2);
-                y = Random.Range(0, (spawnY / 2) - 2);
+                y = Random.Range(0, (spawnY / 2) - 3);
                 break;
             case 3:
                 x = Random.Range(-spawnX / 2, 0);
-                y = Random.Range((-spawnY / 2) - 2, 0);
+                y = Random.Range((-spawnY / 2) - 3, 0);
                 break;
             case 4:
                 x = Random.Range(0, spawnX / 2);
-                y = Random.Range((-spawnY / 2) - 2, 0);
+                y = Random.Range((-spawnY / 2) - 3, 0);
                 break;
             default:
                 x = 0;

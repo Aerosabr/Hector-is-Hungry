@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7568268758239405984}
   - component: {fileID: 16339756152546301}
   - component: {fileID: 2829119119951481206}
-  - component: {fileID: 8931858203464560318}
+  - component: {fileID: 4559480586661497639}
   m_Layer: 8
   m_Name: Void
   m_TagString: Environment
@@ -74,8 +74,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!68 &8931858203464560318
-EdgeCollider2D:
+--- !u!61 &4559480586661497639
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,18 +106,19 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.752583, y: -0.752583}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5017219, y: 1.5233014}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -1.5026877, y: 0.019340701}
-  - {x: -0.00024604797, y: 0.005664125}
-  - {x: 0.0025250912, y: -1.516917}
-  - {x: -1.5138985, y: -1.5167631}
-  - {x: -1.5078269, y: 0.034371704}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!1 &3905498932928599007
 GameObject:
   m_ObjectHideFlags: 0

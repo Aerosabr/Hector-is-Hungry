@@ -49,19 +49,19 @@ public class Forest : Region
         {
             case 1:
                 x = Random.Range(-spawnX / 2, 0);
-                y = Random.Range(0, (spawnY / 2) - 2);
+                y = Random.Range(0, (spawnY / 2) - 3);
                 break;
             case 2:
                 x = Random.Range(0, spawnX / 2);
-                y = Random.Range(0, (spawnY / 2) - 2);
+                y = Random.Range(0, (spawnY / 2) - 3);
                 break;
             case 3:
                 x = Random.Range(-spawnX / 2, 0);
-                y = Random.Range((-spawnY / 2) - 2, 0);
+                y = Random.Range((-spawnY / 2) - 3, 0);
                 break;
             case 4:
                 x = Random.Range(0, spawnX / 2);
-                y = Random.Range((-spawnY / 2) - 2, 0);
+                y = Random.Range((-spawnY / 2) - 3, 0);
                 break;
             default:
                 x = 0;
@@ -85,7 +85,7 @@ public class Forest : Region
     {
         for (int i = 0; i < num; i++)
         {
-            Vector3 SpawnArea = new Vector3(Random.Range(-spawnX / 2, spawnX / 2), Random.Range((-spawnY / 2) - 1.5f, (spawnY / 2) - 1.5f));
+            Vector3 SpawnArea = new Vector3(Random.Range(-spawnX / 2, spawnX / 2), Random.Range((-spawnY / 2) - 2.5f, (spawnY / 2) - 2.5f));
 
             GameObject temp = Instantiate(seed, transform);
             temp.GetComponent<Seed>().InitiateSeed(SpawnArea, this);
