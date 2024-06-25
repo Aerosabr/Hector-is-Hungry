@@ -16,7 +16,8 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
     [SerializeField] private int current;
     [SerializeField] private Text textUI;
     [SerializeField] private Text textInventory;
-    [SerializeField] private TextMeshPro textItem;
+	[SerializeField] private Text textGameOver;
+	[SerializeField] private TextMeshPro textItem;
     [SerializeField] private bool uiActive = true;
     [SerializeField] private GameObject brickHouse;
     public bool TimerActive = true;
@@ -54,7 +55,8 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
             textInventory.text = minutes.ToString() + ":" + secondsString;
             textItem.text = minutes.ToString() + ":" + secondsString;
             textUI.text = minutes.ToString() + ":" + secondsString;
-        }
+			textGameOver.text = "Time: " + minutes.ToString() + ":" + secondsString;
+		}
     }
 
     private float GetDivisors()

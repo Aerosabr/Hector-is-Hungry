@@ -16,12 +16,5 @@ public class GetTime : MonoBehaviour
             transform.gameObject.SetActive(false);
             return;
         }
-        else
-        {
-            int minutes = Mathf.FloorToInt(timer.timerElapse / 60);
-            int seconds = Mathf.FloorToInt(timer.timerElapse % 60);
-            string secondsString = seconds < 10 ? "0" + seconds.ToString() : seconds.ToString();
-            text.text = "Time: " + minutes.ToString() + ":" + secondsString;
-        }
     }
 }
