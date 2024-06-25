@@ -37,7 +37,7 @@ public class WolfDestroyState : WolfState
 	public override void OnTriggerEnter2D(Collider2D other)
 	{
 		Item item = other.GetComponent<Item>(); // Attempt to get the Item component
-
+		Debug.Log(other);
 		if (item != null)
 		{
 			if (item.isMarked)
@@ -49,6 +49,9 @@ public class WolfDestroyState : WolfState
 				{
 					Wolf.foodInRange.Add(consumable);
 				}
+				Wolf.foodInRange[0].Consume(out Wolf.eatTime, out Wolf.foodValue, out Wolf.effect, out Wolf.effectValue);
+				Wolf.foodInRange.RemoveAt(0);
+				//Wolf.foodInRange.RemoveAt(0);
 				StateMachine.ChangeState(WolfStateMachine.EWolfState.Eat);
 			}
 			else
@@ -95,10 +98,10 @@ public class WolfDestroyState : WolfState
 	public override void OnTriggerStay2D(Collider2D other)
 	{
 		Item item = other.GetComponent<Item>(); // Attempt to get the Item component
-
+		Debug.Log(other);
 		if (item != null)
 		{
-			if (item.isMarked || other.tag == "NPC")
+			if (item.isMarked)
 			{
 				// Perform actions if the item is marked
 				Debug.Log("Item is marked");
@@ -107,34 +110,9 @@ public class WolfDestroyState : WolfState
 				{
 					Wolf.foodInRange.Add(consumable);
 				}
-				StateMachine.ChangeState(WolfStateMachine.EWolfState.Idle);
-			}
-			else
-			{
-				// Destroy the GameObject associated with the collider
-				if (other.TryGetComponent(out DestroyOnContact contact))
-				{
-					contact.DestroyObject();
-				}
-			}
-		}
-		else
-		{
-			if (other.TryGetComponent(out DestroyOnContact contact))
-			{
-				// Check if the collision is with a player
-				if (other.gameObject.CompareTag("Player"))
-				{
-					// Check if the player has a BoxCollider2D
-					if (other.GetType().ToString() == "UnityEngine.BoxCollider2D")
-					{
-						contact.DestroyObject();
-					}
-				}
-				else
-				{
-					contact.DestroyObject();
-				}
+				Wolf.foodInRange[0].Consume(out Wolf.eatTime, out Wolf.foodValue, out Wolf.effect, out Wolf.effectValue);
+				//Wolf.foodInRange.RemoveAt(0);
+				StateMachine.ChangeState(WolfStateMachine.EWolfState.Eat);
 			}
 		}
 	}

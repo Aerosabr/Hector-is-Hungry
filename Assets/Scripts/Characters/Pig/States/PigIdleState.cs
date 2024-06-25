@@ -13,7 +13,7 @@ public class PigIdleState : PigState
 	public override void EnterState()
 	{
 		Debug.Log("Enter Idle State");
-		Pig.animator.Play("Idle)");
+		Pig.animator.Play("Idle");
 	}
 	public override void ExitState()
 	{
