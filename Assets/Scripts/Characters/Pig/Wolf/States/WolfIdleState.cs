@@ -15,6 +15,7 @@ public class WolfIdleState : WolfState
 	public override void EnterState()
 	{
 		//Debug.Log("Enter Idle State");
+		animator.Play("Idle");
 	}
 	public override void ExitState()
 	{

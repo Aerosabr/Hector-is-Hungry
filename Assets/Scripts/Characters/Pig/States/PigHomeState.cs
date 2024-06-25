@@ -14,12 +14,15 @@ public class PigHomeState : PigState
 
 	public override void EnterState()
 	{
-		Debug.Log("Enter Home State");
+		//Debug.Log("Enter Home State");
+		Pig.walk.Play();
+		Pig.animator.Play("Run");
 	}
 
 	public override void ExitState()
 	{
 		//Debug.Log("Exit Home State");
+		Pig.walk.Stop();
 	}
 
 	public override void UpdateState()
@@ -34,6 +37,14 @@ public class PigHomeState : PigState
 		}
 
 		Vector3 direction = (Pig.House.position - Pig.transform.position).normalized;
+		if (direction.x < 0)
+		{
+			Pig.sprite.flipX = true;
+		}
+		else if (direction.x > 0)
+		{
+			Pig.sprite.flipX = false;
+		}
 
 		Pig.rb.velocity = direction * Pig.runSpeed;
 

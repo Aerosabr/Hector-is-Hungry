@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WolfDestroyState : WolfState
 {
+	private int lastPlayedIndex = -1;
+	private Coroutine coroutine;
 	public WolfDestroyState(WolfStateMachine stateMachine, Wolf wolf, WolfStateMachine.EWolfState wolfState) : base(stateMachine, wolf, wolfState)
 	{
 		StateMachine = stateMachine;
@@ -13,10 +16,13 @@ public class WolfDestroyState : WolfState
 	public override void EnterState()
 	{
 		//Debug.Log("Enter Destroy State");
+		MusicManager.instance.soundSources[7].Play();
+		coroutine = StartCoroutine(PlayRandomSound());
 	}
 	public override void ExitState()
 	{
 		//Debug.Log("Exit Destroy State");
+		coroutine.Stop();
 	}
 	public override void UpdateState()
 	{
@@ -53,6 +59,8 @@ public class WolfDestroyState : WolfState
 				{
 					contact.DestroyObject();
 				}
+				Wolf.animator.Play("DBite");
+				Invoke("StopAudio", 1f);
 			}
 		}
 		else
@@ -72,6 +80,8 @@ public class WolfDestroyState : WolfState
 				{
 					contact.DestroyObject();
 				}
+				Wolf.animator.Play("DBite");
+				Invoke("StopAudio", 1f);
 			}
 		}
 	}
@@ -126,5 +136,35 @@ public class WolfDestroyState : WolfState
 				}
 			}
 		}
+	}
+
+	IEnumerator PlayRandomSound()
+	{
+		while (true)
+		{
+			// Wait for 2 seconds
+			yield return new WaitForSeconds(2f);
+
+			// Get a random index that is not the same as the last played index
+			int newIndex;
+			do
+			{
+				newIndex = Random.Range(0, 3);
+			} while (newIndex == lastPlayedIndex);
+
+			if (newIndex == 0)
+				MusicManager.instance.soundSources[8].Play();
+			else if (newIndex == 1)
+				MusicManager.instance.soundsSources[9].Play();
+			else if (newIndex == 2)
+				MusicManager.instance.soundsSources[10].Play();
+
+			// Update the last played index
+			lastPlayedIndex = newIndex;
+		}
+	}
+	void StopAudio()
+	{
+		MusicManager.instance.soundsSources[5].Stop();
 	}
 }

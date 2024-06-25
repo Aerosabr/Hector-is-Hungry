@@ -15,13 +15,14 @@ public class PigTransportState : PigState
 	public override void EnterState()
 	{
 		Debug.Log("Enter Transfer State");
-		MusicManager.instance.soundSources[4].Play();
+		Pig.walk.Play();
+		Pig.animator.Play("Run");
 	}
 
 	public override void ExitState()
 	{
 		Debug.Log("Exit Transfer State");
-		MusicManager.instance.soundSources[4].Stop();
+		Pig.walk.Stop();
 	}
 
 	public override void UpdateState()
@@ -37,6 +38,14 @@ public class PigTransportState : PigState
 
 		// Move towards the player
 		Pig.rb.velocity = direction * Pig.runSpeed;
+		if (direction.x < 0)
+		{
+			Pig.sprite.flipX = true;
+		}
+		else if (direction.x > 0)
+		{
+			Pig.sprite.flipX = false;
+		}
 
 		if (Vector3.Distance(Pig.transform.position, Pig.Wolf.position) <= 0.5f)
 		{
@@ -45,6 +54,7 @@ public class PigTransportState : PigState
 			if (Pig.rb.velocity.magnitude < 0.1f)
 			{
 				Pig.rb.velocity = Vector3.zero;
+				Pig.animator.Play("Idle");
 				Pig.item.GetComponent<Item>().ItemDropped(Pig.gameObject);
 				Pig.item = null;
 				Pig.runSpeed = 2.5f;
