@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RegionManager : MonoBehaviour
 {
     public static RegionManager instance;
+    [SerializeField] private List<Sprite> BuildMaterials = new List<Sprite>();
+    [SerializeField] private SpriteRenderer HouseHay;
+    [SerializeField] private SpriteRenderer HouseBrick;
+    [SerializeField] private TMPro.TextMeshPro BrickQuantity;
     //Regions that have been generated in game
     [SerializeField] private List<GameObject> Regions = new List<GameObject>();
 
@@ -23,7 +28,10 @@ public class RegionManager : MonoBehaviour
     {
         int roll = 0;
         if (Random.Range(0, 100) < 20)
+        {
             roll = 1;
+            HouseHay.sprite = BuildMaterials[0];
+        } 
         GameObject region1 = Instantiate(Almanac.instance.Region1[roll], gameObject.transform);
         Regions.Add(region1);
         region1.transform.position = new Vector2(15, 0);
@@ -32,7 +40,13 @@ public class RegionManager : MonoBehaviour
         Regions.Add(region2);
         region2.transform.position = new Vector2(30, 0);
 
-        GameObject region3 = Instantiate(Almanac.instance.Region3[Random.Range(0, Almanac.instance.Region3.Count)], gameObject.transform);
+        int r3 = Random.Range(0, Almanac.instance.Region3.Count);
+        if (r3 == 2)
+        {
+            HouseBrick.sprite = BuildMaterials[1];
+            BrickQuantity.text = "0/4";
+        }
+        GameObject region3 = Instantiate(Almanac.instance.Region3[r3], gameObject.transform);
         Regions.Add(region3);
         region3.transform.position = new Vector2(45, 0);
     }
