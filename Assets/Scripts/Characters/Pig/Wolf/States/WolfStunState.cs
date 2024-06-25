@@ -13,6 +13,7 @@ public class WolfStunState : WolfState
 
 	public override void EnterState()
 	{
+		Wolf.animator.Play("Idle");
 		stunTimer = Wolf.effectValue;
 		Wolf.sprite.color = Color.yellow;
 		Wolf.transform.GetChild(2).gameObject.SetActive(true);

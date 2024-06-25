@@ -13,6 +13,7 @@ public class PigIdleState : PigState
 	public override void EnterState()
 	{
 		Debug.Log("Enter Idle State");
+		Pig.animator.Play("Idle)");
 	}
 	public override void ExitState()
 	{
@@ -23,10 +24,13 @@ public class PigIdleState : PigState
 		if(Pig.isDropped == false)
 			return;
 		else if (Pig.canHelp == false)
-			StateMachine.ChangeState(PigStateMachine.EPigState.Home);
+		{
+			if (Vector3.Distance(Pig.transform.position, Pig.House.position) > 1f)
+				StateMachine.ChangeState(PigStateMachine.EPigState.Home);
+		}
 		else if (Pig.item != null)
 			StateMachine.ChangeState(PigStateMachine.EPigState.Transport);
-		else if (Vector3.Distance(Pig.transform.position, Pig.Player.position) > 5.0f)
+		else if (Pig.canHelp == true && Vector3.Distance(Pig.transform.position, Pig.Player.position) > 5.0f)
 			StateMachine.ChangeState(PigStateMachine.EPigState.Follow);
 	}
 	public override PigStateMachine.EPigState GetState()

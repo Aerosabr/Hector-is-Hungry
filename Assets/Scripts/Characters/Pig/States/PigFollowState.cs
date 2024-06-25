@@ -15,12 +15,15 @@ public class PigFollowState : PigState
 
 	public override void EnterState()
 	{
-		Debug.Log("Enter Follow State");
+		//Debug.Log("Enter Follow State");
+		Pig.walk.Play();
+		Pig.animator.Play("Run");
 	}
 
 	public override void ExitState()
 	{
 		//Debug.Log("Exit Follow State");
+		Pig.walk.Stop();
 	}
 
 	public override void UpdateState()
@@ -32,6 +35,14 @@ public class PigFollowState : PigState
 
 		// Calculate direction towards the player
 		Vector3 direction = (Pig.Player.position - Pig.transform.position).normalized;
+		if (direction.x < 0)
+		{
+			Pig.sprite.flipX = true;
+		}
+		else if (direction.x > 0)
+		{
+			Pig.sprite.flipX = false;
+		}
 
 		// Move towards the player
 		Pig.rb.velocity = direction * Pig.runSpeed;

@@ -26,6 +26,7 @@ public class Wolf : MonoBehaviour
 	public List<IConsumable> foodInRange = new List<IConsumable>();
 
 	private float timeSinceLastIncrease = 0f;
+	public Animator animator;
 
 	private void Update()
 	{

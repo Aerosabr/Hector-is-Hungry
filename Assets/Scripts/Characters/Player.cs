@@ -10,6 +10,11 @@ public class Player : Entity
     [SerializeField] private GameObject gameOver;
     public float sprintDuration = 0;
 
+
+	void Start()
+	{
+		StartCoroutine(PlayAudioWithRandomInterval());
+	}
     private void FixedUpdate()
     {
         if (sprintDuration > 0)
@@ -153,6 +158,18 @@ public class Player : Entity
 			{
 				itemComponent.Highlight(true);
 			}
+		}
+	}
+	IEnumerator PlayAudioWithRandomInterval()
+	{
+		while (true)
+		{
+			// Wait for a random time between 15 and 20 seconds
+			float waitTime = Random.Range(10f, 20f);
+			yield return new WaitForSeconds(waitTime);
+
+			// Play the audio source
+			MusicManager.instance.soundSources[1].Play();
 		}
 	}
 
