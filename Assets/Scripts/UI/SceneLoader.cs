@@ -31,5 +31,10 @@ public class SceneLoading : MonoBehaviour
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(Scene);
     }
+	public void ReloadScene()
+	{
+		Scene currentScene = SceneManager.GetActiveScene();
+		SceneManager.LoadScene(currentScene.name);
+	}
 
 }

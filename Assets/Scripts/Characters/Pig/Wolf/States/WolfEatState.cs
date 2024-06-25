@@ -19,6 +19,7 @@ public class WolfEatState : WolfState
 	{
 		//Debug.Log("Enter Eat State");
 		Wolf.animator.Play("Bite");
+		MusicManager.instance.soundSources[5].Play();
 
 		eatTimer = Wolf.eatTime;
 
@@ -28,6 +29,7 @@ public class WolfEatState : WolfState
 	public override void ExitState()
 	{
 		//Debug.Log("Exit Eat State");
+		MusicManager.instance.soundSources[5].Stop();
 	}
 
 	public override void UpdateState()

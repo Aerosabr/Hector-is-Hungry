@@ -38,13 +38,16 @@ public class PigTransportState : PigState
 
 		// Move towards the player
 		Pig.rb.velocity = direction * Pig.runSpeed;
+		Pig.animator.speed = Pig.runSpeed;
 		if (direction.x < 0)
 		{
 			Pig.sprite.flipX = true;
+			Pig.highlightSprite.flipY = true;
 		}
 		else if (direction.x > 0)
 		{
 			Pig.sprite.flipX = false;
+			Pig.highlightSprite.flipY = false;
 		}
 
 		if (Vector3.Distance(Pig.transform.position, Pig.Wolf.position) <= 0.5f)
@@ -58,6 +61,7 @@ public class PigTransportState : PigState
 				Pig.item.GetComponent<Item>().ItemDropped(Pig.gameObject);
 				Pig.item = null;
 				Pig.runSpeed = 2.5f;
+				Pig.animator.speed = Pig.runSpeed;
 				StateMachine.ChangeState(PigStateMachine.EPigState.Idle);
 			}
 		}

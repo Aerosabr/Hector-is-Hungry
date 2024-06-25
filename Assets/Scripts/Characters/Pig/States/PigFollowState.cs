@@ -38,10 +38,12 @@ public class PigFollowState : PigState
 		if (direction.x < 0)
 		{
 			Pig.sprite.flipX = true;
+			Pig.highlightSprite.flipX = true;
 		}
 		else if (direction.x > 0)
 		{
 			Pig.sprite.flipX = false;
+			Pig.highlightSprite.flipX = false;
 		}
 
 		// Move towards the player
