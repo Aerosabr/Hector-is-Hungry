@@ -229,6 +229,18 @@ public class Haybale : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 						}
 					}
 				}
+				else if (hit.CompareTag("Building"))
+				{
+					if (hit.TryGetComponent(out House house) && character.tag == "Player")
+					{
+                        if (house.AddMaterial(this.transform))
+                        {
+							MusicManager.instance.soundSources[17].Play();
+							Destroy(transform.gameObject, 1f);
+                            yield return null;
+                        }
+					}
+				}
 			}
 			transform.position = arcPosition;
 			elapsed += Time.deltaTime;

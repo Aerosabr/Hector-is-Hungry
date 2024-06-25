@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
@@ -208,6 +209,18 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 			{
 				if (hit.CompareTag("Wolf"))
 					isMarked = true;
+				else if (hit.CompareTag("Building"))
+				{
+					if (hit.TryGetComponent(out House house))
+					{
+						if (house.AddMaterial(this.transform))
+						{
+							MusicManager.instance.soundSources[17].Play();
+							Destroy(transform.gameObject, 1f);
+							yield return null;
+						}
+					}
+				}
 			}
 			transform.position = arcPosition;
 			elapsed += Time.deltaTime;
