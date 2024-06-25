@@ -58,7 +58,8 @@ public class PigTransportState : PigState
 			{
 				Pig.rb.velocity = Vector3.zero;
 				Pig.animator.Play("Idle");
-				Pig.item.GetComponent<Item>().ItemDropped(Pig.gameObject);
+				if(Pig.item)
+					Pig.item.GetComponent<Item>().ItemDropped(Pig.gameObject);
 				Pig.item = null;
 				Pig.runSpeed = 2.5f;
 				Pig.animator.speed = Pig.runSpeed;

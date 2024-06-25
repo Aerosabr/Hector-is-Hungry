@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PigHomeState : PigState
 {
-	private float followDistance = 0.1f;
+	private float followDistance = 0.5f;
 	private float decelerationRate = 5000.0f;
 	public PigHomeState(PigStateMachine stateMachine, Pig pig, PigStateMachine.EPigState stateKey) : base(stateMachine, pig, stateKey)
 	{
@@ -14,7 +14,7 @@ public class PigHomeState : PigState
 
 	public override void EnterState()
 	{
-		//Debug.Log("Enter Home State");
+		Debug.Log("Enter Home State");
 		Pig.walk.Play();
 		Pig.animator.Play("Run");
 	}

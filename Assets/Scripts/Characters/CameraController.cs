@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
 	public float lookAheadSpeed = 3f;
 	private float lookOffset = 0f;
 
+	[SerializeField] private Camera mainCamera;
 	[SerializeField] private float minX = -9.2f;
 	private float maxX = 39.2f;
 	[SerializeField] private Transform minimumX;
@@ -25,18 +26,23 @@ public class CameraController : MonoBehaviour
 	void FixedUpdate()
 	{
 		// Adjust lookOffset based on player's horizontal velocity
-		minX = minimumX.position.x + 13.57f;
-		if (rb.velocity.x > 0f)
+		if (rb != null)
 		{
-			lookOffset = lookAheadDistance;
-		}
-		else if (rb.velocity.x < 0f)
-		{
-			lookOffset = -lookAheadDistance;
-		}
+			if (minX >= 25.7)
+				maxX = 64.0f;
+			minX = minimumX.position.x + 13.57f;
+			if (rb.velocity.x > 0f)
+			{
+				lookOffset = lookAheadDistance;
+			}
+			else if (rb.velocity.x < 0f)
+			{
+				lookOffset = -lookAheadDistance;
+			}
 
-		// Update targetPoint based on player's position and lookOffset
-		targetPoint.x = player.transform.position.x + lookOffset;
+			// Update targetPoint based on player's position and lookOffset
+			targetPoint.x = player.transform.position.x + lookOffset;
+		}
 	}
 
 	void LateUpdate()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PigFollowState : PigState
 {
-	private float followDistance = 5.0f;
+	private float followDistance = 2.0f;
 	private float decelerationRate = 5000.0f;
 	public PigFollowState(PigStateMachine stateMachine, Pig pig, PigStateMachine.EPigState stateKey) : base(stateMachine, pig, stateKey)
 	{
@@ -15,7 +15,7 @@ public class PigFollowState : PigState
 
 	public override void EnterState()
 	{
-		//Debug.Log("Enter Follow State");
+		Debug.Log("Enter Follow State");
 		Pig.walk.Play();
 		Pig.animator.Play("Run");
 	}
@@ -52,13 +52,15 @@ public class PigFollowState : PigState
 		// Check distance to stop following
 		if (Vector3.Distance(Pig.transform.position, Pig.Player.position) <= followDistance)
 		{
-			Pig.rb.velocity = Vector3.Lerp(Pig.rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
+			//Pig.rb.velocity = Vector3.Lerp(Pig.rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
 
-			if (Pig.rb.velocity.magnitude < 0.1f)
-			{
-				Pig.rb.velocity = Vector3.zero;
-				StateMachine.ChangeState(PigStateMachine.EPigState.Idle);
-			}
+			//if (Pig.rb.velocity.magnitude < 0.1f)
+			//{
+			//	Pig.rb.velocity = Vector3.zero;
+			//	StateMachine.ChangeState(PigStateMachine.EPigState.Idle);
+			//}
+			Pig.rb.velocity = Vector3.zero;
+			StateMachine.ChangeState(PigStateMachine.EPigState.Idle);
 		}
 	}
 
