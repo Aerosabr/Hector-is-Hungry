@@ -26,7 +26,7 @@ public class TutorialText : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         line1.SetActive(true);
         line1.GetComponent<Animator>().Play("FadeIn");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         ClickAnywhere.SetActive(true);
         ClickAnywhere.GetComponent<Animator>().Play("FadeInAndOut");
         TutorialManager.instance.ClickAnywhere.SetActive(true);
@@ -36,10 +36,13 @@ public class TutorialText : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         line1.SetActive(true);
+        line1.GetComponent<Animator>().Play("FadeIn");
         yield return new WaitForSeconds(2.5f);
         line2.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        line2.GetComponent<Animator>().Play("FadeIn");
+        yield return new WaitForSeconds(2f);
         ClickAnywhere.SetActive(true);
+        ClickAnywhere.GetComponent<Animator>().Play("FadeInAndOut");
         TutorialManager.instance.ClickAnywhere.SetActive(true);
     }
 }
