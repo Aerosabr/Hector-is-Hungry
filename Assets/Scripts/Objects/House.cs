@@ -21,7 +21,7 @@ public class House : MonoBehaviour
         
     }
 
-	public void OnTriggerEnter2D(Collider2D collision)
+	public bool AddMaterial(Transform collision)
 	{
 		if(collision.tag == "Item" && currentAmount < requireAmount)
 		{
@@ -48,13 +48,12 @@ public class House : MonoBehaviour
 					MusicManager.instance.soundSources[14].Play();
 					pig.transform.GetComponent<Pig>().Activate();
 				}
+				return true;
 			}
 			else if (material == "Sticks" && stickScript != null)
 			{
 				currentAmount += 1;
 				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
-                collision.GetComponent<Item>().region.numActive--;
-                collision.GetComponent<DestroyOnContact>().DestroyObject();
 				if (currentAmount == requireAmount)
 				{
 					bubble.SetActive(false);
@@ -63,6 +62,7 @@ public class House : MonoBehaviour
 					MusicManager.instance.soundSources[14].Play();
 					pig.transform.GetComponent<Pig>().Activate();
 				}
+				return true;
 			}
 			else if (material == "Rock" && (rockScript != null || meteorScript != null))
 			{
@@ -76,64 +76,70 @@ public class House : MonoBehaviour
 					sprite.sprite = sprite_List[1];
 					MusicManager.instance.soundSources[14].Play();
 					victory.VictoryScreen();
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 
-	public void OnTriggerStay2D(Collider2D collision)
-	{
-		if (collision.tag == "Item" && currentAmount < requireAmount)
-		{
-			//Debug.Log(collision.gameObject.name);
+	//public void OnTriggerStay2D(Collider2D collision)
+	//{
+	//	if (collision.tag == "Item" && currentAmount < requireAmount)
+	//	{
+	//		//Debug.Log(collision.gameObject.name);
 
-			// Check if the collision object has a "haybale" or "apple" script
-			Haybale haybaleScript = collision.gameObject.GetComponent<Haybale>();
-			Sticks stickScript = collision.gameObject.GetComponent<Sticks>();
-			Rock rockScript = collision.gameObject.GetComponent<Rock>();
-			Meteor meteorScript = collision.gameObject.GetComponent<Meteor>();
+	//		// Check if the collision object has a "haybale" or "apple" script
+	//		Haybale haybaleScript = collision.gameObject.GetComponent<Haybale>();
+	//		Sticks stickScript = collision.gameObject.GetComponent<Sticks>();
+	//		Rock rockScript = collision.gameObject.GetComponent<Rock>();
+	//		Meteor meteorScript = collision.gameObject.GetComponent<Meteor>();
+	//		Tumbleweed tumbleweedScript = collision.gameObject.GetComponent<Tumbleweed>();
 
-			if (material == "Haybale" && haybaleScript != null)
-			{
-				currentAmount += 1;
-				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
-				collision.GetComponent<Item>().region.numActive--;
-				collision.GetComponent<DestroyOnContact>().DestroyObject();
-				if (currentAmount == requireAmount)
-				{
-					bubble.SetActive(false);
-					sprite.sprite = sprite_List[1];
-					//Instantiate(pig, transform.position, Quaternion.identity); Activate pig here
-					pig.transform.GetComponent<Pig>().Activate();
-				}
-            }
-			else if (material == "Sticks" && stickScript != null)
-			{
-				currentAmount += 1;
-				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
-				collision.GetComponent<Item>().region.numActive--;
-				collision.GetComponent<DestroyOnContact>().DestroyObject();
-				if (currentAmount == requireAmount)
-				{
-					bubble.SetActive(false);
-					sprite.sprite = sprite_List[1];
-					//Instantiate(pig, transform.position, Quaternion.identity); Activate pig here
-					pig.transform.GetComponent<Pig>().Activate();
-				}
-            }
-			else if (material == "Rock" && (rockScript != null || meteorScript != null))
-			{
-				currentAmount += 1;
-				text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
-				collision.GetComponent<Item>().region.numActive--;
-				collision.GetComponent<DestroyOnContact>().DestroyObject();
-				if (currentAmount == requireAmount)
-				{
-					bubble.SetActive(false);
-					sprite.sprite = sprite_List[1];
-					victory.VictoryScreen();
-				}
-			}
-		}
-	}
+	//		if (material == "Haybale" && (haybaleScript != null || tumbleweedScript != null))
+	//		{
+	//			currentAmount += 1;
+	//			text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
+	//			collision.GetComponent<Item>().region.numActive--;
+	//			collision.GetComponent<DestroyOnContact>().DestroyObject();
+	//			if (currentAmount == requireAmount)
+	//			{
+	//				bubble.SetActive(false);
+	//				sprite.sprite = sprite_List[1];
+	//				//Instantiate(pig, transform.position, Quaternion.identity);
+	//				MusicManager.instance.soundSources[14].Play();
+	//				pig.transform.GetComponent<Pig>().Activate();
+	//			}
+	//		}
+	//		else if (material == "Sticks" && stickScript != null)
+	//		{
+	//			currentAmount += 1;
+	//			text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
+	//			collision.GetComponent<Item>().region.numActive--;
+	//			collision.GetComponent<DestroyOnContact>().DestroyObject();
+	//			if (currentAmount == requireAmount)
+	//			{
+	//				bubble.SetActive(false);
+	//				sprite.sprite = sprite_List[1];
+	//				//Instantiate(pig, transform.position, Quaternion.identity);
+	//				MusicManager.instance.soundSources[14].Play();
+	//				pig.transform.GetComponent<Pig>().Activate();
+	//			}
+	//		}
+	//		else if (material == "Rock" && (rockScript != null || meteorScript != null))
+	//		{
+	//			currentAmount += 1;
+	//			text.text = currentAmount.ToString() + "/" + requireAmount.ToString();
+	//			collision.GetComponent<Item>().region.numActive--;
+	//			collision.GetComponent<DestroyOnContact>().DestroyObject();
+	//			if (currentAmount == requireAmount)
+	//			{
+	//				bubble.SetActive(false);
+	//				sprite.sprite = sprite_List[1];
+	//				MusicManager.instance.soundSources[14].Play();
+	//				victory.VictoryScreen();
+	//			}
+	//		}
+	//	}
+	//}
 }
