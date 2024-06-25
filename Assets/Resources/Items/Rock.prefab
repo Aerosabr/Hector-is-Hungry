@@ -116,10 +116,10 @@ GameObject:
   - component: {fileID: 6636351250338765955}
   - component: {fileID: 8945902445593177537}
   - component: {fileID: 949542235546309469}
-  - component: {fileID: 8368317977210783679}
   - component: {fileID: 620422956121281133}
   - component: {fileID: 836182758184331198}
   - component: {fileID: 4499865850420318783}
+  - component: {fileID: 1853131963766017332}
   m_Layer: 7
   m_Name: Rock
   m_TagString: Item
@@ -199,37 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b0f65ae8b5ce940a7a86d081dc9d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8368317977210783679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4093822179315014745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bd56d1f847b5e24893a45641116dc52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 8945902445593177537}
-  box: {fileID: 836182758184331198}
-  region: {fileID: 0}
-  isDropped: 0
-  speedDuration: 0
-  isMarked: 0
-  xSize: 2
-  ySize: 3
-  spawnDuration: 30
-  Slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  sprite: {fileID: 4499865850420318783}
-  HighlightObject: {fileID: 8639028992183381030}
-  current: 0
 --- !u!50 &620422956121281133
 Rigidbody2D:
   serializedVersion: 4
@@ -289,7 +258,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.054138184, y: -0.07180786}
+  m_Offset: {x: -0.011495709, y: 0.006952882}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -300,7 +269,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5457764, y: 1.391098}
+  m_Size: {x: 2.7796943, y: 1.5486195}
   m_EdgeRadius: 0
 --- !u!212 &4499865850420318783
 SpriteRenderer:
@@ -354,6 +323,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1853131963766017332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093822179315014745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd56d1f847b5e24893a45641116dc52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 8945902445593177537}
+  box: {fileID: 836182758184331198}
+  region: {fileID: 0}
+  isDropped: 0
+  speedDuration: 0
+  isMarked: 0
+  xSize: 2
+  ySize: 3
+  spawnDuration: 30
+  Slots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  sprite: {fileID: 4499865850420318783}
+  HighlightObject: {fileID: 8639028992183381030}
+  current: 0
 --- !u!1 &7038026804410676013
 GameObject:
   m_ObjectHideFlags: 0
