@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PigHomeState : PigState
 {
-	private float followDistance = 0.5f;
+	private float followDistance = 0.1f;
 	private float decelerationRate = 5000.0f;
 	public PigHomeState(PigStateMachine stateMachine, Pig pig, PigStateMachine.EPigState stateKey) : base(stateMachine, pig, stateKey)
 	{
@@ -40,10 +40,12 @@ public class PigHomeState : PigState
 		if (direction.x < 0)
 		{
 			Pig.sprite.flipX = true;
+			Pig.highlightSprite.flipX = true;
 		}
 		else if (direction.x > 0)
 		{
 			Pig.sprite.flipX = false;
+			Pig.highlightSprite.flipX = false;
 		}
 
 		Pig.rb.velocity = direction * Pig.runSpeed;

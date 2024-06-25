@@ -195,6 +195,7 @@ public class Tumbleweed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 			else
 				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-3f, 0f, 0f), 0.5f, character));
 		}
+
 	}
 	private IEnumerator MoveToPositionCoroutine(Vector3 targetPosition, float duration, Transform character)
 	{
@@ -227,6 +228,18 @@ public class Tumbleweed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler
 							box.enabled = false;
                             box.excludeLayers |= LayerMask.GetMask("Character");
                             transform.localScale = new Vector3(1, 1, 1);
+						}
+					}
+				}
+				else if (hit.CompareTag("Building"))
+				{
+					if (hit.TryGetComponent(out House house) && character.tag == "Player")
+					{
+						if (house.AddMaterial(this.transform))
+						{
+							MusicManager.instance.soundSources[17].Play();
+							Destroy(transform.gameObject, 1f);
+							yield return null;
 						}
 					}
 				}

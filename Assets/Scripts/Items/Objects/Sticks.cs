@@ -177,6 +177,27 @@ public class Sticks : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IC
 						}
 					}
 				}
+				else if (hit.CompareTag("NPC"))
+				{
+					if (hit.TryGetComponent(out House house) && character.tag == "Player")
+					{
+						MusicManager.instance.soundSources[17].Play();
+						Destroy(hit.gameObject, 1f);
+						yield return null;
+					}
+				}
+				else if (hit.CompareTag("Building"))
+				{
+					if (hit.TryGetComponent(out House house) && character.tag == "Player")
+					{
+						if (house.AddMaterial(this.transform))
+						{
+							MusicManager.instance.soundSources[17].Play();
+							Destroy(transform.gameObject, 1f);
+							yield return null;
+						}
+					}
+				}
 			}
 			transform.position = arcPosition;
 			elapsed += Time.deltaTime;

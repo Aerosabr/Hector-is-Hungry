@@ -11,11 +11,12 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
     [SerializeField] private int current;
     [SerializeField] private CircleCollider2D circle;
     public SpriteRenderer sprite;
+    public SpriteRenderer highlightSprite;
     public Animator animator;
     public AudioSource oink;
     public AudioSource squeal;
     public AudioSource walk;
-    public float runSpeed = 5.0f;
+    public float runSpeed = 2.5f;
 
     public GameObject item;
 
@@ -238,7 +239,7 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
             Slots[i] = null;
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
-        transform.localScale = new Vector3(0.5f, 0.5f);
+        transform.localScale = new Vector3(0.25f, 0.25f);
         Transform character = Character.transform;
         transform.position = character.position;
         if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
