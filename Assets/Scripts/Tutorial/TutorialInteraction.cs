@@ -13,6 +13,7 @@ public class TutorialInteraction : MonoBehaviour
     public bool Condition2;
     public bool Condition3;
     public bool Condition4;
+    public bool Condition5;
 
     private void Awake()
     {
@@ -20,21 +21,21 @@ public class TutorialInteraction : MonoBehaviour
         Condition2 = false; 
         Condition3 = false;
         Condition4 = false;
-
+        Condition5 = false;
         switch (Step)
         {
             case 3:
                 StartCoroutine(Step3());
                 break;
-            case 6:
-                StartCoroutine(Step6());
+            case 4:
+                StartCoroutine(Step4());
                 break;
         }
     }
 
     private void Update()
     {
-        if (Step == 3)
+        if (Step == 3 && Condition5)
         {
             if (Input.GetKeyDown(KeyCode.W) && !Condition1)
             {
@@ -60,7 +61,7 @@ public class TutorialInteraction : MonoBehaviour
             if (Condition1 && Condition2 && Condition3 && Condition4)
                 TutorialManager.instance.Step++;
         }
-        else if (Step == 6)
+        else if (Step == 4 && Condition5)
         {
             if (Input.GetKeyDown(KeyCode.F) && !Condition1)
             {
@@ -84,10 +85,45 @@ public class TutorialInteraction : MonoBehaviour
             image.SetActive(true);
             image.GetComponent<Animator>().Play("FadeIn");
         }
+        yield return new WaitForSeconds(.5f);
+        Condition5 = true;
     }
 
-    private IEnumerator Step6()
+    private IEnumerator Step4()
     {
+        yield return new WaitForSeconds(.5f);
+        Line[0].SetActive(true);
+        Line[0].GetComponent<Animator>().Play("FadeIn");
         yield return new WaitForSeconds(2.5f);
+        Line[1].SetActive(true);
+        Line[1].GetComponent<Animator>().Play("FadeIn");
+        yield return new WaitForSeconds(2.5f);
+        Line[2].SetActive(true);
+        Line[2].GetComponent<Animator>().Play("FadeIn");
+        Line[3].SetActive(true);
+        Line[3].GetComponent<Animator>().Play("FadeIn");
+        for (int i = 0; i <= 3; i++)
+        {
+            Images[i].SetActive(true);
+            Images[i].GetComponent<Animator>().Play("FadeIn");
+        }
+        yield return new WaitForSeconds(.5f);
+        Condition5 = true;
+    }
+
+    public void Step4TaskComplete()
+    {
+        if (!Condition2)
+        {
+
+        }
+        else if (!Condition3)
+        {
+
+        }
+        else if (!Condition4)
+        {
+
+        }
     }
 }

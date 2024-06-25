@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: BGMap_Stage03_Snowy_Ground_42
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1765545148, guid: d64042d977495bc4da7fc69e007e3c35, type: 3}
+  m_Sprite: {fileID: -881159390, guid: d64042d977495bc4da7fc69e007e3c35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
