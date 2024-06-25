@@ -29,6 +29,19 @@ public class MusicManager : MonoBehaviour
         
     }
 
+    public void TransitionDanger(bool switches)
+    {
+        if (switches)
+        {
+			musicSources[0].Stop();
+			musicSources[1].Play();
+		}
+        else
+        {
+			musicSources[1].Stop();
+			musicSources[0].Play();
+		}
+    }
     public void UpdateSoundVolume()
     {
         soundVolume = sound.value;
