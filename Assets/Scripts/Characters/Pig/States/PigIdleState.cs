@@ -25,7 +25,8 @@ public class PigIdleState : PigState
 			return;
 		else if (Pig.canHelp == false)
 		{
-			if (Vector3.Distance(Pig.transform.position, Pig.House.position) > 1f)
+			
+			if (Pig.House != null && Vector3.Distance(Pig.transform.position, Pig.House.position) > 1f)
 				StateMachine.ChangeState(PigStateMachine.EPigState.Home);
 		}
 		else if (Pig.item != null)
