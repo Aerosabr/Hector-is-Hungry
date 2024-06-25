@@ -9,10 +9,12 @@ public class RegionManager : MonoBehaviour
     [SerializeField] private List<Sprite> BuildMaterials = new List<Sprite>();
     [SerializeField] private SpriteRenderer HouseHay;
     [SerializeField] private SpriteRenderer HouseBrick;
+    [SerializeField] private House BrickHouse;
     [SerializeField] private TMPro.TextMeshPro BrickQuantity;
     //Regions that have been generated in game
     [SerializeField] private List<GameObject> Regions = new List<GameObject>();
-
+    [SerializeField] private GameObject Cloud;
+    private bool Space;
     private void Awake()
     {
         instance = this;
@@ -22,7 +24,21 @@ public class RegionManager : MonoBehaviour
     {
         LoadRegions();
 		MeasureAndLogPerimeters();
+        StartCoroutine(SpawnClouds());
 	}
+
+    private IEnumerator SpawnClouds()
+    {
+        yield return new WaitForSeconds(Random.Range(1f, 3f));
+        GameObject cloud = Instantiate(Cloud, transform);
+        if (Space)        
+            cloud.transform.localPosition = new Vector3(Random.Range(-22f, 51f), Random.Range(3.5f, 6.4f));      
+        else     
+            cloud.transform.localPosition = new Vector3(Random.Range(-22f, 36f), Random.Range(3.5f, 6.4f));
+
+        Debug.Log(cloud.transform.localPosition);
+        StartCoroutine(SpawnClouds());
+    }
 
     public void LoadRegions()
     {
@@ -44,7 +60,9 @@ public class RegionManager : MonoBehaviour
         if (r3 == 2)
         {
             HouseBrick.sprite = BuildMaterials[1];
-            BrickQuantity.text = "0/4";
+            BrickQuantity.text = "0/2";
+            BrickHouse.requireAmount = 2;
+            Space = true;
         }
         GameObject region3 = Instantiate(Almanac.instance.Region3[r3], gameObject.transform);
         Regions.Add(region3);

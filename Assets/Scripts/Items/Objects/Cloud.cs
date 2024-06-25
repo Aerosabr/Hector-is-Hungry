@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
+public class Cloud : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private GameObject HighlightObject;
     [SerializeField] private int current;
-
+    [SerializeField] private bool inCloudform = true;
     private float GetDivisors()
     {
         Vector3[] corners = new Vector3[4];
@@ -153,7 +154,9 @@ public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         {
             if (CheckSlot(i.ToString() + "1"))
             {
-                isDropped = false;
+				MusicManager.instance.soundSources[17].Play();
+				isDropped = false;
+                inCloudform = false;
                 isMarked = false;
                 transform.SetParent(GameObject.Find("InventoryImages").transform);
                 OnEndDrag(null);
@@ -161,8 +164,7 @@ public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
                 image.enabled = true;
                 box.enabled = false;
                 transform.localScale = new Vector3(1, 1, 1);
-				MusicManager.instance.soundSources[17].Play();
-				return true;
+                return true;
             }
         }
         return false;
@@ -184,9 +186,9 @@ public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
             Slots[i] = null;
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
-        transform.localScale = Vector3.one;
         Transform character = Character.transform;
-		transform.position = character.position;
+        transform.position = character.position;
+        transform.localScale = Vector3.one;
 		if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
 			StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f));
 		else
@@ -208,6 +210,18 @@ public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
 			{
 				if (hit.CompareTag("Wolf"))
 					isMarked = true;
+				else if (hit.CompareTag("Building"))
+				{
+					if (hit.TryGetComponent(out House house))
+					{
+						if (house.AddMaterial(this.transform))
+						{
+							MusicManager.instance.soundSources[17].Play();
+							Destroy(transform.gameObject, 1f);
+							yield return null;
+						}
+					}
+				}
 			}
 			transform.position = arcPosition;
 			elapsed += Time.deltaTime;
@@ -227,13 +241,23 @@ public class Ice : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
     }
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
-    {
-        eatTime = 5;
-        foodValue = 60;
-        effect = "Slow";
-        effectValue = 10;
-        region.numActive--;
-        Destroy(gameObject);
-        Debug.Log("Consume Ice");
-    }
+	{
+        if (inCloudform)
+        {
+            eatTime = 0;
+            foodValue = 0;
+            effect = "None";
+            effectValue = 0;
+        }
+        else
+        {
+            eatTime = 3;
+            foodValue = 60;
+            effect = "Slow";
+            effectValue = 8;
+            Destroy(gameObject);
+            Debug.Log("Consume Cloud");
+        }
+	}
 }
+

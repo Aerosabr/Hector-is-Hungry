@@ -20,10 +20,10 @@ public class Player : Entity
         if (sprintDuration > 0)
         {
             sprintDuration -= Time.deltaTime;
-            movementSpeed = 1.5f;
+            movementSpeed = 1.875f;
         }
         else
-            movementSpeed = 1;
+            movementSpeed = 1.25f;
     }
 
 	public void OnDestroy()

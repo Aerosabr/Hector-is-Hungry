@@ -10,7 +10,7 @@ public class House : MonoBehaviour
     [SerializeField] private string material;
 	[SerializeField] private List<Sprite> sprite_List = new List<Sprite>();
 	[SerializeField] private int currentAmount;
-    [SerializeField] private int requireAmount;
+    public int requireAmount;
 	[SerializeField] private SpriteRenderer sprite;
 	[SerializeField] private TextMeshPro text;
 	[SerializeField] private GameObject bubble;

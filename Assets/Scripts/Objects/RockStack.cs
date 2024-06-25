@@ -10,6 +10,8 @@ public class RockStack : MonoBehaviour
     [SerializeField] private GameObject Built;
     [SerializeField] private GameObject Unbuilt;
     [SerializeField] private int numRocks;
+    [SerializeField] private GameObject Bubble;
+    [SerializeField] private TMPro.TextMeshPro BubbleText;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,6 +19,8 @@ public class RockStack : MonoBehaviour
         {
             Debug.Log("Rock stacked");
             numRocks++;
+            BubbleText.text = numRocks + "/3";
+            Bubble.SetActive(true);
             CachedRocks.Add(collision.gameObject);
             collision.gameObject.SetActive(false);
             collision.gameObject.GetComponent<Item>().region.numActive--;
@@ -25,6 +29,7 @@ public class RockStack : MonoBehaviour
             {
                 Built.SetActive(true);
                 Unbuilt.SetActive(false);
+                Bubble.SetActive(false);
             }
         }
     }
