@@ -27,6 +27,8 @@ public class Wolf : MonoBehaviour
 
 	private float timeSinceLastIncrease = 0f;
 	public Animator animator;
+	private int lastPlayedIndex = -1;
+	private Coroutine coroutine;
 
 	private void Update()
 	{
@@ -75,5 +77,49 @@ public class Wolf : MonoBehaviour
 		isSlowed = true;
 	}
 
+	public void PlayWalkSound()
+	{
+		coroutine = StartCoroutine(PlayRandomSound());
+	}
+	public void StopWalkSound()
+	{
+		StopCoroutine(coroutine);
+	}
+	IEnumerator PlayRandomSound()
+	{
+		while (true)
+		{
+			// Wait for 2 seconds
+			yield return new WaitForSeconds(2f);
+
+			// Get a random index that is not the same as the last played index
+			int newIndex;
+			do
+			{
+				newIndex = UnityEngine.Random.Range(0, 3);
+			} while (newIndex == lastPlayedIndex);
+
+			if (newIndex == 0)
+				MusicManager.instance.soundSources[8].Play();
+			else if (newIndex == 1)
+				MusicManager.instance.soundSources[9].Play();
+			else if (newIndex == 2)
+				MusicManager.instance.soundSources[10].Play();
+
+			// Update the last played index
+			lastPlayedIndex = newIndex;
+		}
+	}
+
+	public void PlayDeleteSound()
+	{
+		StartCoroutine(PlayDelete());
+	}
+	IEnumerator PlayDelete()
+	{
+		MusicManager.instance.soundSources[5].Play();
+		yield return new WaitForSeconds(1f);
+		MusicManager.instance.soundSources[5].Stop();
+	}
 
 }
