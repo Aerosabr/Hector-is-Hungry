@@ -76,8 +76,7 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         }
 
         image.raycastTarget = false;
-        foreach (GameObject slot in Slots)
-            slot.GetComponent<InventorySlot>().Taken = false;
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -129,6 +128,9 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
 
     public override bool CheckSlot(string Pos)
     {
+        if (!isDropped)
+            foreach (GameObject slot in Slots)
+                slot.GetComponent<InventorySlot>().Taken = false;
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             int x = int.Parse(Pos.Substring(0, 1));
@@ -231,6 +233,8 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
 
     public override void ItemDropped(GameObject Character)
     {
+        foreach (GameObject slot in Slots)
+            slot.GetComponent<InventorySlot>().Taken = false;
         sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;

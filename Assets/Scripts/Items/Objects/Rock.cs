@@ -43,8 +43,6 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         }
 
         image.raycastTarget = false;
-        foreach (GameObject slot in Slots)
-            slot.GetComponent<InventorySlot>().Taken = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -86,6 +84,9 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 
     public override bool CheckSlot(string Pos)
     {
+        if (!isDropped)
+            foreach (GameObject slot in Slots)
+                slot.GetComponent<InventorySlot>().Taken = false;
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             int x = int.Parse(Pos.Substring(0, 1));
@@ -176,7 +177,9 @@ public class Rock : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 
     public override void ItemDropped(GameObject Character)
     {
-		MusicManager.instance.soundSources[16].Play();
+        foreach (GameObject slot in Slots)
+            slot.GetComponent<InventorySlot>().Taken = false;
+        MusicManager.instance.soundSources[16].Play();
 		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;

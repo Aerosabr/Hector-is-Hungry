@@ -37,8 +37,6 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
         }
 
         image.raycastTarget = false;
-        foreach (GameObject slot in Slots)
-            slot.GetComponent<InventorySlot>().Taken = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -74,6 +72,9 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 
     public override bool CheckSlot(string Pos)
     {
+        if (!isDropped)
+            foreach (GameObject slot in Slots)
+                slot.GetComponent<InventorySlot>().Taken = false;
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             int x = int.Parse(Pos.Substring(0, 1));
@@ -160,7 +161,9 @@ public class Beehive : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, I
 
     public override void ItemDropped(GameObject Character)
     {
-		MusicManager.instance.soundSources[16].Play();
+        foreach (GameObject slot in Slots)
+            slot.GetComponent<InventorySlot>().Taken = false;
+        MusicManager.instance.soundSources[16].Play();
 		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
