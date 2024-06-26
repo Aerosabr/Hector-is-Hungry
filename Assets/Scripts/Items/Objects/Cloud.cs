@@ -229,7 +229,8 @@ public class Cloud : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 		}
 
 		transform.position = targetPosition;
-        box.enabled = true;
+        box.excludeLayers &= ~LayerMask.GetMask("Wolf");
+		box.enabled = true;
     }
 
 	public override void Highlight(bool toggle)
