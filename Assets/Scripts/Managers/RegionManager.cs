@@ -14,7 +14,8 @@ public class RegionManager : MonoBehaviour
     //Regions that have been generated in game
     [SerializeField] private List<GameObject> Regions = new List<GameObject>();
     [SerializeField] private GameObject Cloud;
-    private bool Space;
+    [SerializeField] private GameObject CloudDestroyer;
+    [SerializeField] private bool Space;
     private void Awake()
     {
         instance = this;
@@ -29,19 +30,25 @@ public class RegionManager : MonoBehaviour
 
     private IEnumerator SpawnClouds()
     {
-        yield return new WaitForSeconds(Random.Range(1f, 3f));
+        yield return new WaitForSeconds(Random.Range(10f, 15f));
         GameObject cloud = Instantiate(Cloud, transform);
         if (Space)        
-            cloud.transform.localPosition = new Vector3(Random.Range(-22f, 51f), Random.Range(3.5f, 6.4f));      
+            cloud.transform.localPosition = new Vector3(Random.Range(-22f, 36f), Random.Range(4f, 6.4f));      
         else     
-            cloud.transform.localPosition = new Vector3(Random.Range(-22f, 36f), Random.Range(3.5f, 6.4f));
+            cloud.transform.localPosition = new Vector3(Random.Range(-22f, 51f), Random.Range(4f, 6.4f));
 
-        Debug.Log(cloud.transform.localPosition);
+        if (cloud.transform.localPosition.x < 0)
+            cloud.GetComponent<Rigidbody2D>().velocity = new Vector2(1, 0);
+        else
+            cloud.GetComponent<Rigidbody2D>().velocity = new Vector2(-1, 0);
+
         StartCoroutine(SpawnClouds());
     }
 
     public void LoadRegions()
     {
+        GameObject cloudDestroyer = Instantiate(CloudDestroyer, transform);
+        cloudDestroyer.transform.position = new Vector2(-30, 0);
         int roll = 0;
         if (Random.Range(0, 100) < 20)
         {
@@ -63,6 +70,13 @@ public class RegionManager : MonoBehaviour
             BrickQuantity.text = "0/2";
             BrickHouse.requireAmount = 2;
             Space = true;
+            GameObject cloudDestroyer2 = Instantiate(CloudDestroyer, transform);
+            cloudDestroyer2.transform.position = new Vector2(45, 0);
+        }
+        else
+        {
+            GameObject cloudDestroyer2 = Instantiate(CloudDestroyer, transform);
+            cloudDestroyer2.transform.position = new Vector2(60, 0);
         }
         GameObject region3 = Instantiate(Almanac.instance.Region3[r3], gameObject.transform);
         Regions.Add(region3);

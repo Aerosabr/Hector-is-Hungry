@@ -16,7 +16,6 @@ public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, 
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
-        parentAfterDrag.gameObject.GetComponent<InventorySlot>().Taken = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -36,6 +35,8 @@ public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, 
 
     public override bool CheckSlot(string Pos)
     {
+        if (!isDropped)
+            parentAfterDrag.gameObject.GetComponent<InventorySlot>().Taken = false;
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             parentAfterDrag = Inventory.instance.Grid[Pos].gameObject.transform;
@@ -86,7 +87,8 @@ public class Mushroom : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, 
     public override void ItemDropped(GameObject Character)
     {
 		MusicManager.instance.soundSources[16].Play();
-		sprite.enabled = true;
+        parentAfterDrag.gameObject.GetComponent<InventorySlot>().Taken = false;
+        sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         isDropped = true;

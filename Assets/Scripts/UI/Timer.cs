@@ -90,8 +90,6 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         }
 
         image.raycastTarget = false;
-        foreach (GameObject slot in Slots)
-            slot.GetComponent<InventorySlot>().Taken = false;
         
     }
 
@@ -134,6 +132,9 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     public override bool CheckSlot(string Pos)
     {
+        if (!isDropped)
+            foreach (GameObject slot in Slots)
+                slot.GetComponent<InventorySlot>().Taken = false;
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             int x = int.Parse(Pos.Substring(0, 1));
@@ -227,6 +228,8 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     public override void ItemDropped(GameObject Character)
     {
+        foreach (GameObject slot in Slots)
+            slot.GetComponent<InventorySlot>().Taken = false;
         isDropped = true;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         OnEndDrag(null);

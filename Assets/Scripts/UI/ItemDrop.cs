@@ -15,7 +15,8 @@ public class ItemDrop : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        eventData.pointerDrag.GetComponent<Item>().ItemDropped(Player);
+        Item item = eventData.pointerDrag.GetComponent<Item>();
+        item.ItemDropped(Player);
     }
 
 }
