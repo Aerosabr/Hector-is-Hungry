@@ -791,9 +791,11 @@ MonoBehaviour:
   current: 0
   textUI: {fileID: 0}
   textInventory: {fileID: 843285858222295360}
+  textGameOver: {fileID: 0}
   textItem: {fileID: 1145511046529411369}
   uiActive: 1
   brickHouse: {fileID: 0}
+  TimerActive: 1
   timerElapse: 0
 --- !u!50 &5995170097091941390
 Rigidbody2D:
@@ -837,7 +839,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1463
+    m_Bits: 439
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -854,7 +856,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1.0977716, y: 0.62619424}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -865,7 +867,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.667}
+  m_Size: {x: 2.3092327, y: 0.92984724}
   m_EdgeRadius: 0
 --- !u!1 &5598587755052492165
 GameObject:

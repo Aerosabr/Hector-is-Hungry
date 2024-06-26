@@ -235,6 +235,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         OnEndDrag(null);
 		sprite.enabled = true;
 		Icon.SetActive(true);
+        box.offset = Vector2.zero;
         InventoryImg.SetActive(false);
         image.raycastTarget = true;
         for (int i = 0; i <= 5; i++)
@@ -299,6 +300,6 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
         effectValue = 30;
         brickHouse.SetActive(true);
         Destroy(gameObject);
-        Debug.Log("Consume Stalagmite");
+        Debug.Log("Consume Timer");
     }
 }

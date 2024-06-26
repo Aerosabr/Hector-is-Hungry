@@ -7,14 +7,22 @@ using UnityEngine.EventSystems;
 public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, IConsumable
 {
     public static WolfHungerUI instance;
+
     [SerializeField] private List<GameObject> Slots = new List<GameObject>();
     [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private GameObject UI;
+    [SerializeField] private GameObject icon;
+    [SerializeField] private GameObject InventoryImg;
     [SerializeField] private GameObject HighlightObject;
+    [SerializeField] private GameObject HighlightUI;
     [SerializeField] private int current;
- 
+    [SerializeField] private bool uiActive = true;
+
     public Wolf wolf;
     public Slider hungerBar;
+    public Slider hungerBar2;
     public Transform Icon;
+    public Transform Icon2;
 
     private void Start()
     {
@@ -24,7 +32,7 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
     private void FixedUpdate()
     {
         hungerBar.value = wolf.currentHunger / wolf.maxHunger;
-
+        hungerBar2.value = wolf.currentHunger / wolf.maxHunger;
         if ((wolf.currentHunger / wolf.maxHunger) < 0.4f)
         {
             float rotationSpeedFactor = Mathf.Clamp01((wolf.currentHunger / wolf.maxHunger));
@@ -35,6 +43,7 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
                 float rotationAngle = Mathf.Sin(Time.time * rotationSpeed) * (1 - wolf.currentHunger / wolf.maxHunger) * 10f;
 
                 Icon.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+                Icon2.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
             }
         }
     }
@@ -42,7 +51,7 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
     private float GetDivisors()
     {
         Vector3[] corners = new Vector3[4];
-        GetComponent<RectTransform>().GetWorldCorners(corners);
+        InventoryImg.GetComponent<RectTransform>().GetWorldCorners(corners);
         return corners[2].x - corners[1].x;
     }
 
@@ -70,8 +79,7 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
         }
 
         image.raycastTarget = false;
-        foreach (GameObject slot in Slots)
-            slot.GetComponent<InventorySlot>().Taken = false;
+        Debug.Log("Began drag");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -113,6 +121,9 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
 
     public override bool CheckSlot(string Pos)
     {
+        if (!isDropped)
+            foreach (GameObject slot in Slots)
+                slot.GetComponent<InventorySlot>().Taken = false;
         if (!Inventory.instance.Grid[Pos].Taken)
         {
             int x = int.Parse(Pos.Substring(0, 1));
@@ -181,18 +192,21 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
         {
             if (CheckSlot(i.ToString() + "1"))
             {
+                Debug.Log("Valid");
                 isDropped = false;
-                isMarked = false;
                 transform.SetParent(GameObject.Find("InventoryImages").transform);
                 OnEndDrag(null);
                 sprite.enabled = false;
-                image.enabled = true;
+                icon.SetActive(false);
+                UI.SetActive(false);
+                InventoryImg.SetActive(true);
                 box.enabled = false;
-                transform.localScale = new Vector3(1, 1, 1);
-                MusicManager.instance.soundSources[17].Play();
+                uiActive = false;
+                transform.localScale = Vector3.one;
                 return true;
             }
         }
+
         return false;
     }
 
@@ -203,15 +217,20 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
 
     public override void ItemDropped(GameObject Character)
     {
-        MusicManager.instance.soundSources[16].Play();
-        sprite.enabled = true;
-        image.raycastTarget = true;
-        image.enabled = false;
+        foreach (GameObject slot in Slots)
+            slot.GetComponent<InventorySlot>().Taken = false;
         isDropped = true;
+        transform.SetParent(GameObject.Find("RegionManager").transform);
+        OnEndDrag(null);
+        sprite.enabled = true;
+        icon.SetActive(true);
+        box.offset = Vector2.zero;
+        box.size = new Vector2(2, 0.5f);
+        InventoryImg.SetActive(false);
+        image.raycastTarget = true;
         for (int i = 0; i <= 5; i++)
             Slots[i] = null;
         current = 0;
-        transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.localScale = Vector3.one;
         Transform character = Character.transform;
         transform.position = character.position;
@@ -249,19 +268,29 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
     public override void Highlight(bool toggle)
     {
         if (toggle)
-            HighlightObject.SetActive(true);
+        {
+            if (uiActive)
+                HighlightUI.SetActive(true);
+            else
+                HighlightObject.SetActive(true);
+        }
         else
-            HighlightObject.SetActive(false);
+        {
+            if (uiActive)
+                HighlightUI.SetActive(false);
+            else
+                HighlightObject.SetActive(false);
+        }
     }
 
     public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
     {
-        eatTime = 1;
+        eatTime = 0;
         foodValue = 60;
-        effect = "Slow";
-        effectValue = 12;
-        region.numActive--;
+        effect = "Stun";
+        effectValue = 30;
         Destroy(gameObject);
-        Debug.Log("Consume Ice");
+        Debug.Log("Consume Hunger Bar");
     }
 }
+
