@@ -17,6 +17,8 @@ public class CameraController : MonoBehaviour
 	[SerializeField] private float minX = -9.2f;
 	private float maxX = 39.2f;
 	[SerializeField] private Transform minimumX;
+	private bool isMovingAwayFromMinX = false;
+
 	void Start()
 	{
 		rb = player.GetComponent<Rigidbody2D>(); // Assuming player has Rigidbody2D
@@ -30,7 +32,9 @@ public class CameraController : MonoBehaviour
 		{
 			if (minX >= 25.7)
 				maxX = 64.0f;
+
 			minX = minimumX.position.x + 13.57f;
+
 			if (rb.velocity.x > 0f)
 			{
 				lookOffset = lookAheadDistance;
@@ -49,8 +53,32 @@ public class CameraController : MonoBehaviour
 	{
 		if (player == null)
 			return;
-		float targetViewportX = Camera.main.WorldToViewportPoint(player.transform.position).x;
-		if (targetViewportX < 0.4f || targetViewportX > 0.6f)
+
+		float targetViewportX = mainCamera.WorldToViewportPoint(player.transform.position).x;
+		Vector3 minXWorldPosition = new Vector3(minX, player.transform.position.y, player.transform.position.z);
+		float minXViewportX = mainCamera.WorldToViewportPoint(minXWorldPosition).x;
+
+		// Check if minX is within camera's view
+		if (minXViewportX > 0f && minXViewportX < 1f)
+		{
+			isMovingAwayFromMinX = true;
+		}
+
+		if (isMovingAwayFromMinX)
+		{
+			// Smoothly move the camera away from minX
+			Vector3 desiredPosition = Vector3.Lerp(transform.position, targetPoint, moveSpeed * Time.deltaTime);
+			desiredPosition.x = Mathf.Clamp(desiredPosition.x, minX, maxX);
+
+			// Stop moving away from minX once it's no longer in the view
+			if (minXViewportX < 0f || minXViewportX > 1f)
+			{
+				isMovingAwayFromMinX = false;
+			}
+
+			transform.position = desiredPosition;
+		}
+		else if (targetViewportX < 0.4f || targetViewportX > 0.6f)
 		{
 			// Smoothly move the camera towards targetPoint
 			Vector3 desiredPosition = Vector3.Lerp(transform.position, targetPoint, moveSpeed * Time.deltaTime);

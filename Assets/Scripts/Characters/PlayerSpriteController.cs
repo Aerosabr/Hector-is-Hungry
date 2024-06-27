@@ -93,17 +93,15 @@ public class PlayerSpriteController : MonoBehaviour
             {
 				spriteRenderer.flipX = false;
 			}
-        }
-
-        if (movementInput.x == 0 && movementInput.y == 0)
+			isMoving = true;
+		}
+        else if (movementInput.x == 0 && movementInput.y == 0)
         {
             isMoving = false;
 			MusicManager.instance.soundSources[4].Stop();
 			MusicManager.instance.soundSources[3].Stop();
 			animator.Play("Idle");
         }
-        else
-            isMoving = true;
     }
 
     //Prevent player from moving

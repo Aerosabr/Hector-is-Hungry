@@ -113,8 +113,42 @@ public class WolfDestroyState : WolfState
 					Wolf.foodInRange.Add(consumable);
 				}
 				Wolf.foodInRange[0].Consume(out Wolf.eatTime, out Wolf.foodValue, out Wolf.effect, out Wolf.effectValue);
+				Wolf.foodInRange.RemoveAt(0);
 				//Wolf.foodInRange.RemoveAt(0);
 				StateMachine.ChangeState(WolfStateMachine.EWolfState.Eat);
+			}
+			else
+			{
+				// Destroy the GameObject associated with the collider
+				if (other.TryGetComponent(out DestroyOnContact contact))
+				{
+					contact.DestroyObject();
+				}
+				Wolf.animator.Play("DBite");
+				Wolf.PlayDeleteSound();
+
+			}
+		}
+		else
+		{
+			if (other.TryGetComponent(out DestroyOnContact contact))
+			{
+				// Check if the collision is with a player
+				if (other.gameObject.CompareTag("Player"))
+				{
+					// Check if the player has a BoxCollider2D
+					if (other.GetType().ToString() == "UnityEngine.BoxCollider2D")
+					{
+						contact.DestroyObject();
+					}
+				}
+				else
+				{
+					contact.DestroyObject();
+				}
+				Wolf.animator.Play("DBite");
+				Wolf.PlayDeleteSound();
+
 			}
 		}
 	}

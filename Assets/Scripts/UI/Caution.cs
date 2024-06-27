@@ -9,6 +9,8 @@ public class Caution : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (player == null)
+            return;
         float distance = player.position.x - transform.position.x;
         
         if (distance <= 10)
