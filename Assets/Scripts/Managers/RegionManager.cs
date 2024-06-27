@@ -16,6 +16,8 @@ public class RegionManager : MonoBehaviour
     [SerializeField] private GameObject Cloud;
     [SerializeField] private GameObject CloudDestroyer;
     [SerializeField] private bool Space;
+    [SerializeField] private bool Tutorial;
+
     private void Awake()
     {
         instance = this;
@@ -23,12 +25,16 @@ public class RegionManager : MonoBehaviour
 
     private void Start()
     {
-        LoadRegions();
+        if (!Tutorial)
+        {
+            LoadRegions();
+            StartCoroutine(SpawnClouds());
+        }
 		MeasureAndLogPerimeters();
-        StartCoroutine(SpawnClouds());
+
 	}
 
-    private IEnumerator SpawnClouds()
+    public IEnumerator SpawnClouds()
     {
         yield return new WaitForSeconds(Random.Range(10f, 15f));
         GameObject cloud = Instantiate(Cloud, transform);

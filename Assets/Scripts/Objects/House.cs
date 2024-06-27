@@ -9,7 +9,7 @@ public class House : MonoBehaviour
 	[SerializeField] private GameObject pig;
     [SerializeField] private string material;
 	[SerializeField] private List<Sprite> sprite_List = new List<Sprite>();
-	[SerializeField] private int currentAmount;
+	public int currentAmount;
     public int requireAmount;
 	[SerializeField] private SpriteRenderer sprite;
 	[SerializeField] private TextMeshPro text;
