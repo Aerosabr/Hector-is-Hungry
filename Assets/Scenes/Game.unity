@@ -6642,9 +6642,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3179231790878341580, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
+      propertyPath: canEat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179231790878341580, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 231288785}
+    - target: {fileID: 3179231790878341580, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
+      propertyPath: canPickup
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4151097360058934076, guid: d171464c2c3ba5f4ba536f068d0ba25b, type: 3}
       propertyPath: m_Size.x
       value: 2.5055676
@@ -15709,6 +15717,7 @@ MonoBehaviour:
   Cloud: {fileID: 4720048840860057255, guid: 1baf85775c025a7419743997d25fe98d, type: 3}
   CloudDestroyer: {fileID: 7548169405202816168, guid: 7d02b60a4567f074d9b7e0ffdd0b1bdb, type: 3}
   Space: 0
+  Tutorial: 0
 --- !u!4 &2080108039
 Transform:
   m_ObjectHideFlags: 0

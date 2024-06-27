@@ -9,7 +9,8 @@ public class Player : Entity
 	[SerializeField] private Coroutine coroutine;
     [SerializeField] private GameObject gameOver;
     public float sprintDuration = 0;
-
+    public bool canEat;
+    public bool canPickup;
 
 	void Start()
 	{
@@ -68,62 +69,68 @@ public class Player : Entity
 
 	public void OnPickup()
     {
-		int index = 0;
-		bool containSpace = false;
-        if (nearbyObjects.Count > 1)
+        if (canPickup)
         {
-            float distance = Mathf.Infinity;
-            for (int i = 0; i < nearbyObjects.Count; i++)
+            int index = 0;
+            bool containSpace = false;
+            if (nearbyObjects.Count > 1)
             {
-                if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+                float distance = Mathf.Infinity;
+                for (int i = 0; i < nearbyObjects.Count; i++)
                 {
-                    
-                    distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
-                    index = i;
+                    if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+                    {
+
+                        distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
+                        index = i;
+                    }
                 }
+                containSpace = nearbyObjects[index].GetComponent<Item>().PickupItem();
             }
-			containSpace = nearbyObjects[index].GetComponent<Item>().PickupItem();
-        }
-        else if (nearbyObjects.Count == 1)
-			containSpace = nearbyObjects[index].GetComponent<Item>().PickupItem();
-		
-		if(!containSpace && nearbyObjects.Count != 0)
-		{
-			nearbyObjects[index].transform.GetChild(1).gameObject.SetActive(true);
-			if (coroutine != null)
-				StopCoroutine(coroutine);
-			coroutine = StartCoroutine(DeactivateAfterDelay(nearbyObjects[index].transform.GetChild(1).gameObject, 2.0f));
-		}
+            else if (nearbyObjects.Count == 1)
+                containSpace = nearbyObjects[index].GetComponent<Item>().PickupItem();
+
+            if (!containSpace && nearbyObjects.Count != 0)
+            {
+                nearbyObjects[index].transform.GetChild(1).gameObject.SetActive(true);
+                if (coroutine != null)
+                    StopCoroutine(coroutine);
+                coroutine = StartCoroutine(DeactivateAfterDelay(nearbyObjects[index].transform.GetChild(1).gameObject, 2.0f));
+            }
+        }	
     }
 
     public void OnEat()
     {
-        int index = 0;
-        bool containSpace = false;
-        if (nearbyObjects.Count > 1)
+        if (canEat)
         {
-            float distance = Mathf.Infinity;
-            for (int i = 0; i < nearbyObjects.Count; i++)
+            int index = 0;
+            bool containSpace = false;
+            if (nearbyObjects.Count > 1)
             {
-                if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+                float distance = Mathf.Infinity;
+                for (int i = 0; i < nearbyObjects.Count; i++)
                 {
+                    if (Vector3.Distance(transform.position, nearbyObjects[i].transform.position) < distance)
+                    {
 
-                    distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
-                    index = i;
+                        distance = Vector3.Distance(transform.position, nearbyObjects[i].transform.position);
+                        index = i;
+                    }
                 }
+                containSpace = nearbyObjects[index].GetComponent<Item>().EatItem(this);
             }
-            containSpace = nearbyObjects[index].GetComponent<Item>().EatItem(this);
-        }
-        else if (nearbyObjects.Count == 1)
-            containSpace = nearbyObjects[index].GetComponent<Item>().EatItem(this);
+            else if (nearbyObjects.Count == 1)
+                containSpace = nearbyObjects[index].GetComponent<Item>().EatItem(this);
 
-        if (!containSpace && nearbyObjects.Count != 0)
-        {
-            nearbyObjects[index].transform.GetChild(2).gameObject.SetActive(true);
-            if (coroutine != null)
-                StopCoroutine(coroutine);
-            coroutine = StartCoroutine(DeactivateAfterDelay(nearbyObjects[index].transform.GetChild(2).gameObject, 2.0f));
-        }
+            if (!containSpace && nearbyObjects.Count != 0)
+            {
+                nearbyObjects[index].transform.GetChild(2).gameObject.SetActive(true);
+                if (coroutine != null)
+                    StopCoroutine(coroutine);
+                coroutine = StartCoroutine(DeactivateAfterDelay(nearbyObjects[index].transform.GetChild(2).gameObject, 2.0f));
+            }
+        }     
     }
 
     public void HighlightNearest()
