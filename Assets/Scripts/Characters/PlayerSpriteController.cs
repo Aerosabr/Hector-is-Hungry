@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.PlayerSettings;
 public class PlayerSpriteController : MonoBehaviour
 {
     [SerializeField] private Player player;
@@ -14,7 +15,10 @@ public class PlayerSpriteController : MonoBehaviour
     [SerializeField] private Vector2 currentDirection; //Direction player is facing for sprite purposes
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer copy;
 
+    private bool isGhosting = false;
+    private Coroutine coroutine;
     //Walk speed
     public float walkSpeed;
 
@@ -61,7 +65,23 @@ public class PlayerSpriteController : MonoBehaviour
 
                 currentDirection = movementInput;
             }
-        }
+			if (player.movementSpeed == 1.25)
+			{
+				if (isGhosting)
+				{
+					StopCoroutine(coroutine);
+					isGhosting = false;
+				}
+			}
+			else if (player.movementSpeed == 1.875)
+			{
+				if (!isGhosting)
+				{
+					coroutine = StartCoroutine(GenerateGhost());
+					isGhosting = true;
+				}
+			}
+		}
     }
 
     //Player Movement 
@@ -111,5 +131,23 @@ public class PlayerSpriteController : MonoBehaviour
         Movable = false;
         isMoving = false;
         animator.Play("Idle");
-    }
+	}
+
+	public void CreateGhost()
+	{
+		copy.sprite = spriteRenderer.sprite;
+        copy.flipX = spriteRenderer.flipX;
+		var clone = Instantiate(copy, transform.position, transform.rotation);
+		clone.gameObject.SetActive(true);
+		Destroy(clone.gameObject, 0.1f);
+	}
+
+	public IEnumerator GenerateGhost()
+	{
+		while (true)
+		{
+			CreateGhost();
+			yield return null;
+		}
+	}
 }
