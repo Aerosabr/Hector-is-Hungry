@@ -90,4 +90,19 @@ public class Meadow : Region
             temp.GetComponent<Seed>().InitiateSeed(SpawnArea, this);
         }
     }
+	public void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.tag == "Player")
+		{
+            MusicManager.instance.musicSources[2].Play();
+		}
+	}
+
+	public void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.tag == "Player")
+		{
+			MusicManager.instance.musicSources[2].Stop();
+		}
+	}
 }

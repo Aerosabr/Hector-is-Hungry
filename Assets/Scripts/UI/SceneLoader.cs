@@ -14,6 +14,8 @@ public class SceneLoading : MonoBehaviour
 			StartCoroutine(LoadingScene(Scene, "Black"));
 		else if (Scene == "Game") //idk if being used tbh might delete
 			StartCoroutine(LoadingScene(Scene, "Black"));
+		else if (Scene == "Tutorial") //idk if being used tbh might delete
+			StartCoroutine(LoadingScene(Scene, "Black"));
 	}
     //Loads scene non-additively
     IEnumerator LoadingScene(string Scene, string Transition)

@@ -17,11 +17,13 @@ public class PigTransportState : PigState
 		Debug.Log("Enter Transfer State");
 		Pig.walk.Play();
 		Pig.animator.Play("Run");
+		Pig.box.excludeLayers |= LayerMask.GetMask("Pig");
 	}
 
 	public override void ExitState()
 	{
 		Debug.Log("Exit Transfer State");
+		Pig.box.excludeLayers &= ~LayerMask.GetMask("Pig");
 		Pig.walk.Stop();
 	}
 
@@ -30,6 +32,16 @@ public class PigTransportState : PigState
 		if (Pig.Wolf == null)
 		{
 			Debug.LogError("Wolf transform not assigned to Pig.");
+			return;
+		}
+		if(Pig.transform.childCount != 5)
+		{
+			Pig.rb.velocity = Vector3.zero;
+			Pig.animator.Play("Idle");
+			Pig.item = null;
+			Pig.runSpeed = 2.5f;
+			Pig.animator.speed = Pig.runSpeed;
+			StateMachine.ChangeState(PigStateMachine.EPigState.Idle);
 			return;
 		}
 

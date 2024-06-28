@@ -33,6 +33,7 @@ public class PigIdleState : PigState
 			StateMachine.ChangeState(PigStateMachine.EPigState.Transport);
 		else if (Pig.canHelp == true && Vector3.Distance(Pig.transform.position, Pig.Player.position) > 5.0f)
 			StateMachine.ChangeState(PigStateMachine.EPigState.Follow);
+		Pig.rb.velocity = Vector3.zero;
 	}
 	public override PigStateMachine.EPigState GetState()
 	{
