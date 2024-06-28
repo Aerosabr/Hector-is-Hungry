@@ -73,13 +73,13 @@ public class PlayerSpriteController : MonoBehaviour
         if (movementInput.x != 0 || movementInput.y != 0)
         { 
             currentDirection = movementInput;
-            if(player.movementSpeed == 1)
+            if(player.movementSpeed == 1.25)
             {
 				MusicManager.instance.soundSources[3].Stop();
                 if(!MusicManager.instance.soundSources[4].isPlaying)
 				    MusicManager.instance.soundSources[4].Play();
 			}
-            else if(player.movementSpeed == 1.5) 
+            else if(player.movementSpeed == 1.875) 
             {
 				MusicManager.instance.soundSources[4].Stop();
 				if (!MusicManager.instance.soundSources[3].isPlaying)

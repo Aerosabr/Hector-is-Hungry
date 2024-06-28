@@ -363,7 +363,7 @@ MonoBehaviour:
   Wolf: {fileID: 1706043857974278052, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
   House: {fileID: 0}
   rb: {fileID: 2961405432738790263}
-  canHelp: 0
+  canHelp: 1
 --- !u!222 &3915606119815946961
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -381,6 +381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 66909413887471655}
+  - component: {fileID: 3123860222220033416}
   - component: {fileID: 8268348256903955879}
   m_Layer: 12
   m_Name: Highlight
@@ -408,6 +409,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3123860222220033416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2649824277314729018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adea6f4f6d35fe947becbe032044b357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  original: {fileID: 3820023694189871514}
+  copy: {fileID: 8268348256903955879}
 --- !u!212 &8268348256903955879
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -449,7 +464,7 @@ SpriteRenderer:
   m_SortingLayerID: -1222338313
   m_SortingLayer: 2
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: bd162a6d7300744498268982c13ab371, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 817ae21861fb4a14d8effea7be2d4c5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
