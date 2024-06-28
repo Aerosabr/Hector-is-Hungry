@@ -594,7 +594,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 385689594}
         m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
         m_MethodName: UpdateMusicVolume
         m_Mode: 1
@@ -2886,8 +2886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7abc77e0c3a5e5d4a88f43394984b60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 0}
-  sound: {fileID: 0}
+  music: {fileID: 48575499}
+  sound: {fileID: 1404440203}
   musicVolume: 1
   soundVolume: 1
   soundSources:
@@ -11140,9 +11140,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 385689594}
         m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
-        m_MethodName: UpdateMusicVolume
+        m_MethodName: UpdateSoundVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
