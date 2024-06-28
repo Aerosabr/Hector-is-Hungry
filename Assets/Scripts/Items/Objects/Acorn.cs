@@ -132,7 +132,7 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 				{
 					if (hit.TryGetComponent(out Pig pig) && character.tag == "Player")
 					{
-						if (pig.item == null)
+						if (pig.item == null && pig.canHelp)
 						{
 							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
@@ -164,14 +164,40 @@ public class Acorn : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
             HighlightObject.SetActive(false);
     }
 
-    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
+    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue, Transform wolf)
     {
         eatTime = 2;
         foodValue = 10;
         effect = "None";
         effectValue = 0;
         region.numActive--;
-        Destroy(gameObject);
-        Debug.Log("Consume Acorn");
-    }
+		StartCoroutine(JumpIntoWolf(wolf));
+		Debug.Log("Consume Acorn");
+	}
+
+	private IEnumerator JumpIntoWolf(Transform wolf)
+	{
+		Vector3 startPosition = transform.position;
+		Vector3 targetPosition = wolf.position;
+		float duration = 0.5f;
+		float elapsed = 0f;
+		float arcHeight = 2f;
+
+		box.enabled = false;
+		box.excludeLayers |= LayerMask.GetMask("Character");
+
+		while (elapsed < duration)
+		{
+			float t = elapsed / duration;
+			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, t);
+			arcPosition.y += Mathf.Sin(Mathf.PI * t) * arcHeight;
+
+			transform.position = arcPosition;
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+		Destroy(gameObject, duration);
+		transform.position = targetPosition;
+		box.enabled = true;
+	}
 }

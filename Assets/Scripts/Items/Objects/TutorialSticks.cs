@@ -121,8 +121,7 @@ public class TutorialSticks : Item, IBeginDragHandler, IEndDragHandler, IDragHan
         image.raycastTarget = true;
         image.enabled = false;
         isDropped = true;
-        Slots[0] = null;
-        Slots[1] = null;
+        
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.localScale = Vector3.one;
@@ -130,6 +129,8 @@ public class TutorialSticks : Item, IBeginDragHandler, IEndDragHandler, IDragHan
 		transform.position = character.position;
 		if (character.tag == "Player")
 		{
+			Slots[0] = null;
+			Slots[1] = null;
 			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
 				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f, character));
 			else
@@ -163,7 +164,7 @@ public class TutorialSticks : Item, IBeginDragHandler, IEndDragHandler, IDragHan
 				{
 					if (hit.TryGetComponent(out Pig pig) && character.tag == "Player")
 					{
-						if (pig.item == null)
+						if (pig.item == null && pig.canHelp)
 						{
 							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
@@ -195,14 +196,40 @@ public class TutorialSticks : Item, IBeginDragHandler, IEndDragHandler, IDragHan
             HighlightObject.SetActive(false);
     }
 
-    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
+    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue, Transform wolf)
     {
         eatTime = Random.Range(2f, 3f);
         foodValue = 20;
         effect = "None";
         effectValue = 0;
         region.numActive--;
-        Destroy(gameObject);
-        Debug.Log("Consume Sticks");
-    }
+		StartCoroutine(JumpIntoWolf(wolf));
+		Debug.Log("Consume Stick");
+	}
+
+	private IEnumerator JumpIntoWolf(Transform wolf)
+	{
+		Vector3 startPosition = transform.position;
+		Vector3 targetPosition = wolf.position;
+		float duration = 0.5f;
+		float elapsed = 0f;
+		float arcHeight = 2f;
+
+		box.enabled = false;
+		box.excludeLayers |= LayerMask.GetMask("Character");
+
+		while (elapsed < duration)
+		{
+			float t = elapsed / duration;
+			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, t);
+			arcPosition.y += Mathf.Sin(Mathf.PI * t) * arcHeight;
+
+			transform.position = arcPosition;
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+		Destroy(gameObject, duration);
+		transform.position = targetPosition;
+		box.enabled = true;
+	}
 }

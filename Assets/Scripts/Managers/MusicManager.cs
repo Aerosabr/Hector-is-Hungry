@@ -13,11 +13,15 @@ public class MusicManager : MonoBehaviour
     public List<AudioSource> soundSources = new List<AudioSource>();
     public List<AudioSource> musicSources = new List<AudioSource>();
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
         instance = this;
-        UpdateSoundVolume();
+        soundVolume = VolumeDataTransfer.instance.soundVolume;
+        musicVolume = VolumeDataTransfer.instance.musicVolume;
+        music.value = musicVolume;
+        sound.value = soundVolume;
+		UpdateSoundVolume();
         UpdateMusicVolume();
         musicSources[0].Play();
         

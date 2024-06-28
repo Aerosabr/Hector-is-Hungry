@@ -146,15 +146,13 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 
     public override void ItemDropped(GameObject Character)
     {
-        foreach (GameObject slot in Slots)
-            slot.GetComponent<InventorySlot>().Taken = false;
+        
         MusicManager.instance.soundSources[16].Play();
 		sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         isDropped = true;
-        for (int i = 0; i <= 2; i++)
-            Slots[i] = null;
+        
         current = 0;
 		transform.SetParent(GameObject.Find("RegionManager").transform);
 		transform.localScale = Vector3.one;
@@ -162,6 +160,10 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 		transform.position = character.position;
 		if (character.tag == "Player")
 		{
+			foreach (GameObject slot in Slots)
+				slot.GetComponent<InventorySlot>().Taken = false;
+			for (int i = 0; i <= 2; i++)
+				Slots[i] = null;
 			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
 				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f, character));
 			else
@@ -195,7 +197,7 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
 				{
 					if (hit.TryGetComponent(out Pig pig) && character.tag == "Player")
 					{
-						if (pig.item == null)
+						if (pig.item == null && pig.canHelp)
 						{
 							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
@@ -227,14 +229,40 @@ public class Vines : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
             HighlightObject.SetActive(false);
     }
 
-    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
+    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue, Transform wolf)
     {
         eatTime = Random.Range(4f, 6f);
         foodValue = 30;
         effect = "None";
         effectValue = 0;
         region.numActive--;
-        Destroy(gameObject);
-        Debug.Log("Consume Vines");
-    }
+		StartCoroutine(JumpIntoWolf(wolf));
+		Debug.Log("Consume Vine");
+	}
+
+	private IEnumerator JumpIntoWolf(Transform wolf)
+	{
+		Vector3 startPosition = transform.position;
+		Vector3 targetPosition = wolf.position;
+		float duration = 0.5f;
+		float elapsed = 0f;
+		float arcHeight = 2f;
+
+		box.enabled = false;
+		box.excludeLayers |= LayerMask.GetMask("Character");
+
+		while (elapsed < duration)
+		{
+			float t = elapsed / duration;
+			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, t);
+			arcPosition.y += Mathf.Sin(Mathf.PI * t) * arcHeight;
+
+			transform.position = arcPosition;
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+		Destroy(gameObject, duration);
+		transform.position = targetPosition;
+		box.enabled = true;
+	}
 }

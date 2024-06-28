@@ -11,5 +11,6 @@ public class UpdateHighLight : MonoBehaviour
 	void Update()
     {
         copy.sprite = original.sprite;
+		copy.flipX = original.flipX;
     }
 }
