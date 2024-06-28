@@ -77,4 +77,19 @@ public class Snowy : Region
             spawnLocation++;
     }
 
+	public void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.tag == "Player")
+		{
+			MusicManager.instance.musicSources[3].Play();
+		}
+	}
+
+	public void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.tag == "Player")
+		{
+			MusicManager.instance.musicSources[3].Stop();
+		}
+	}
 }

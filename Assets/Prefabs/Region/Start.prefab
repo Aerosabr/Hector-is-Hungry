@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1371846591871173129}
   - component: {fileID: 945082402451126414}
   - component: {fileID: 5512174974655554019}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: HouseStick
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 411094591204277950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.25, z: 0}
+  m_LocalPosition: {x: 3.38, y: 2.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43,7 +43,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411094591204277950}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -138,7 +138,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1847
+    m_Bits: 6967
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 558376859058793705}
   - component: {fileID: 7734964367496727256}
   - component: {fileID: 3112657862844733566}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 2230054679708102574}
   - component: {fileID: 4731483588432432112}
   - component: {fileID: 6815611271496901044}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5564493343199965220}
   - component: {fileID: 4001194923691205192}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,8 +466,8 @@ Transform:
   m_GameObject: {fileID: 3550603358145322914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0297, y: 0.001, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.02, z: 1}
+  m_LocalPosition: {x: 0.0297, y: -0.0027, z: 0}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2230054679708102574}
@@ -513,7 +513,7 @@ SpriteRenderer:
   m_SortingLayerID: 1157661059
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: bd6082f2a9342494fb66074cb03e235b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f48031dff70a4546be25bd9682088a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3515,7 +3515,7 @@ GameObject:
   - component: {fileID: 2963706203496938665}
   - component: {fileID: 20120527963187228}
   - component: {fileID: 6478812581061957911}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3619,7 +3619,7 @@ GameObject:
   - component: {fileID: 7403921175036208016}
   - component: {fileID: 8531788777646713954}
   - component: {fileID: 8716017911558677169}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: HouseBrick
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -3635,7 +3635,7 @@ Transform:
   m_GameObject: {fileID: 4974027452145069434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 2.25, z: 0}
+  m_LocalPosition: {x: 7.97, y: 2.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3757,7 +3757,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1847
+    m_Bits: 6967
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -3800,7 +3800,7 @@ GameObject:
   - component: {fileID: 7761081836245388806}
   - component: {fileID: 8714508594183083327}
   - component: {fileID: 5805433373698812495}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: HouseHay
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -3816,7 +3816,7 @@ Transform:
   m_GameObject: {fileID: 5401019362057106705}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 2.25, z: 0}
+  m_LocalPosition: {x: -1.11, y: 2.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3830,7 +3830,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5401019362057106705}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3925,7 +3925,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1847
+    m_Bits: 6967
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -3966,7 +3966,7 @@ GameObject:
   - component: {fileID: 7340491962284665430}
   - component: {fileID: 3605690379680792310}
   - component: {fileID: 8822802277490745903}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4138,6 +4138,8 @@ GameObject:
   - component: {fileID: 1683906329319870367}
   - component: {fileID: 638136752960300897}
   - component: {fileID: 762414791660309132}
+  - component: {fileID: 6548036069247861610}
+  - component: {fileID: 4787820613894609964}
   m_Layer: 8
   m_Name: Start
   m_TagString: Environment
@@ -4248,6 +4250,63 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &6548036069247861610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991005147147523483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10e497bfce97ea4da0192d8503dbf41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &4787820613894609964
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991005147147523483}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 7607
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 15, y: 15}
+  m_EdgeRadius: 0
 --- !u!1 &7469055498133523975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4258,7 +4317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1043336380120683281}
   - component: {fileID: 3638179446564292048}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4321,7 +4380,7 @@ SpriteRenderer:
   m_SortingLayerID: 1157661059
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 30a6bddd7edb72a4ca904a77705b8917, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c3fa95b4bf5abb4caae1fa7feca0b3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4343,7 +4402,7 @@ GameObject:
   - component: {fileID: 5998178300066105048}
   - component: {fileID: 4347486521942773644}
   - component: {fileID: 1425692712466420752}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4444,7 +4503,7 @@ GameObject:
   - component: {fileID: 7262508051779192299}
   - component: {fileID: 5633232244370709498}
   - component: {fileID: 7384605833875307288}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4614,7 +4673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1344780640400462991}
   - component: {fileID: 7416309700271481152}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4630,8 +4689,8 @@ Transform:
   m_GameObject: {fileID: 8345405127060122278}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0297, y: 0.001, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalPosition: {x: 0.0292, y: -0.0019, z: 0}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5998178300066105048}
@@ -4677,7 +4736,7 @@ SpriteRenderer:
   m_SortingLayerID: 1157661059
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: cb35ddf52806adb4ebbeaed37c21d324, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58389c97cea673840b6a27b0a184f8a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

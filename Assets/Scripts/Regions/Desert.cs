@@ -77,5 +77,19 @@ public class Desert : Region
         else
             spawnLocation++;
     }
+	public void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.tag == "Player")
+		{
+			MusicManager.instance.musicSources[4].Play();
+		}
+	}
 
+	public void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.tag == "Player")
+		{
+			MusicManager.instance.musicSources[4].Stop();
+		}
+	}
 }

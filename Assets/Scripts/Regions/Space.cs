@@ -83,7 +83,8 @@ public class Space : Region
         {
             Debug.Log("Now in space");
             collision.transform.parent.GetComponent<PlayerSpriteController>().inSpace = true;
-        }
+			MusicManager.instance.musicSources[6].Play();
+		}
     }
 
     public void OnTriggerExit2D(Collider2D collision)
@@ -92,6 +93,7 @@ public class Space : Region
         {
             Debug.Log("Left space");
             collision.transform.parent.GetComponent<PlayerSpriteController>().inSpace = false;
+            MusicManager.instance.musicSources[6].Stop();
         }
     }
 }
