@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
 	void Start()
 	{
 		rb = player.GetComponent<Rigidbody2D>(); // Assuming player has Rigidbody2D
-		targetPoint = player.transform.position - Vector3.forward * 10f; // Adjust the offset as needed
+		targetPoint = player.transform.position - Vector3.forward; // Adjust the offset as needed
 	}
 
 	void FixedUpdate()

@@ -227,14 +227,12 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 
     public override void ItemDropped(GameObject Character)
     {
-        foreach (GameObject slot in Slots)
-            slot.GetComponent<InventorySlot>().Taken = false;
+        
         sprite.enabled = true;
         image.raycastTarget = true;
         image.enabled = false;
         isDropped = true;
-        for (int i = 0; i <= 3; i++)
-            Slots[i] = null;
+        
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.localScale = Vector3.one;
@@ -242,6 +240,10 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
         transform.position = character.position;
 		if (character.tag == "Player")
 		{
+			foreach (GameObject slot in Slots)
+				slot.GetComponent<InventorySlot>().Taken = false;
+			for (int i = 0; i <= 3; i++)
+				Slots[i] = null;
 			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
 				StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f, character));
 			else

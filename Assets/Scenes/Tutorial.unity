@@ -30290,6 +30290,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100337385065348617, guid: 816480605aa174848bf3f21849f258f2, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 576713693390747911, guid: 816480605aa174848bf3f21849f258f2, type: 3}
       propertyPath: item
       value: 
@@ -32313,7 +32317,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4023
+    m_Bits: 4294967295
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -32583,7 +32587,7 @@ PrefabInstance:
     - target: {fileID: 199558950622757430, guid: 66a9836cdfa113744a6fda6ccc87935c, type: 3}
       propertyPath: textGameOver
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1636392586}
     - target: {fileID: 507879537578521952, guid: 66a9836cdfa113744a6fda6ccc87935c, type: 3}
       propertyPath: m_SortingOrder
       value: 1
