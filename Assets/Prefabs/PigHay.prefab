@@ -1100,7 +1100,7 @@ MonoBehaviour:
   Wolf: {fileID: 1706043857974278052, guid: a92db49aabb2d2a409434d9d44bc2e13, type: 3}
   House: {fileID: 0}
   rb: {fileID: 9028006043150277662}
-  canHelp: 1
+  canHelp: 0
 --- !u!222 &1549513101004172039
 CanvasRenderer:
   m_ObjectHideFlags: 0

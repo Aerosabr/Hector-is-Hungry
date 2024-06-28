@@ -173,8 +173,7 @@ public class TutorialHaybale : Item, IBeginDragHandler, IEndDragHandler, IDragHa
         image.raycastTarget = true;
         image.enabled = false;
         isDropped = true;
-        for (int i = 0; i <= 3; i++)
-            Slots[i] = null;
+        
         current = 0;
         transform.SetParent(GameObject.Find("RegionManager").transform);
         transform.localScale = new Vector3(.75f, .75f, .75f);
@@ -182,7 +181,9 @@ public class TutorialHaybale : Item, IBeginDragHandler, IEndDragHandler, IDragHa
 		transform.position = character.position;
         if (character.tag == "Player")
         {
-            if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
+			for (int i = 0; i <= 3; i++)
+				Slots[i] = null;
+			if (character.GetComponent<Rigidbody2D>().velocity.x > 0)
                 StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(2f, 0f, 0f), 0.5f, character));
             else
                 StartCoroutine(MoveToPositionCoroutine(transform.localPosition + new Vector3(-2f, 0f, 0f), 0.5f, character));
@@ -215,7 +216,7 @@ public class TutorialHaybale : Item, IBeginDragHandler, IEndDragHandler, IDragHa
 				{
 					if (hit.TryGetComponent(out Pig pig) && character.tag == "Player")
 					{
-						if (pig.item == null)
+						if (pig.item == null && pig.canHelp)
 						{
 							MusicManager.instance.soundSources[17].Play();
 							pig.item = transform.gameObject;
@@ -247,14 +248,40 @@ public class TutorialHaybale : Item, IBeginDragHandler, IEndDragHandler, IDragHa
             HighlightObject.SetActive(false);
     }
 
-    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue)
+    public void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue, Transform wolf)
     {
         eatTime = Random.Range(4f, 6f);
         foodValue = 40;
         effect = "None";
         effectValue = 0;
         region.numActive--;
-        Destroy(gameObject);
-        Debug.Log("Consume Haybale");
-    }
+		StartCoroutine(JumpIntoWolf(wolf));
+		Debug.Log("Consume Haybale");
+	}
+
+	private IEnumerator JumpIntoWolf(Transform wolf)
+	{
+		Vector3 startPosition = transform.position;
+		Vector3 targetPosition = wolf.position;
+		float duration = 0.5f;
+		float elapsed = 0f;
+		float arcHeight = 2f;
+
+		box.enabled = false;
+		box.excludeLayers |= LayerMask.GetMask("Character");
+
+		while (elapsed < duration)
+		{
+			float t = elapsed / duration;
+			Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, t);
+			arcPosition.y += Mathf.Sin(Mathf.PI * t) * arcHeight;
+
+			transform.position = arcPosition;
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+		Destroy(gameObject, duration);
+		transform.position = targetPosition;
+		box.enabled = true;
+	}
 }

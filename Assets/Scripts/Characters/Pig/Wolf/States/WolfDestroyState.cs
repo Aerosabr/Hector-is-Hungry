@@ -51,7 +51,7 @@ public class WolfDestroyState : WolfState
 				{
 					Wolf.foodInRange.Add(consumable);
 				}
-				Wolf.foodInRange[0].Consume(out Wolf.eatTime, out Wolf.foodValue, out Wolf.effect, out Wolf.effectValue);
+				Wolf.foodInRange[0].Consume(out Wolf.eatTime, out Wolf.foodValue, out Wolf.effect, out Wolf.effectValue, Wolf.transform);
 				Wolf.foodInRange.RemoveAt(0);
 				//Wolf.foodInRange.RemoveAt(0);
 				StateMachine.ChangeState(WolfStateMachine.EWolfState.Eat);
@@ -112,7 +112,7 @@ public class WolfDestroyState : WolfState
 				{
 					Wolf.foodInRange.Add(consumable);
 				}
-				Wolf.foodInRange[0].Consume(out Wolf.eatTime, out Wolf.foodValue, out Wolf.effect, out Wolf.effectValue);
+				Wolf.foodInRange[0].Consume(out Wolf.eatTime, out Wolf.foodValue, out Wolf.effect, out Wolf.effectValue, Wolf.transform);
 				Wolf.foodInRange.RemoveAt(0);
 				//Wolf.foodInRange.RemoveAt(0);
 				StateMachine.ChangeState(WolfStateMachine.EWolfState.Eat);

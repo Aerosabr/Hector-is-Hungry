@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IConsumable
 {
-	void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue);
+	void Consume(out float eatTime, out float foodValue, out string effect, out float effectValue, Transform wolf);
 }

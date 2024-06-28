@@ -54,12 +54,12 @@ public class PigTransportState : PigState
 		if (direction.x < 0)
 		{
 			Pig.sprite.flipX = true;
-			Pig.highlightSprite.flipY = true;
+			Pig.highlightSprite.flipX = true;
 		}
 		else if (direction.x > 0)
 		{
 			Pig.sprite.flipX = false;
-			Pig.highlightSprite.flipY = false;
+			Pig.highlightSprite.flipX = false;
 		}
 
 		if (Vector3.Distance(Pig.transform.position, Pig.Wolf.position) <= 0.5f)
