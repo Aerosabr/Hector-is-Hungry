@@ -2593,9 +2593,9 @@ MonoBehaviour:
   musicVolume: 1
   soundVolume: 1
   soundSources:
-  - {fileID: 1815398326}
-  musicSources:
   - {fileID: 338879268}
+  musicSources:
+  - {fileID: 1815398326}
 --- !u!1 &1494600619
 GameObject:
   m_ObjectHideFlags: 0
