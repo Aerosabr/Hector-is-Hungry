@@ -21,7 +21,7 @@ public class PigIdleState : PigState
 	}
 	public override void UpdateState()
 	{
-		if(Pig.isDropped == false)
+		if(Pig.isDropped == false || Pig.House == null || Pig.Player == null)
 			return;
 		else if (Pig.canHelp == false)
 		{
