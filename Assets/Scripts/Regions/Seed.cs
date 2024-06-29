@@ -277,14 +277,14 @@ public class Seed : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICon
 				{
 					if (hit.TryGetComponent(out Pig pig) && character.tag == "Player")
 					{
-						if (pig.item == null)
+						if (pig.item == null && pig.canHelp)
 						{
+							box.enabled = false;
 							pig.item = transform.gameObject;
 							pig.runSpeed = pig.runSpeed / 4;
 							isMarked = false;
 							transform.SetParent(pig.transform);
 							sprite.enabled = false;
-							box.enabled = false;
                             box.excludeLayers |= LayerMask.GetMask("Character");
                             transform.localScale = new Vector3(1, 1, 1);
 						}

@@ -21,7 +21,7 @@ public class PigIdleState : PigState
 	}
 	public override void UpdateState()
 	{
-		if(Pig.isDropped == false || Pig.House == null || Pig.Player == null)
+		if(Pig.isDropped == false)
 			return;
 		else if (Pig.canHelp == false)
 		{
@@ -31,7 +31,7 @@ public class PigIdleState : PigState
 		}
 		else if (Pig.item != null)
 			StateMachine.ChangeState(PigStateMachine.EPigState.Transport);
-		else if (Pig.canHelp == true && Vector3.Distance(Pig.transform.position, Pig.Player.position) > 5.0f)
+		else if (Pig.canHelp == true && Pig.Player != null && Vector3.Distance(Pig.transform.position, Pig.Player.position) > 5.0f)
 			StateMachine.ChangeState(PigStateMachine.EPigState.Follow);
 		Pig.rb.velocity = Vector3.zero;
 	}

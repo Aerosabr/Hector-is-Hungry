@@ -59,7 +59,7 @@ public class CameraController : MonoBehaviour
 		float minXViewportX = mainCamera.WorldToViewportPoint(minXWorldPosition).x;
 
 		// Check if minX is within camera's view
-		if (minXViewportX > 0f && minXViewportX < 1f)
+		if (minXViewportX > 0.4f && minXViewportX < 0.6f)
 		{
 			isMovingAwayFromMinX = true;
 		}
