@@ -71,7 +71,7 @@ public class CameraController : MonoBehaviour
 			desiredPosition.x = Mathf.Clamp(desiredPosition.x, minX, maxX);
 
 			// Stop moving away from minX once it's no longer in the view
-			if (minXViewportX < 0f || minXViewportX > 1f)
+			if (minXViewportX < 5f || minXViewportX > 0f)
 			{
 				isMovingAwayFromMinX = false;
 			}
