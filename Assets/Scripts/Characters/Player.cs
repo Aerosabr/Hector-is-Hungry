@@ -8,6 +8,7 @@ public class Player : Entity
 	[SerializeField] private GameObject closestItem;
 	[SerializeField] private Coroutine coroutine;
     [SerializeField] private GameObject gameOver;
+	private GameObject prevDialog;
     public float sprintDuration = 0;
     public bool canEat;
     public bool canPickup;
@@ -92,7 +93,10 @@ public class Player : Entity
 
             if (!containSpace && nearbyObjects.Count != 0)
             {
-                nearbyObjects[index].transform.GetChild(1).gameObject.SetActive(true);
+				if (prevDialog)
+					prevDialog.SetActive(false);
+				prevDialog = nearbyObjects[index].transform.GetChild(1).gameObject;
+				nearbyObjects[index].transform.GetChild(1).gameObject.SetActive(true);
                 if (coroutine != null)
                     StopCoroutine(coroutine);
                 coroutine = StartCoroutine(DeactivateAfterDelay(nearbyObjects[index].transform.GetChild(1).gameObject, 2.0f));
@@ -125,7 +129,11 @@ public class Player : Entity
 
             if (!containSpace && nearbyObjects.Count != 0)
             {
-                nearbyObjects[index].transform.GetChild(2).gameObject.SetActive(true);
+				if (prevDialog)
+					prevDialog.SetActive(false);
+				prevDialog = nearbyObjects[index].transform.GetChild(2).gameObject;
+				nearbyObjects[index].transform.GetChild(2).gameObject.SetActive(true);
+				nearbyObjects[index].transform.GetChild(2).gameObject.SetActive(true);
                 if (coroutine != null)
                     StopCoroutine(coroutine);
                 coroutine = StartCoroutine(DeactivateAfterDelay(nearbyObjects[index].transform.GetChild(2).gameObject, 2.0f));
