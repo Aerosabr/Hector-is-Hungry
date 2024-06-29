@@ -49,6 +49,7 @@ public class MusicManager : MonoBehaviour
     public void UpdateSoundVolume()
     {
         soundVolume = sound.value;
+        VolumeDataTransfer.instance.soundVolume = soundVolume;
         foreach(AudioSource source in soundSources)
         {
             source.volume = 0.5f * soundVolume;
@@ -57,7 +58,9 @@ public class MusicManager : MonoBehaviour
     public void UpdateMusicVolume()
     {
         musicVolume = music.value;
-        foreach(AudioSource source in musicSources)
+		VolumeDataTransfer.instance.musicVolume = musicVolume;
+
+		foreach (AudioSource source in musicSources)
         {
             source.volume = 0.5f * musicVolume;
         }

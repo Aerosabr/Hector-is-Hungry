@@ -17,6 +17,8 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
     [SerializeField] private GameObject HighlightUI;
     [SerializeField] private int current;
     [SerializeField] private bool uiActive = true;
+    [SerializeField] private Sprite icon1;
+    [SerializeField] private Sprite icon2;
 
     public Wolf wolf;
     public Slider hungerBar;
@@ -31,25 +33,35 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
 
     private void FixedUpdate()
     {
-        hungerBar.value = wolf.currentHunger / wolf.maxHunger;
-        hungerBar2.value = wolf.currentHunger / wolf.maxHunger;
+		hungerBar.value = wolf.currentHunger / wolf.maxHunger;
+		hungerBar2.value = wolf.currentHunger / wolf.maxHunger;
 		float hungerRatio = wolf.currentHunger / wolf.maxHunger;
-
-		if (wolf.currentHunger != 0)
+        if(hungerRatio > 0.3)
+        {
+			Icon.GetComponent<Image>().sprite = icon1;
+			Icon2.GetComponent<Image>().sprite = icon1;
+		}
+        else if(hungerRatio < 0.3)
+        {
+			Icon.GetComponent<Image>().sprite = icon2;
+			Icon2.GetComponent<Image>().sprite = icon2;
+		}
+		if (wolf.currentHunger > 0)
 		{
 			// Reduce the rotation speed and angle for a slower and less drastic movement
 			float rotationSpeed = 5 * ((wolf.maxHunger - wolf.currentHunger) / wolf.maxHunger); // Reduced speed factor
 			float rotationAngle = Mathf.Sin(Time.time * rotationSpeed) * (1 - hungerRatio) * 5f; // Reduced angle multiplier
-
+			
 			Icon.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
 			Icon2.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
 		}
-        else if (wolf.currentHunger < 0)
-        {
-            // Reduce the rotation speed and angle for a slower and less drastic movement
-            float rotationSpeed = 5; // Reduced speed factor
-			float rotationAngle = Mathf.Sin(Time.time * rotationSpeed) * (1) * 5f; // Reduced angle multiplier
+		else if (wolf.currentHunger <= 0)
+		{
+			// Reduce the rotation speed and angle for a slower and less drastic movement
+			float rotationSpeed = 15; // Reduced speed factor
+			float rotationAngle = Mathf.Sin(Time.time * rotationSpeed) * 15f; // Reduced angle multiplier
 
+           
 			Icon.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
 			Icon2.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
 		}
