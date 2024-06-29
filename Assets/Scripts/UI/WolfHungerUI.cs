@@ -33,20 +33,27 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
     {
         hungerBar.value = wolf.currentHunger / wolf.maxHunger;
         hungerBar2.value = wolf.currentHunger / wolf.maxHunger;
-        if ((wolf.currentHunger / wolf.maxHunger) < 0.4f)
+		float hungerRatio = wolf.currentHunger / wolf.maxHunger;
+
+		if (wolf.currentHunger != 0)
+		{
+			// Reduce the rotation speed and angle for a slower and less drastic movement
+			float rotationSpeed = 5 * ((wolf.maxHunger - wolf.currentHunger) / wolf.maxHunger); // Reduced speed factor
+			float rotationAngle = Mathf.Sin(Time.time * rotationSpeed) * (1 - hungerRatio) * 5f; // Reduced angle multiplier
+
+			Icon.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+			Icon2.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+		}
+        else if (wolf.currentHunger < 0)
         {
-            float rotationSpeedFactor = Mathf.Clamp01((wolf.currentHunger / wolf.maxHunger));
-            if (wolf.currentHunger != 0)
-            {
-                float rotationSpeed = 10 * ((wolf.maxHunger - wolf.currentHunger) / wolf.maxHunger);
+            // Reduce the rotation speed and angle for a slower and less drastic movement
+            float rotationSpeed = 5; // Reduced speed factor
+			float rotationAngle = Mathf.Sin(Time.time * rotationSpeed) * (1) * 5f; // Reduced angle multiplier
 
-                float rotationAngle = Mathf.Sin(Time.time * rotationSpeed) * (1 - wolf.currentHunger / wolf.maxHunger) * 10f;
-
-                Icon.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
-                Icon2.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
-            }
-        }
-    }
+			Icon.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+			Icon2.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+		}
+	}
 
     private float GetDivisors()
     {

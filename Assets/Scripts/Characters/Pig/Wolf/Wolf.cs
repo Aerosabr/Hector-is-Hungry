@@ -43,12 +43,12 @@ public class Wolf : MonoBehaviour
 		if(slowTimer >= slowDuration)
 		{
 			isSlowed = false;
-			sprite.color = Color.white;
 		}
 		else
 		{
 			slowTimer += 1 * Time.deltaTime;
 		}
+
 	}
 
 	private void IncreaseEatingSpeed()
@@ -61,6 +61,7 @@ public class Wolf : MonoBehaviour
 		if (currentHunger < maxHunger)
 		{
 			currentHunger += foodValue;
+
 		}
 	}
 

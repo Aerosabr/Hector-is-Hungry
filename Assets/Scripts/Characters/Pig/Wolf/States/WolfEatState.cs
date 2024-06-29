@@ -45,7 +45,10 @@ public class WolfEatState : WolfState
 			else
 			{
 				Wolf.AddHunger((Wolf.foodValue / Wolf.eatTime) * Time.deltaTime);
+				float hungerRatio = Wolf.currentHunger / Wolf.maxHunger;
+				Color currentColor = Color.Lerp(Color.red, Color.white, hungerRatio);
 
+				Wolf.sprite.color = currentColor;
 				eatTimer -= Wolf.eatingSpeed * Time.deltaTime;
 			}
 		}

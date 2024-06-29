@@ -77,7 +77,15 @@ public class WolfIdleState : WolfState
 		{
 			StateMachine.ChangeState(WolfStateMachine.EWolfState.Destroy);
 		}
+		if (!Wolf.isSlowed)
+		{
+			float hungerRatio = Wolf.currentHunger / Wolf.maxHunger;
+			Color currentColor = Color.Lerp(Color.red, Color.white, hungerRatio);
+
+			Wolf.sprite.color = currentColor;
+		}
 	}
+
 	private void ConsumeNearbyFood()
 	{
 		if (Wolf.foodInRange.Count > 0)
