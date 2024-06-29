@@ -80,6 +80,10 @@ public class PlayerSpriteController : MonoBehaviour
 					isGhosting = true;
 				}
 			}
+            if (movementInput.x == 0 && movementInput.y == 0)
+                animator.Play("Idle");
+            else
+                animator.Play("Run");
 		}
     }
 
@@ -87,7 +91,6 @@ public class PlayerSpriteController : MonoBehaviour
     public void OnMovement(InputValue inputValue)
     {
         movementInput = inputValue.Get<Vector2>();
-        animator.Play("Run");
 
         if (movementInput.x != 0 || movementInput.y != 0)
         { 
@@ -119,7 +122,7 @@ public class PlayerSpriteController : MonoBehaviour
             isMoving = false;
 			MusicManager.instance.soundSources[4].Stop();
 			MusicManager.instance.soundSources[3].Stop();
-			animator.Play("Idle");
+			
         }
     }
 
