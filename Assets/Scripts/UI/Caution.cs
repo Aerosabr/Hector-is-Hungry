@@ -16,7 +16,7 @@ public class Caution : MonoBehaviour
         if (distance <= 10)
         {
             distance *= 10;
-            float tempDist = ((100f - distance) / 100f) * .5f;
+            float tempDist = ((100f - distance) / 100f);
             Color temp = caution.color;
             temp.a = tempDist;
             caution.color = temp;
