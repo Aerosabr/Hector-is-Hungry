@@ -341,7 +341,6 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         canHelp = true;
         runSpeed = 2.5f;
         circle.excludeLayers &= ~LayerMask.GetMask("Item");
-        box.excludeLayers &= ~LayerMask.GetMask("Item");
 		box.excludeLayers &= ~LayerMask.GetMask("Pig");
 	}
 
