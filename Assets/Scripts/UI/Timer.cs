@@ -55,7 +55,7 @@ public class Timer : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICo
             textInventory.text = minutes.ToString() + ":" + secondsString;
             textItem.text = minutes.ToString() + ":" + secondsString;
             textUI.text = minutes.ToString() + ":" + secondsString;
-			textGameOver.text = "Time: " + minutes.ToString() + ":" + secondsString;
+			textGameOver.text = minutes.ToString() + ":" + secondsString;
 		}
     }
 

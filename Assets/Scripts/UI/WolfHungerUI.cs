@@ -34,7 +34,7 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
     private void FixedUpdate()
     {
 		hungerBar.value = wolf.currentHunger / wolf.maxHunger;
-		hungerBar2.value = wolf.currentHunger / wolf.maxHunger;
+		hungerBar2.value = (wolf.currentHunger / wolf.maxHunger) + 0.3f;
 		float hungerRatio = wolf.currentHunger / wolf.maxHunger;
         if(hungerRatio > 0.3)
         {
@@ -239,7 +239,8 @@ public class WolfHungerUI : Item, IBeginDragHandler, IEndDragHandler, IDragHandl
         foreach (GameObject slot in Slots)
             slot.GetComponent<InventorySlot>().Taken = false;
         isDropped = true;
-        transform.SetParent(GameObject.Find("RegionManager").transform);
+		box.excludeLayers &= ~LayerMask.GetMask("Wolf");
+		transform.SetParent(GameObject.Find("RegionManager").transform);
         OnEndDrag(null);
         sprite.enabled = true;
         icon.SetActive(true);

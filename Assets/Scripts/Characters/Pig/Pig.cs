@@ -262,13 +262,8 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
             Vector3 arcPosition = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
             arcPosition.y += Mathf.Sin(Mathf.Clamp01(elapsed / duration) * Mathf.PI) * height;
 
-            Collider2D[] hits = Physics2D.OverlapCircleAll(arcPosition, 0.5f);
-            foreach (Collider2D hit in hits)
-            {
-                if (hit.CompareTag("Wolf"))
-                    isMarked = true;
-            }
-            transform.position = arcPosition;
+			isMarked = true;
+			transform.position = arcPosition;
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -341,7 +336,9 @@ public class Pig : Item, IBeginDragHandler, IEndDragHandler, IDragHandler, ICons
         canHelp = true;
         runSpeed = 2.5f;
         circle.excludeLayers &= ~LayerMask.GetMask("Item");
-		box.excludeLayers &= ~LayerMask.GetMask("Pig");
+        box.excludeLayers &= ~LayerMask.GetMask("Pig");
+		box.excludeLayers |= LayerMask.GetMask("Environment");
+
 	}
 
 }
