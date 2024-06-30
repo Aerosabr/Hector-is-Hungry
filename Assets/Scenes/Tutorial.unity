@@ -4827,7 +4827,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8531788777646713954, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
   m_PrefabInstance: {fileID: 1961669578}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1961669580}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b95f90ea7040ed49acd3c890e7e6515, type: 3}
@@ -27004,6 +27004,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5484717131008363503, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484717131008363503, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5512174974655554019, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       propertyPath: m_Size.x
       value: 15
@@ -27175,10 +27183,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5991005147147523483, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1961669583}
+    - targetCorrespondingSourceObject: {fileID: 2220692870382021110, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
 --- !u!4 &1961669579 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8489258165849825155, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+  m_PrefabInstance: {fileID: 1961669578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1961669580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4974027452145069434, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
   m_PrefabInstance: {fileID: 1961669578}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1961669583
@@ -33656,6 +33672,10 @@ PrefabInstance:
       propertyPath: textUI
       value: 
       objectReference: {fileID: 851419772}
+    - target: {fileID: 199558950622757430, guid: 66a9836cdfa113744a6fda6ccc87935c, type: 3}
+      propertyPath: brickHouse
+      value: 
+      objectReference: {fileID: 1961669580}
     - target: {fileID: 199558950622757430, guid: 66a9836cdfa113744a6fda6ccc87935c, type: 3}
       propertyPath: HighlightUI
       value: 
