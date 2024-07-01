@@ -87,6 +87,8 @@ public class Meadow : Region
             Vector3 SpawnArea = new Vector3(Random.Range(-spawnX / 2, spawnX / 2), Random.Range((-spawnY / 2) - 2.5f, (spawnY / 2) - 2.5f));
 
             GameObject temp = Instantiate(seed, transform);
+            if (SpawnArea.y > 0)
+                SpawnArea.y = SpawnArea.y - 1;
             temp.GetComponent<Seed>().InitiateSeed(SpawnArea, this);
         }
     }
