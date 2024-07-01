@@ -26904,6 +26904,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 936602778633638188, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 936602778633638188, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 936602778633638188, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 369280421
+      objectReference: {fileID: 0}
     - target: {fileID: 945082402451126414, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       propertyPath: pig
       value: 
@@ -26939,6 +26951,18 @@ PrefabInstance:
     - target: {fileID: 2166385129993958946, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166385129993958946, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166385129993958946, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166385129993958946, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 369280421
       objectReference: {fileID: 0}
     - target: {fileID: 2220692870382021110, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       propertyPath: m_Layer
@@ -27003,6 +27027,18 @@ PrefabInstance:
     - target: {fileID: 5401019362057106705, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484717131008363503, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484717131008363503, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484717131008363503, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 369280421
       objectReference: {fileID: 0}
     - target: {fileID: 5512174974655554019, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       propertyPath: m_Size.x
@@ -27076,6 +27112,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 13.1
       objectReference: {fileID: 0}
+    - target: {fileID: 7403921175036208016, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: victory
+      value: 
+      objectReference: {fileID: 1551112907}
     - target: {fileID: 7416309700271481152, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -27175,6 +27215,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5991005147147523483, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1961669583}
+    - targetCorrespondingSourceObject: {fileID: 2220692870382021110, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
 --- !u!4 &1961669579 stripped
 Transform:
@@ -31427,6 +31470,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1870688336775558342, guid: 816480605aa174848bf3f21849f258f2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649824277314729018, guid: 816480605aa174848bf3f21849f258f2, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8268348256903955879, guid: 816480605aa174848bf3f21849f258f2, type: 3}
