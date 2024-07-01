@@ -19581,6 +19581,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5484717131008363503, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eec748a9b3aa62c4d809302bab405d0e, type: 3}
+    - target: {fileID: 5484717131008363503, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
@@ -19732,6 +19736,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8531788777646713954, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: sprite_List.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: eec748a9b3aa62c4d809302bab405d0e, type: 3}
+    - target: {fileID: 8531788777646713954, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
+      propertyPath: sprite_List.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 41a166aa4e88a5440b80589fefe1d783, type: 3}
     - target: {fileID: 8714508594183083327, guid: a981c7242be150e41b339b2c0b963df0, type: 3}
       propertyPath: pig
       value: 
